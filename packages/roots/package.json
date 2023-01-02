@@ -45,5 +45,8 @@
     "prepack": "yarn build",
     "test": "yarn jest"
   },
-  "gitHead": "4eca69d7a270cdf581418aa0fc891adcc00c9e00"
+  "gitHead": "44d6290c1d6f194764472ce070825876c3114416",
+  "dependencies": {
+    "@dig-it/dev": "^0.0.1"
+  }
 }

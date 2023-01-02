@@ -16,7 +16,9 @@
     "emitDecoratorMetadata": true,
     "paths": {
       "@dig-it/roots": ["roots/src"],
-      "@dig-it/roots/*": ["roots/src/*"]
+      "@dig-it/roots/*": ["roots/src/*"],
+      "@dig-it/dev": ["dev/src"],
+      "@dig-it/dev/*": ["dev/src/*"]
     },
   }
 }
