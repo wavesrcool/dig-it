@@ -10,5 +10,12 @@
   },
   "include": ["src/**/*"],
   "exclude": [],
-  "references": []
+  "references": [
+    {
+      "path": "../dev/tsconfig.build.json"
+    },
+    {
+      "path": "../graph/tsconfig.build.json"
+    },
+  ]
 }

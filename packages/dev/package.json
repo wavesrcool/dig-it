@@ -17,10 +17,18 @@
   "type": "commonjs",
   "version": "0.0.1",
   "bin": {
-    "dig-it-files-rename": "lib/bin/files-rename/main.js"
+    "dig-it-files-rename": "lib/bin/files-rename/main.js",
+    "dig-it-ci-env-example": "lib/bin/ci-env-example/main.js"
   },
   "files": [
     "./lib"
+  ],
+  "keywords": [
+    "dig",
+    "it",
+    "dev",
+    "es6",
+    "node"
   ],
   "publishConfig": {
     "access": "public",

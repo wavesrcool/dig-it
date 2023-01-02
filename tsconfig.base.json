@@ -20,7 +20,9 @@
       "@dig-it/dev": ["dev/src"],
       "@dig-it/dev/*": ["dev/src/*"],
       "@dig-it/env": ["env/src"],
-      "@dig-it/env/*": ["env/src/*"]
+      "@dig-it/env/*": ["env/src/*"],
+      "@dig-it/graph": ["graph/src"],
+      "@dig-it/graph/*": ["graph/src/*"]
     },
   }
 }

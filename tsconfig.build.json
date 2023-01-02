@@ -10,5 +10,7 @@
     { "path": "./packages/dev/tsconfig.spec.json" },
     { "path": "./packages/env/tsconfig.build.json" },
     { "path": "./packages/env/tsconfig.spec.json" },
+    { "path": "./packages/graph/tsconfig.build.json" },
+    { "path": "./packages/graph/tsconfig.spec.json" },
   ]
 }

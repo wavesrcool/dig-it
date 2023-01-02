@@ -22,7 +22,8 @@
     "./lib"
   ],
   "keywords": [
-    "dig-it",
+    "dig",
+    "it",
     "env",
     "es6",
     "node"
