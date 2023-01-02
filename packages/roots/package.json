@@ -30,6 +30,7 @@
     "node"
   ],
   "publishConfig": {
+    "access": "public",
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
@@ -44,5 +45,5 @@
     "prepack": "yarn build",
     "test": "yarn jest"
   },
-  "gitHead": "a5cbb581627d66168267d80fd2c780a9cc8d5d9d"
+  "gitHead": "4eca69d7a270cdf581418aa0fc891adcc00c9e00"
 }
