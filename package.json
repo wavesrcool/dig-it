@@ -1,0 +1,37 @@
+{
+  "author": "Tyson Lupul <tyson@dig-it.earth>",
+  "bugs": "https://github.com/wavesrcool/dig-it/issues",
+  "homepage": "https://github.com/wavesrcool/dig-it#readme",
+  "license": "MIT",
+  "name": "root",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wavesrcool/dig-it.git"
+  },
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "build": "npx lerna run build --stream",
+    "lint": "eslint --ext .ts,.tsx packages --fix",
+    "lint:all": "npx lerna run lint --stream --parallel",
+    "test": "yarn jest --coverage"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "1.0.3",
+    "@types/jest": "^28.1.8",
+    "@types/node": "^18.7.14",
+    "@wavesrcool/dev": "latest",
+    "jest": "^28.0.0",
+    "lerna": "^5.6.2",
+    "ts-jest": "^28.0.8",
+    "ts-node": "^10.9.1"
+  },
+  "resolutions": {
+    "typescript": "4.8.4"
+  }
+}
