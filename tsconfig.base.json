@@ -18,7 +18,9 @@
       "@dig-it/roots": ["roots/src"],
       "@dig-it/roots/*": ["roots/src/*"],
       "@dig-it/dev": ["dev/src"],
-      "@dig-it/dev/*": ["dev/src/*"]
+      "@dig-it/dev/*": ["dev/src/*"],
+      "@dig-it/env": ["env/src"],
+      "@dig-it/env/*": ["env/src/*"]
     },
   }
 }
