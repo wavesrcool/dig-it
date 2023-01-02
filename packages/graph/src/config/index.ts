@@ -13,7 +13,7 @@ const graphpath = "/";
  * @notes [ ]
  *
  */
-export const configuration: TypesConfiguration = {
+export const configgraph: TypesConfiguration = {
   SERVER: {
     GRAPH_PATH: graphpath,
     UNSECURED_ROUTES: ["/", "/breathe", PROD ? "" : graphpath].filter(
