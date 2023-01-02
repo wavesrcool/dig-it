@@ -44,5 +44,5 @@
     "prepack": "yarn build",
     "test": "yarn jest"
   },
-  "gitHead": "83df0d8fa00f95a774335a64c0e0c9bda55daa69"
+  "gitHead": "a5cbb581627d66168267d80fd2c780a9cc8d5d9d"
 }
