@@ -14,6 +14,9 @@
     "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
     "emitDecoratorMetadata": true,
-    "paths": {},
+    "paths": {
+      "@dig-it/roots": ["roots/src"],
+      "@dig-it/roots/*": ["roots/src/*"]
+    },
   }
 }

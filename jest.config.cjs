@@ -22,6 +22,8 @@ module.exports = {
     ),
   },
   modulePathIgnorePatterns: [
+    "__local__",
+    "__edit__",
     ...list.reduce(
       (acc, name) => [...acc, `<rootDir>/packages/${name}/lib`,],
       []
