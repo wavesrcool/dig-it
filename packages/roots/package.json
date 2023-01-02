@@ -43,5 +43,6 @@
     "build-dev": "yarn lint && yarn c",
     "prepack": "yarn build",
     "test": "yarn jest"
-  }
+  },
+  "gitHead": "83df0d8fa00f95a774335a64c0e0c9bda55daa69"
 }
