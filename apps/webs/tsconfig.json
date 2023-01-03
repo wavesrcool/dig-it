@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": "./src",
+    "module": "esnext",
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "allowUnusedLabels": true,
+    "allowUnreachableCode": true,
+    "allowJs": true,
+    "paths": {
+      "@webs-classes/*": ["class/*"],
+      "@webs-configuration/*": ["configuration/*"],
+      "@webs-components/*": ["configuration/*"],
+      "@webs-features/*": ["features/*"],
+      "@webs-hooks/*": ["hooks/*"],
+      "@webs-library/*": ["library/*"],
+      "@webs-shapes/*": ["shapes/*"],
+      "@webs-styles/*": ["styles/*"],
+      "@webs-types/*": ["types/*"],
+      "@webs-utils/*": ["utils/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", "__local__", "__edit__"]
+}
