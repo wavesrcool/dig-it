@@ -22,7 +22,9 @@
       "@dig-it/env": ["env/src"],
       "@dig-it/env/*": ["env/src/*"],
       "@dig-it/graph": ["graph/src"],
-      "@dig-it/graph/*": ["graph/src/*"]
+      "@dig-it/graph/*": ["graph/src/*"],
+      "@dig-it/models": ["models/src"],
+      "@dig-it/models/*": ["models/src/*"]
     },
   }
 }

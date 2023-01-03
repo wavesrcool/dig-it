@@ -1,32 +1,31 @@
 {
   "author": "Tyson Lupul <tyson@dig-it.earth>",
   "bugs": "https://github.com/wavesrcool/dig-it/issues",
-  "homepage": "https://github.com/wavesrcool/dig-it/tree/main/packages/dev#readme",
+  "homepage": "https://github.com/wavesrcool/dig-it/tree/main/packages/models#readme",
   "contributors": [],
   "description": "",
   "engines": {
     "node": ">=14.0.0 <17.0.0"
   },
   "license": "MIT",
-  "name": "@dig-it/dev",
+  "name": "@dig-it/models",
   "repository": {
-    "directory": "packages/dev",
+    "directory": "packages/models",
     "type": "git",
     "url": "https://github.com/wavesrcool/dig-it.git"
   },
   "type": "commonjs",
   "version": "0.0.1",
-  "bin": {
-    "dig-it-files-rename": "lib/bin/files-rename/main.js",
-    "dig-it-ci-env-example": "lib/bin/ci-env-example/main.js"
-  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "./lib"
+    "./lib",
+    ".env.models"
   ],
   "keywords": [
     "dig",
     "it",
-    "dev",
+    "models",
     "es6",
     "node"
   ],
@@ -34,29 +33,30 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "ci": "yarn lint",
+    "ci-env": "dig-it-ci-env-example models",
+    "ci": "yarn ci-env && yarn lint",
     "w": "tsc -w",
     "0l": "rm -rf lib",
     "0t": "rm -f tsconfig*tsbuildinfo",
     "c": "yarn 0l && yarn 0t && tsc --project tsconfig.build.json",
-    "lint": "eslint './src/**/*.{ts,tsx}' --max-warnings=0 --fix",
-    "build": "yarn ci && yarn c && yarn executable-bins",
-    "build-dev": "yarn lint && yarn c && yarn executable-bins",
+    "lint": "eslint './src/**/*.{ts,tsx}' --max-warnings=1 --fix",
+    "build": "yarn ci && yarn c",
+    "build-dev": "yarn lint && yarn c",
     "prepack": "yarn build",
     "test": "yarn jest",
-    "executable-bins": "chmod u+x ./lib/bin/**/main.js"
+    "update": "rm -rf node_modules && yarn"
   },
   "devDependencies": {
-    "@types/glob": "^8.0.0",
-    "@types/jsonfile": "^6.1.0",
-    "@types/lodash": "^4.14.185",
-    "@types/yargs": "^17.0.12"
+    "@dig-it/dev": "^0.0.1",
+    "@faker-js/faker": "^7.6.0"
   },
   "dependencies": {
     "@dig-it/env": "^0.0.1",
-    "glob": "^8.0.3",
-    "jsonfile": "^6.1.0",
-    "lodash": "^4.17.21",
-    "yargs": "^17.5.1"
+    "class-validator": "0.13.2",
+    "dotenv-safe": "^8.2.0",
+    "reflect-metadata": "0.1.13",
+    "type-graphql": "1.1.1",
+    "typeorm": "0.3.10",
+    "typeorm-extension": "^2.3.0"
   }
 }

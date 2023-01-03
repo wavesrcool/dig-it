@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import { ClassGraph } from "./class";
 
 /**
  * * Dig It Documentation
@@ -8,3 +9,5 @@ import "reflect-metadata";
  * @notes [ ]
  *
  */
+const Graph = ClassGraph;
+export default Graph;

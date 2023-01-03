@@ -17,7 +17,7 @@ const argenv = getArgv().toLowerCase();
 const main = () => {
   let msg = `[ci-env-example]`;
 
-  if (!["graph"].includes(argenv)) {
+  if (!["graph", "models"].includes(argenv)) {
     msg += ` - specified unknown environment`;
     throw new Error(msg);
   }
@@ -35,6 +35,12 @@ GRAPH_COOKIE_IV=
 GRAPH_TOK_IV=
 GRAPH_HASH_IV=
 GRAPH_ENC_IV=
+`;
+  }
+
+  if (argenv === "models") {
+    ws += `
+MODELS_DB=
 `;
   }
 

@@ -47,7 +47,8 @@
     "build-dev": "yarn lint && yarn c",
     "prepack": "yarn build",
     "test": "yarn jest",
-    "update": "rm -rf node_modules && yarn"
+    "update": "rm -rf node_modules && yarn",
+    "dev": "node lib/run.js"
   },
   "devDependencies": {
     "@dig-it/dev": "^0.0.1",
@@ -59,6 +60,7 @@
   },
   "dependencies": {
     "@dig-it/env": "^0.0.1",
+    "@dig-it/models": "^0.0.1",
     "@dig-it/roots": "^0.0.5",
     "apollo-server-express": "^3.10.3",
     "argon2": "^0.30.1",

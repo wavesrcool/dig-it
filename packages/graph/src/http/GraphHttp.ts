@@ -1,4 +1,5 @@
 import { env } from "@dig-it/env";
+import connection from "@dig-it/models";
 import { ApolloServer } from "apollo-server-express";
 import { configgraph } from "../config";
 import { envgraph } from "../_env";
@@ -13,6 +14,8 @@ const {
   SERVER: { GRAPH_PATH },
 } = configgraph;
 
+const logname = `[dig-it graph]:`;
+
 /**
  * * Dig It Documentation
  *
@@ -21,10 +24,12 @@ const {
  * @notes [ ]
  *
  */
-export const GraphHttp = async (connection: any): Promise<ApolloServer> => {
-  await connection
+export const GraphHttp = async (
+  conn: typeof connection
+): Promise<ApolloServer> => {
+  await conn
     .initialize()
-    .then(() => console.log(`[graph]: Database connection established.`));
+    .then(() => console.log(`${logname} Database connection established.`));
 
   const { 0: app, 1: redis } = GraphHttpApp();
 
@@ -35,11 +40,11 @@ export const GraphHttp = async (connection: any): Promise<ApolloServer> => {
   const apollo = await GraphHttpApollo(redis);
 
   if (!apollo) {
-    throw new Error(`[graph]: Error. No graph instance.`);
+    throw new Error(`${logname} Error. No graph instance.`);
   }
 
   await apollo.start().then(() => {
-    console.log("[graph]: Apollo server running.");
+    console.log(`${logname} Apollo server running.`);
   });
 
   apollo.applyMiddleware({
@@ -51,8 +56,8 @@ export const GraphHttp = async (connection: any): Promise<ApolloServer> => {
   const PORT = process.env.PORT || GRAPH_PORT;
 
   app.listen(PORT, (): void => {
-    console.log(`[graph]: (env) ${process.env.NODE_ENV || "no env"}`);
-    console.log(`[graph]: (port) ${PORT}`);
+    console.log(`${logname} (env) ${process.env.NODE_ENV || "no env"}`);
+    console.log(`${logname} (port) ${PORT}`);
   });
 
   return apollo;
