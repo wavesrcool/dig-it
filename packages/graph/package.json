@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "@dig-it/env": "^0.0.1",
+    "@dig-it/library": "^0.0.1",
     "@dig-it/models": "^0.0.1",
     "@dig-it/roots": "^0.0.5",
     "apollo-server-express": "^3.10.3",

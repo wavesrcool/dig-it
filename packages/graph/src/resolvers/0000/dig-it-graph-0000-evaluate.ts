@@ -1,3 +1,4 @@
+import { LibraryMessagesGraph0000 } from "@dig-it/library/lib/messages/graph/0000";
 import { TypesGraphHttpApollo } from "../../http/apollo/TypesGraphHttpApollo";
 import { DigItGraphData0000 } from "./dig-it-graph-0000-data";
 import { DigItGraphFigures0000 } from "./dig-it-graph-0000-figure";
@@ -15,7 +16,7 @@ export const DigItGraphEvaluate0000 = async (
   ctx: TypesGraphHttpApollo,
   figure: DigItGraphFigures0000
 ): Promise<DigItGraphResolve0000> => {
-  let message: "complete" | "error" = `complete`; // @ todo message type in library
+  let message: LibraryMessagesGraph0000 = `complete`;
 
   try {
     //

@@ -1,7 +1,7 @@
+import { LibraryMessagesGraph0000 } from "@dig-it/library/lib/messages/graph/0000";
 import { Field, ObjectType } from "type-graphql";
 import { GraphObjectsResolve } from "../../objects/resolve/GraphObjectsResolve";
 import { DigItGraphData0000 } from "./dig-it-graph-0000-data";
-
 /**
  * * Dig It Documentation
  *
@@ -11,9 +11,7 @@ import { DigItGraphData0000 } from "./dig-it-graph-0000-data";
  *
  */
 @ObjectType()
-export class DigItGraphResolve0000 extends GraphObjectsResolve<
-  "complete" | "error" // @ todo library type
-> {
+export class DigItGraphResolve0000 extends GraphObjectsResolve<LibraryMessagesGraph0000> {
   @Field(() => DigItGraphData0000, { nullable: true })
   data?: DigItGraphData0000 | null;
 }
