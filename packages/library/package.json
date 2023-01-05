@@ -15,7 +15,7 @@
     "url": "https://github.com/wavesrcool/dig-it.git"
   },
   "type": "commonjs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -45,10 +45,10 @@
     "update": "rm -rf node_modules && yarn"
   },
   "devDependencies": {
-    "@dig-it/dev": "^0.1.4"
+    "@dig-it/dev": "^0.1.5"
   },
   "dependencies": {
-    "@dig-it/env": "^0.1.4",
+    "@dig-it/env": "^0.1.5",
     "axios": "^1.2.2"
   },
   "gitHead": "61d97b11966613f46403fc7d7a754b3df11f0610"

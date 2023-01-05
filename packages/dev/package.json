@@ -15,7 +15,7 @@
     "url": "https://github.com/wavesrcool/dig-it.git"
   },
   "type": "commonjs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "bin": {
     "dig-it-files-rename": "lib/bin/files-rename/main.js",
     "dig-it-ci-env-example": "lib/bin/ci-env-example/main.js"
@@ -53,7 +53,7 @@
     "@types/yargs": "^17.0.12"
   },
   "dependencies": {
-    "@dig-it/env": "^0.1.4",
+    "@dig-it/env": "^0.1.5",
     "glob": "^8.0.3",
     "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
