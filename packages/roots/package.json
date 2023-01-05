@@ -15,7 +15,7 @@
     "url": "https://github.com/wavesrcool/dig-it.git"
   },
   "type": "commonjs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -46,6 +46,6 @@
   },
   "gitHead": "44d6290c1d6f194764472ce070825876c3114416",
   "dependencies": {
-    "@dig-it/dev": "^0.0.1"
+    "@dig-it/dev": "^0.1.0"
   }
 }
