@@ -81,5 +81,6 @@
     "pg": "8.8.0",
     "reflect-metadata": "0.1.13",
     "type-graphql": "1.1.1"
-  }
+  },
+  "gitHead": "e23aa199872e6ec001f0608f6b725799e76e8446"
 }

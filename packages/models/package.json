@@ -59,5 +59,6 @@
     "type-graphql": "1.1.1",
     "typeorm": "0.3.10",
     "typeorm-extension": "^2.3.0"
-  }
+  },
+  "gitHead": "e23aa199872e6ec001f0608f6b725799e76e8446"
 }

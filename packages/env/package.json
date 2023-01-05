@@ -43,5 +43,6 @@
     "prepack": "yarn build",
     "test": "yarn jest",
     "update": "rm -rf node_modules && yarn"
-  }
+  },
+  "gitHead": "e23aa199872e6ec001f0608f6b725799e76e8446"
 }
