@@ -15,7 +15,7 @@
     "url": "https://github.com/wavesrcool/dig-it.git"
   },
   "type": "commonjs",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "bin": {
     "dig-it-files-rename": "lib/bin/files-rename/main.js",
     "dig-it-ci-env-example": "lib/bin/ci-env-example/main.js"
