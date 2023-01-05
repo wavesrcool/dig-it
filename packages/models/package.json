@@ -30,7 +30,7 @@
     "node"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "ci-env": "dig-it-ci-env-example models",

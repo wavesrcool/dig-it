@@ -29,7 +29,7 @@
     "node"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "ci": "yarn lint",
