@@ -31,6 +31,7 @@
     "node"
   ],
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
@@ -82,5 +83,5 @@
     "reflect-metadata": "0.1.13",
     "type-graphql": "1.1.1"
   },
-  "gitHead": "61d97b11966613f46403fc7d7a754b3df11f0610"
+  "gitHead": "48b7d4cc28f61e877e52b817375f4562debf3013"
 }

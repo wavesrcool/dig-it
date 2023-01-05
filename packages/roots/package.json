@@ -30,6 +30,7 @@
     "node"
   ],
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
@@ -44,7 +45,7 @@
     "prepack": "yarn build",
     "test": "yarn jest"
   },
-  "gitHead": "61d97b11966613f46403fc7d7a754b3df11f0610",
+  "gitHead": "48b7d4cc28f61e877e52b817375f4562debf3013",
   "dependencies": {
     "@dig-it/dev": "^0.1.5"
   }
