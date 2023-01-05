@@ -31,7 +31,7 @@
     "node"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org"
   },
   "scripts": {
     "ci-env": "dig-it-ci-env-example graph",
@@ -82,5 +82,5 @@
     "reflect-metadata": "0.1.13",
     "type-graphql": "1.1.1"
   },
-  "gitHead": "e23aa199872e6ec001f0608f6b725799e76e8446"
+  "gitHead": "e3caba927b044cb9c72238dfbb7744ac1ae8c757"
 }

@@ -15,6 +15,9 @@
     "url": "https://github.com/wavesrcool/dig-it.git"
   },
   "version": "1.1.1",
+  "publishConfig": {
+    "access": "restricted"
+  },
   "scripts": {
     "update": "rm -rf node_modules && yarn",
     "dev": "next dev",
