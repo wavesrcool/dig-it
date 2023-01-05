@@ -17,7 +17,7 @@ const argenv = getArgv().toLowerCase();
 const main = () => {
   let msg = `[ci-env-example]`;
 
-  if (!["graph", "models"].includes(argenv)) {
+  if (!["graph", "models", "tables"].includes(argenv)) {
     msg += ` - specified unknown environment`;
     throw new Error(msg);
   }
@@ -41,6 +41,13 @@ GRAPH_ENC_IV=
   if (argenv === "models") {
     ws += `
 MODELS_DB=
+`;
+  }
+
+  if (argenv === "tables") {
+    ws += `
+TABLES_PUBLIC_KEY=
+TABLES_PRIVATE_KEY=
 `;
   }
 

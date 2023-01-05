@@ -48,7 +48,11 @@ const WebsPagesIndex: NextPage = () => {
   return mounted && dgraph0000 && dgraph0000.DigItGraph0000.pass && mb ? (
     <WebsOrigin basis={{ key: RootShape.basiskey, dictionary }} />
   ) : (
-    <ComponentsLoading basis={{ key: RootShape.basiskey, dictionary }} />
+    <div
+      className={`flex flex-row w-full h-screen justify-center items-center`}
+    >
+      <ComponentsLoading basis={{ key: RootShape.basiskey, dictionary }} />
+    </div>
   );
 };
 

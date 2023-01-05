@@ -26,7 +26,7 @@
       "@dig-it/models": ["models/src"],
       "@dig-it/models/*": ["models/src/*"],
       "@dig-it/library": ["library/src"],
-      "@dig-it/library/*": ["library/src/*"]
+      "@dig-it/library/*": ["library/src/*"],
     },
   }
 }

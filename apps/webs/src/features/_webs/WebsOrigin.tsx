@@ -1,5 +1,6 @@
 import { WebsDrawer } from "@webs-features/_webs/drawer/WebsDrawer";
 import { WebsFocus } from "@webs-features/_webs/focus/WebsFocus";
+import { WebsFooter } from "@webs-features/_webs/footer/WebsFooter";
 import { WebsMap } from "@webs-features/_webs/map/WebsMap";
 import { WebsTop } from "@webs-features/_webs/top/WebsTop";
 import { useMap } from "@webs-hooks/use-map";
@@ -104,6 +105,8 @@ export const WebsOrigin: React.FC<TypesWebsOrigin> = ({
           <WebsFocus basis={{ ...basis }} />
           <WebsMap basis={{ ...basis }} />
         </div>
+
+        <WebsFooter basis={{ ...basis }} />
       </div>
     </>
   );
