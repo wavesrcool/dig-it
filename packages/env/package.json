@@ -44,5 +44,5 @@
     "test": "yarn jest",
     "update": "rm -rf node_modules && yarn"
   },
-  "gitHead": "e3caba927b044cb9c72238dfbb7744ac1ae8c757"
+  "gitHead": "3061559312a3d5a568723273edb9ce2d9f1773ac"
 }
