@@ -21,7 +21,7 @@ export const configuration: TypesConfiguration = {
   },
   PAGES: {
     INDEX: {
-      dictionary: [`common`],
+      dictionary: [`common`, `glossary`],
     },
   },
 };

@@ -1,5 +1,6 @@
 import { WebsOrigin } from "@webs-features/_webs/WebsOrigin";
 import { useLocale } from "@webs-hooks/use-locale";
+import { useMap } from "@webs-hooks/use-map";
 import { useDigItGraph0000Query } from "@webs-library/graph/hooks";
 import { useShape } from "@webs-shapes/hooks";
 import { ofRootShape } from "@webs-shapes/root/RootShape";
@@ -27,9 +28,10 @@ const {
 const WebsPagesIndex: NextPage = () => {
   const [mounted, setMounted] = React.useState<boolean>(false);
 
+  const { 0: mb } = useMap();
   const locale = useLocale();
 
-  const { data } = useDigItGraph0000Query({
+  const { data: dgraph0000 } = useDigItGraph0000Query({
     variables: { figure: { locale } },
   });
 
@@ -43,7 +45,7 @@ const WebsPagesIndex: NextPage = () => {
 
   const RootShape = useShape(ofRootShape);
 
-  return mounted && data && data.DigItGraph0000.pass ? (
+  return mounted && dgraph0000 && dgraph0000.DigItGraph0000.pass && mb ? (
     <WebsOrigin basis={{ key: RootShape.basiskey, dictionary }} />
   ) : (
     <ComponentsLoading basis={{ key: RootShape.basiskey, dictionary }} />

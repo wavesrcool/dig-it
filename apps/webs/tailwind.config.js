@@ -32,7 +32,7 @@ const twcRelBase = {
   224: "56rem",
   232: "58rem",
   240: "60rem",
-  360: "90rem"
+  360: "90rem",
 };
 
 const dt = require("tailwindcss/defaultTheme");
@@ -55,12 +55,13 @@ module.exports = {
   darkMode: "class",
   content: ["./src/**/*.{ts,tsx}", "./public/**/*"],
   theme: {
-    fontFamily: {
-      sans: [...dt.fontFamily.sans],
-      serif: [...dt.fontFamily.serif],
-      mono: [...dt.fontFamily.mono],
-    },
     extend: {
+      fontFamily: {
+        sans: [...dt.fontFamily.sans],
+        serif: [...dt.fontFamily.serif],
+        mono: [...dt.fontFamily.mono],
+        amberry: ["Ambery Garden"],
+      },
       screens: {
         "3xl": "1920px",
         "4xl": "2280px",
@@ -83,6 +84,14 @@ module.exports = {
       margin: {
         ...twcRelBase,
       },
+      flexBasis: {
+        "1/7": "14.2857143%",
+        "2/7": "28.5714286%",
+        "3/7": "42.8571429%",
+        "4/7": "57.1428571%",
+        "5/7": "71.4285714%",
+        "6/7": "85.7142857%",
+      },
       gridTemplateColumns: {
         16: "repeat(16, minmax(0, 1fr))",
         20: "repeat(20, minmax(0, 1fr))",
@@ -99,15 +108,18 @@ module.exports = {
             darker: darken(twclrs.raspberry.main, 0.1),
             75: alpha(twclrs.raspberry.main, 0.75),
           },
-        }
+        },
       },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      fontFamily: ["hover", "focus"],
+    },
   },
   corePlugins: {
     aspectRatio: false,
+    fontFamily: true,
   },
   plugins: [
     require("@tailwindcss/typography"),
@@ -120,6 +132,7 @@ module.exports = {
     themes: [
       "light",
       "dark",
+      "garden",
       // "cupcake",
       // "bumblebee",
       // "emerald",
@@ -129,7 +142,6 @@ module.exports = {
       // "cyberpunk",
       // "valentine",
       // "halloween",
-      // "garden",
       // "forest",
       // "aqua",
       // "lofi",

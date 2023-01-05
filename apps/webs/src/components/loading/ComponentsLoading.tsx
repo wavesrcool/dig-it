@@ -1,32 +1,34 @@
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
-import { useTranslation } from "next-i18next";
 import * as React from "react";
 
 export type TypesComponentsLoading = {
-  basis: TypesWebsBasis & {
-    tkey?: string;
-  };
+  basis: TypesWebsBasis & TypesFiguresComponentsLoading;
+};
+
+export type TypesFiguresComponentsLoading = {
+  cl?: string;
+  text?: string;
 };
 
 /**
  * * Dig It Documentation
  *
- * @created 01 03 2023
- * @collection webs component
+ * @created 01 04 2023
+ * @collection webs feature
  * @notes [ ]
  *
  */
 export const ComponentsLoading: React.FC<TypesComponentsLoading> = ({
   basis,
 }: TypesComponentsLoading) => {
-  const { t } = useTranslation(basis.dictionary);
-
   return (
     <div
-      className={"flex flex-col justify-center items-center text-xl font-light"}
+      className={`flex flex-col justify-center items-center text-xl font-light ${
+        basis.cl || ``
+      }`}
     >
       <svg
-        className={"animate-spin h-8 w-8 text-slate-200"}
+        className={`animate-spin h-8 w-8 text-slate-200`}
         xmlns={"http://www.w3.org/2000/svg"}
         fill={"white"}
         viewBox={"0 0 24 24"}
@@ -47,8 +49,8 @@ export const ComponentsLoading: React.FC<TypesComponentsLoading> = ({
           }
         />
       </svg>
-      {basis.tkey ? (
-        <div className={"opacity-50 mt-4"}>{t(basis.tkey, ``)}</div>
+      {basis.text ? (
+        <div className={"opacity-50 mt-4"}>{basis.text}</div>
       ) : null}
     </div>
   );

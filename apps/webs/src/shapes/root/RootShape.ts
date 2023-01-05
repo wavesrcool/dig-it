@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { WebsShape } from "@webs-shapes/store";
+import { TypesWebsShape } from "@webs-shapes/store";
 import { TypesWebsBasisKeyOps } from "@webs-types/key/TypesWebsBasisKeyOps";
 
 export type TypesShapesRootShapeThread = "root";
@@ -100,6 +100,6 @@ export const {
   writeRootShapeBasisKey,
 } = RootShapeSlice.actions;
 
-export const ofRootShape = (state: WebsShape): TypesShapesRootShapeValue =>
+export const ofRootShape = (state: TypesWebsShape): TypesShapesRootShapeValue =>
   state.RootShape.value;
 export default RootShapeSlice.reducer;

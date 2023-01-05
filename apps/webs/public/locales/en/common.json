@@ -10,5 +10,10 @@
       "5": "Friday",
       "6": "Saturday"
     }
+  },
+  "themes": {
+    "light": "Light",
+    "dark": "Dark",
+    "garden": "Garden"
   }
 }

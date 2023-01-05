@@ -32,6 +32,7 @@ const config = {
 
   env: {
     GRAPH_URI: process.env.GRAPH_URI,
+    GEOCODE_KEY: process.env.GEOCODE_KEY,
   },
   images: {
     remotePatterns: [],

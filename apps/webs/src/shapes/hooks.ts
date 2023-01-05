@@ -6,7 +6,7 @@
 import type { ChangeEvent } from "react";
 import { useEffect, useRef } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import type { AppDispatch, WebsShape } from "./store";
+import type { AppDispatch, TypesWebsShape } from "./store";
 
 export const useForm =
   <TContent>(defaultValues: TContent) =>
@@ -48,4 +48,4 @@ export const useInterval = (callback: Function, delay: number): void => {
 };
 
 export const useFold = () => useDispatch<AppDispatch>();
-export const useShape: TypedUseSelectorHook<WebsShape> = useSelector;
+export const useShape: TypedUseSelectorHook<TypesWebsShape> = useSelector;

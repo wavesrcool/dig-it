@@ -3,7 +3,9 @@ import { onError } from "@apollo/link-error";
 import { createUploadLink } from "apollo-upload-client";
 import { IncomingHttpHeaders } from "http";
 import fetch from "isomorphic-unfetch";
+import { envwebs } from "_env";
 
+const { GRAPH_URI } = envwebs;
 /**
  * * Dig It Documentation
  *
@@ -25,12 +27,6 @@ export const apolloInstance = (headers?: IncomingHttpHeaders | null) => {
     return response;
   };
 
-  const uri = process.env.GRAPH_URI;
-
-  if (!uri) {
-    throw new Error(`** GRAPH_URI **`);
-  }
-
   return new ApolloClient({
     ssrMode: typeof window === "undefined",
     link: ApolloLink.from([
@@ -47,7 +43,7 @@ export const apolloInstance = (headers?: IncomingHttpHeaders | null) => {
       }),
 
       createUploadLink({
-        uri,
+        uri: GRAPH_URI,
         fetchOptions: {
           mode: "cors",
         },

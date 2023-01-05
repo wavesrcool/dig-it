@@ -48,6 +48,7 @@
     "@dig-it/dev": "^0.0.1"
   },
   "dependencies": {
-    "@dig-it/env": "^0.0.1"
+    "@dig-it/env": "^0.0.1",
+    "axios": "^1.2.2"
   }
 }
