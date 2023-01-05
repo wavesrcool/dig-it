@@ -30,7 +30,7 @@
     "node"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "ci": "yarn lint",
@@ -44,7 +44,7 @@
     "prepack": "yarn build",
     "test": "yarn jest"
   },
-  "gitHead": "3061559312a3d5a568723273edb9ce2d9f1773ac",
+  "gitHead": "61d97b11966613f46403fc7d7a754b3df11f0610",
   "dependencies": {
     "@dig-it/dev": "^0.1.4"
   }
