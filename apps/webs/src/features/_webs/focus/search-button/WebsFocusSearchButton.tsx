@@ -1,5 +1,5 @@
+import { ComponentsButton } from "@webs-components/button/ComponentsButton";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
-import { ComponentsButton } from "components/button/ComponentsButton";
 import { useTranslation } from "next-i18next";
 import * as React from "react";
 

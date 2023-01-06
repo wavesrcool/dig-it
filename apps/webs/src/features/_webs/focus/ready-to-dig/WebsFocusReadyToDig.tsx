@@ -1,7 +1,7 @@
+import { ComponentsButton } from "@webs-components/button/ComponentsButton";
 import { useFold } from "@webs-shapes/hooks";
 import { writeWebsDigCreateShapeVisible } from "@webs-shapes/webs/dig-create/WebsDigCreateShape";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
-import { ComponentsButton } from "components/button/ComponentsButton";
 import { useTranslation } from "next-i18next";
 import * as React from "react";
 
@@ -34,15 +34,17 @@ export const WebsFocusReadyToDig: React.FC<TypesWebsFocusReadyToDig> = ({
   }, [fold]);
 
   return (
-    <div className={`flex flex-row w-full max-lg:pt-3`}>
-      <ComponentsButton
-        basis={{
-          ...basis,
-          cl: `btn-md btn-primary rounded-full w-full `,
-          text: `${t(`glossary:ready_to_dig_q`, `Ready to dig ?`)}`,
-          click: lcWebsFocusReadyToDigClick,
-        }}
-      />
-    </div>
+    <>
+      <div className={`flex flex-row w-full max-lg:pt-3`}>
+        <ComponentsButton
+          basis={{
+            ...basis,
+            cl: `btn-md btn-primary rounded-full w-full `,
+            text: `${t(`glossary:ready_to_dig_q`, `Ready to dig ?`)}`,
+            click: lcWebsFocusReadyToDigClick,
+          }}
+        />
+      </div>
+    </>
   );
 };

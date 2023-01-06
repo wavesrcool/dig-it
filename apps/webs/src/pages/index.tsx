@@ -1,10 +1,10 @@
+import { ComponentsLoading } from "@webs-components/loading/ComponentsLoading";
 import { WebsOrigin } from "@webs-features/_webs/WebsOrigin";
 import { useLocale } from "@webs-hooks/use-locale";
 import { useMap } from "@webs-hooks/use-map";
 import { useDigItGraph0000Query } from "@webs-library/graph/hooks";
 import { useShape } from "@webs-shapes/hooks";
 import { ofRootShape } from "@webs-shapes/root/RootShape";
-import { ComponentsLoading } from "components/loading/ComponentsLoading";
 import type { GetStaticProps, GetStaticPropsContext, NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";

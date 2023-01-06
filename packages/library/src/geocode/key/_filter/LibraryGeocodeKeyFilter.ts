@@ -64,7 +64,7 @@ export const LibraryGeocodeKeyFilter = (
     const { localityType: localityType0 } = geores;
     const localityType = LibraryAttestStrings(localityType0);
     if (localityType && localityType === "city") {
-      value = localityType;
+      value += localityType;
     }
   }
 

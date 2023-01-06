@@ -1,3 +1,4 @@
+import { ComponentsMapPoint } from "@webs-components/map/point/ComponentsMapPoint";
 import { useMap } from "@webs-hooks/use-map";
 import { useWindow } from "@webs-hooks/use-window";
 import { useFold, useShape } from "@webs-shapes/hooks";
@@ -8,7 +9,6 @@ import {
 } from "@webs-shapes/webs/map/WebsMapShape";
 import { ofWebsSearchShape } from "@webs-shapes/webs/search/WebsSearchShape";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
-import { ComponentsMapPoint } from "components/map/point/ComponentsMapPoint";
 import { useTranslation } from "next-i18next";
 import { Map, Overlay } from "pigeon-maps";
 import * as React from "react";

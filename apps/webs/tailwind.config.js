@@ -61,6 +61,7 @@ module.exports = {
         serif: [...dt.fontFamily.serif],
         mono: [...dt.fontFamily.mono],
         amberry: ["Ambery Garden"],
+        lupines: ["Lupines"],
       },
       screens: {
         "3xl": "1920px",

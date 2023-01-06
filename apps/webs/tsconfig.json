@@ -28,7 +28,7 @@
     "paths": {
       "@webs-classes/*": ["class/*"],
       "@webs-configuration/*": ["configuration/*"],
-      "@webs-components/*": ["configuration/*"],
+      "@webs-components/*": ["components/*"],
       "@webs-features/*": ["features/*"],
       "@webs-hooks/*": ["hooks/*"],
       "@webs-library/*": ["library/*"],

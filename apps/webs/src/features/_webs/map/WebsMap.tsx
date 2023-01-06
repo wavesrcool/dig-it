@@ -1,5 +1,5 @@
+import { ComponentsMap } from "@webs-components/map/ComponentsMap";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
-import { ComponentsMap } from "components/map/ComponentsMap";
 import * as React from "react";
 
 export type TypesWebsMap = {

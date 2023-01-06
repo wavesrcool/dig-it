@@ -25,14 +25,30 @@ export const WebsFooter: React.FC<TypesWebsFooter> = ({
         <div
           className={`flex flex-row w-full py-4 items-center justify-center`}
         >
-          <p className={"font-sans text-sm font-semibold text-slate-100"}>
-            {`Dig-It! ${t(
+          <p className={"font-lupines text-lg font-bold text-slate-700"}>
+            {[
+              `common:title`,
               `glossary:is_an_open_source_project`,
-              `is an open-source project`
-            ).toLowerCase()}. ${t(
               `glossary:please_send_any_questions_or_comments_to`,
-              `Please send any questions or comments to`
-            )} tyson@dig-it.earth! `}
+              `tyson@dig-it.earth`,
+              `!`,
+            ].map((text) => {
+              if (text.includes(`@`)) {
+                return (
+                  <span
+                    key={text}
+                    className={`px-1 hover:text-blue-400 cursor-pointer`}
+                  >
+                    <a href={`mailto:${text}`}>{text.toLowerCase()}</a>
+                  </span>
+                );
+              }
+              return (
+                <span key={text} className={`px-1 `}>
+                  {t(text).toLowerCase()}
+                </span>
+              );
+            })}
           </p>
         </div>
       </div>

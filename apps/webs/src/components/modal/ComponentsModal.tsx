@@ -1,16 +1,10 @@
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
 import { useTranslation } from "next-i18next";
-import Link from "next/link";
 import * as React from "react";
-
-export type TypesComponentsModalContentText = {
-  tkey: string;
-  link?: string;
-};
 
 export type TypesComponentsModalContent = {
   title: string;
-  text: TypesComponentsModalContentText[];
+  el: JSX.Element;
 };
 
 export type TypesComponentsModal = {
@@ -86,28 +80,7 @@ export const ComponentsModal: React.FC<TypesComponentsModal> = ({
               <div
                 className={`flex flex-row w-full h-full px-2 justify-center items-center `}
               >
-                {basis.content.text.map(({ tkey, link }) => {
-                  return (
-                    <span key={tkey}>
-                      {!link ? (
-                        <span>
-                          <p className={`text-sm text-slate-600`}>{`${t(
-                            tkey,
-                            ""
-                          )} `}</p>
-                        </span>
-                      ) : (
-                        <span>
-                          <Link key={tkey} href={link}>
-                            <p
-                              className={`text-sm text-slate-600 hover:text-blue-400 `}
-                            >{`${t(tkey, "")}`}</p>
-                          </Link>
-                        </span>
-                      )}
-                    </span>
-                  );
-                })}
+                {basis.content.el}
               </div>
             </div>
 

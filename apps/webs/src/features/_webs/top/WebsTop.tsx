@@ -33,9 +33,9 @@ export const WebsTop: React.FC<TypesWebsTop> = ({ basis }: TypesWebsTop) => {
 
   return (
     <div className={`flex flex-row w-full h-20`}>
-      <div className={`flex flex-row flex-1 items-center px-4`}>
+      <div className={`flex flex-row flex-1 items-center px-4 justify-between`}>
         <div
-          className={`group flex flex-row space-x-4 items-center cursor-pointer`}
+          className={`group flex flex-row space-x-4 items-center cursor-pointer `}
           onClick={lcWebsTopDrawerToggle}
         >
           <div
@@ -49,7 +49,13 @@ export const WebsTop: React.FC<TypesWebsTop> = ({ basis }: TypesWebsTop) => {
           </div>
 
           <p className={"font-amberry text-4xl"}>
-            {`${t(`common:title.`, `dig it!`)}`.toLowerCase()}
+            {`${t(`common:title`, `dig it!`)}`.toLowerCase()}
+          </p>
+        </div>
+
+        <div className={`flex h-full items-center`}>
+          <p className={"font-amberry text-4xl"}>
+            {`${t(`common:`, `where lawns become gardens!`)}`}
           </p>
         </div>
       </div>
