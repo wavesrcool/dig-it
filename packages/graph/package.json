@@ -15,7 +15,7 @@
     "url": "https://github.com/wavesrcool/dig-it.git"
   },
   "type": "commonjs",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -61,8 +61,8 @@
   },
   "dependencies": {
     "@dig-it/env": "^0.1.6",
-    "@dig-it/library": "^0.1.7",
-    "@dig-it/models": "^0.1.7",
+    "@dig-it/library": "^0.1.8",
+    "@dig-it/models": "^0.1.8",
     "@dig-it/roots": "^0.1.7",
     "apollo-server-express": "^3.10.3",
     "argon2": "^0.30.1",
