@@ -43,7 +43,7 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
   const WebsMapShape = useShape(ofWebsMapShape);
   const RootShape = useShape(ofRootShape);
 
-  console.log(JSON.stringify(WebsMapShape, null, 4), `WebsMapShape`);
+  // console.log(JSON.stringify(WebsMapShape, null, 4), `WebsMapShape`);
 
   const lcComponentsMapTouch = React.useCallback(
     (center: [number, number]) => {

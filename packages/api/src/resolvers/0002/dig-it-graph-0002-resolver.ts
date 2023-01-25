@@ -24,14 +24,7 @@ export class DigItGraph0002 {
       const response = await DigItGraphEvaluate0002(ctx, figure);
       return response;
     } catch (DigItGraph0002Error) {
-      const message = "error";
-      const timestamp = Date.now();
-      return {
-        pass: false,
-        message,
-        timestamp,
-        hash: `${message}`, // @todo hash
-      };
+      return ctx.classes.handler.error(`error`);
     }
   }
 }

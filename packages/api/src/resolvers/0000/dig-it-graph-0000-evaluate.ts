@@ -1,13 +1,10 @@
 import { LibraryHashStrings } from "@dig-it/library/lib/hash/strings/LibraryHashStrings";
 import { LibraryMessagesGraph0000 } from "@dig-it/library/lib/messages/graph/0000";
 import { Dig } from "@dig-it/models/lib/dig/Dig";
-import { classesapi } from "../../classes";
 import { TypesApiHttpApollo } from "../../http/apollo/types";
 import { DigItGraphData0000 } from "./dig-it-graph-0000-data";
 import { DigItGraphFigures0000 } from "./dig-it-graph-0000-figure";
 import { DigItGraphResolve0000 } from "./dig-it-graph-0000-resolve";
-
-const { handler } = classesapi;
 
 /**
  * * Dig It Documentation
@@ -21,6 +18,9 @@ export const DigItGraphEvaluate0000 = async (
   ctx: TypesApiHttpApollo,
   figure: DigItGraphFigures0000
 ): Promise<DigItGraphResolve0000> => {
+  const {
+    classes: { handler },
+  } = ctx;
   let message: LibraryMessagesGraph0000 = `error`;
   let list: Dig[] = [];
   try {

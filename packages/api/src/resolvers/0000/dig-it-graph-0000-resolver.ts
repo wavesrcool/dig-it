@@ -1,11 +1,8 @@
 import { Arg, Ctx, Query, Resolver } from "type-graphql";
-import { classesapi } from "../../classes";
 import { TypesApiHttpApollo } from "../../http/apollo/types";
 import { DigItGraphEvaluate0000 } from "./dig-it-graph-0000-evaluate";
 import { DigItGraphFigures0000 } from "./dig-it-graph-0000-figure";
 import { DigItGraphResolve0000 } from "./dig-it-graph-0000-resolve";
-
-const { handler } = classesapi;
 
 /**
  * * Dig It Documentation
@@ -27,7 +24,7 @@ export class DigItGraph0000 {
       const response = await DigItGraphEvaluate0000(ctx, figure);
       return response;
     } catch (DigItGraph0000Error) {
-      return handler.error(`error`);
+      return ctx.classes.handler.error(`error`);
     }
   }
 }

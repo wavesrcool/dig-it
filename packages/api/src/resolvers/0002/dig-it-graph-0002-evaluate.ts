@@ -2,13 +2,10 @@ import { LibraryHashStrings } from "@dig-it/library/lib/hash/strings/LibraryHash
 import { LibraryMessagesGraph0002 } from "@dig-it/library/lib/messages/graph/0002";
 import { Dig } from "@dig-it/models/lib/dig/Dig";
 import { Email } from "@dig-it/models/lib/email/Email";
-import { classesapi } from "../../classes";
 import { TypesApiHttpApollo } from "../../http/apollo/types";
 import { DigItGraphData0002 } from "./dig-it-graph-0002-data";
 import { DigItGraphFigures0002 } from "./dig-it-graph-0002-figure";
 import { DigItGraphResolve0002 } from "./dig-it-graph-0002-resolve";
-
-const { handler } = classesapi;
 
 /**
  * * Dig It Documentation
@@ -22,6 +19,9 @@ export const DigItGraphEvaluate0002 = async (
   ctx: TypesApiHttpApollo,
   figure: DigItGraphFigures0002
 ): Promise<DigItGraphResolve0002> => {
+  const {
+    classes: { handler },
+  } = ctx;
   let message: LibraryMessagesGraph0002 = `error`;
 
   try {
@@ -70,12 +70,23 @@ export const DigItGraphEvaluate0002 = async (
       .where("dig.key = :key", { key: dig.key })
       .execute();
 
+    let token = ``;
+    const tokensign = await ctx.classes.jwt.sign(dig.key);
+
+    if (typeof tokensign === "string") {
+      throw new Error("token");
+    }
+
+    const { jwt } = tokensign;
+    token = jwt;
+
     //
     //
     // data 0002
     //
     const data: DigItGraphData0002 = {
       notes: [`0002`],
+      token,
     };
 
     const timestamp = Date.now();

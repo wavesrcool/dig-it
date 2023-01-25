@@ -2,7 +2,7 @@ import { ClassesApiEmail } from "./email";
 import { ClassesApiJwt } from "./jwt";
 import { ClassesApiGraphHandler } from "./_handler";
 
-class ClassesApi {
+export class ClassesApi {
   private graphhandler: ClassesApiGraphHandler;
 
   private graphemails: ClassesApiEmail;
@@ -27,5 +27,3 @@ class ClassesApi {
     return this.graphjwt;
   }
 }
-
-export const classesapi = new ClassesApi();

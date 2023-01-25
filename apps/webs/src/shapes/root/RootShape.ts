@@ -14,6 +14,8 @@ export type TypesShapesRootShapeValue = {
 
   basiskey: TypesWebsBasisKeyOps;
 
+  token: string | undefined;
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   digs: any[] | undefined;
 };
@@ -31,6 +33,7 @@ const initialState: TypesShapesRootShape = {
     // shape initial RootShape
     //
     basiskey: "root",
+    token: undefined,
     digs: undefined,
   },
 };
@@ -90,6 +93,20 @@ export const RootShapeSlice = createSlice({
       };
     },
 
+    writeRootShapeToken: (state, action: PayloadAction<string>) => {
+      state.value = {
+        ...state.value,
+        token: action.payload,
+      };
+    },
+
+    writeRootShapeTokenUndef: (state) => {
+      state.value = {
+        ...state.value,
+        token: undefined,
+      };
+    },
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     writeRootShapeDigs: (state, { payload }: PayloadAction<any[]>) => {
       state.value = {
@@ -110,6 +127,8 @@ export const {
   // shape library RootShape
   //
   writeRootShapeBasisKey,
+  writeRootShapeToken,
+  writeRootShapeTokenUndef,
   writeRootShapeDigs,
 } = RootShapeSlice.actions;
 

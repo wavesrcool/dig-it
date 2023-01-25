@@ -7,13 +7,10 @@ import { Email } from "@dig-it/models/lib/email/Email";
 import { Geo } from "@dig-it/models/lib/geo/Geo";
 import { Place } from "@dig-it/models/lib/place/Place";
 import { gen } from "n-digit-token";
-import { classesapi } from "../../classes";
 import { TypesApiHttpApollo } from "../../http/apollo/types";
 import { DigItGraphData0001 } from "./dig-it-graph-0001-data";
 import { DigItGraphFigures0001 } from "./dig-it-graph-0001-figure";
 import { DigItGraphResolve0001 } from "./dig-it-graph-0001-resolve";
-
-const { handler, emails } = classesapi;
 
 /**
  * * Dig It Documentation
@@ -27,6 +24,9 @@ export const DigItGraphEvaluate0001 = async (
   ctx: TypesApiHttpApollo,
   figure: DigItGraphFigures0001
 ): Promise<DigItGraphResolve0001> => {
+  const {
+    classes: { handler },
+  } = ctx;
   let message: LibraryMessagesGraph0001 = `error`;
 
   let PK_DIG: number | undefined;
@@ -218,7 +218,7 @@ export const DigItGraphEvaluate0001 = async (
       .of(PK_PLACE)
       .set(PK_GEO);
 
-    const sendemail = await emails.send(email, PASSCODE);
+    const sendemail = await ctx.classes.emails.send(email, PASSCODE);
 
     if (typeof sendemail === "string") {
       throw new Error("send email!");

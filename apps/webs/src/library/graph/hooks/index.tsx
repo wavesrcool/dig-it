@@ -56,6 +56,7 @@ export type DigItGraphData0001 = {
 export type DigItGraphData0002 = {
   __typename?: "DigItGraphData0002";
   notes?: Maybe<Array<Scalars["String"]>>;
+  token?: Maybe<Scalars["String"]>;
 };
 
 export type DigItGraphFigures0000 = {
@@ -366,6 +367,7 @@ export type DigItGraph0002Mutation = {
     data?: {
       __typename?: "DigItGraphData0002";
       notes?: Array<string> | null;
+      token?: string | null;
     } | null;
   };
 };
@@ -558,6 +560,7 @@ export const DigItGraph0002Document = gql`
       hash
       data {
         notes
+        token
       }
     }
   }

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { useFold } from "@webs-shapes/hooks";
+import { useFold, useShape } from "@webs-shapes/hooks";
+import { ofRootShape } from "@webs-shapes/root/RootShape";
 import { writeWebsDrawerShapeVisibleToggle } from "@webs-shapes/webs/drawer/WebsDrawerShape";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
 import { useTranslation } from "next-i18next";
@@ -21,6 +22,8 @@ export const WebsTop: React.FC<TypesWebsTop> = ({ basis }: TypesWebsTop) => {
   const { t } = useTranslation(basis.dictionary);
 
   const fold = useFold();
+  const RootShape = useShape(ofRootShape);
+  console.log(JSON.stringify(RootShape, null, 4), `RootShape`);
 
   const lcWebsTopDrawerToggle = React.useCallback(() => {
     //
@@ -55,12 +58,31 @@ export const WebsTop: React.FC<TypesWebsTop> = ({ basis }: TypesWebsTop) => {
       <div
         className={`max-md:hidden flex flex-row max-lg:w-full max-lg:justify-center items-center space-x-4`}
       >
-        <p className={"font-amberry font-medium text-2xl text-neutral"}>
+        <p
+          className={
+            "font-dongle font-medium text-2xl text-neutral cursor-pointer hover:text-primary"
+          }
+        >
           {`${t(`glossary.`, `How it works`)}`}
         </p>
-        <p className={"font-amberry font-medium text-2xl  text-neutral"}>
-          {`${t(`glossary.`, `Dashboard`)}`}
-        </p>
+
+        {RootShape.token ? (
+          <p
+            className={
+              "font-dongle font-medium text-2xl  text-neutral cursor-pointer hover:text-primary"
+            }
+          >
+            {`${t(`glossary.`, `Your account`)}`}
+          </p>
+        ) : (
+          <p
+            className={
+              "font-dongle font-medium text-2xl  text-neutral cursor-pointer hover:text-primary"
+            }
+          >
+            {`${t(`glossary.`, `Create an account`)}`}
+          </p>
+        )}
       </div>
     </div>
   );

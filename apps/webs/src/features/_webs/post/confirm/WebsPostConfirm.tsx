@@ -4,10 +4,13 @@ import { WebsPostConfirmPasscode } from "@webs-features/_webs/post/confirm/passc
 import { useLocale } from "@webs-hooks/use-locale";
 import { useDigItGraph0002Mutation } from "@webs-library/graph/hooks";
 import { useFold, useShape } from "@webs-shapes/hooks";
+import { writeRootShapeToken } from "@webs-shapes/root/RootShape";
 import {
+  initWebsDigCreateShape,
   ofWebsDigCreateShape,
   writeWebsDigCreateShapeEntracteFalse,
   writeWebsDigCreateShapeInverseTrue,
+  writeWebsDigCreateShapeView,
 } from "@webs-shapes/webs/dig-create/WebsDigCreateShape";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
 import { useTranslation } from "next-i18next";
@@ -78,10 +81,10 @@ export const WebsPostConfirm: React.FC<TypesWebsPostConfirm> = ({
           },
         });
 
-        console.log(JSON.stringify(g0002d, null, 4), `g0002d`);
-
-        if (g0002d?.DigItGraph0002.pass) {
-          console.log(`PASS`);
+        if (g0002d?.DigItGraph0002.pass && g0002d.DigItGraph0002.data?.token) {
+          fold(writeRootShapeToken(g0002d.DigItGraph0002.data?.token));
+          fold(writeWebsDigCreateShapeView("complete"));
+          fold(initWebsDigCreateShape());
         }
 
         //

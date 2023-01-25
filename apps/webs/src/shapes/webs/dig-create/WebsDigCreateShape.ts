@@ -7,7 +7,10 @@ import { LibraryReferenceShapesBundlesCyclicBasis } from "@wavesrcool/library/li
 import { LibraryTypesShapesBundlesCyclic } from "@wavesrcool/library/lib/types/shapes/bundles/cyclic/LibraryTypesShapesBundlesCyclic";
 import { TypesWebsShape } from "@webs-shapes/store";
 
-export type TypesShapesWebsDigCreateShapeView = "create" | "confirm";
+export type TypesShapesWebsDigCreateShapeView =
+  | "create"
+  | "confirm"
+  | "complete";
 
 export type TypesShapesWebsDigCreateShapeAmountType = "fiat" | "btc";
 
