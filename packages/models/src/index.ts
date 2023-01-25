@@ -1,4 +1,4 @@
-import { ModelsConnection } from "./_connection";
+import { ModelsConnection } from "./_database/connection";
 
 /**
  * * Dig It Documentation

@@ -1,0 +1,89 @@
+{
+  "author": "Tyson Lupul <tyson@dig-it.earth>",
+  "bugs": "https://github.com/wavesrcool/dig-it/issues",
+  "homepage": "https://github.com/wavesrcool/dig-it/tree/main/packages/api#readme",
+  "contributors": [],
+  "description": "",
+  "engines": {
+    "node": ">=14.0.0 <17.0.0"
+  },
+  "license": "MIT",
+  "name": "@dig-it/api",
+  "repository": {
+    "directory": "packages/api",
+    "type": "git",
+    "url": "https://github.com/wavesrcool/dig-it.git"
+  },
+  "type": "commonjs",
+  "version": "0.1.8",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "./lib",
+    ".env.api"
+  ],
+  "keywords": [
+    "dig",
+    "it",
+    "api",
+    "http",
+    "es6",
+    "node"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "ci-env": "dig-it-ci-env-example api",
+    "ci": "yarn ci-env && yarn lint",
+    "rne": "dig-it-files-rename __edit__",
+    "rns": "dig-it-files-rename src",
+    "w": "tsc -w",
+    "0l": "rm -rf lib",
+    "0t": "rm -f tsconfig*tsbuildinfo",
+    "c": "yarn 0l && yarn 0t && tsc --project tsconfig.build.json",
+    "lint": "eslint './src/**/*.{ts,tsx}' --max-warnings=1 --fix",
+    "build": "yarn ci && yarn c",
+    "build-dev": "yarn lint && yarn c",
+    "prepack": "yarn build",
+    "test": "yarn jest",
+    "update": "rm -rf node_modules && yarn",
+    "dev": "node lib/run.js"
+  },
+  "devDependencies": {
+    "@dig-it/dev": "^0.1.7",
+    "@types/connect-redis": "^0.0.19",
+    "@types/crypto-js": "^4.1.1",
+    "@types/dotenv-safe": "^8.1.2",
+    "@types/express-session": "^1.17.5",
+    "@types/luxon": "^3.0.1"
+  },
+  "dependencies": {
+    "@dig-it/env": "^0.1.6",
+    "@dig-it/library": "^0.1.8",
+    "@dig-it/models": "^0.1.8",
+    "@dig-it/roots": "^0.1.7",
+    "apollo-server-express": "^3.10.3",
+    "argon2": "^0.30.1",
+    "class-validator": "0.13.2",
+    "connect-redis": "^6.1.3",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "form-data": "^4.0.0",
+    "graphql": "15.5.0",
+    "graphql-request": "^5.1.0",
+    "helmet": "^6.0.0",
+    "ioredis": "^5.2.4",
+    "jsonwebtoken": "^8.5.1",
+    "mailgun.js": "^8.0.6",
+    "n-digit-token": "^2.1.1",
+    "pg": "8.8.0",
+    "reflect-metadata": "0.1.13",
+    "type-graphql": "1.1.1"
+  },
+  "gitHead": "48b7d4cc28f61e877e52b817375f4562debf3013"
+}

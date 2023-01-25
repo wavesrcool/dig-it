@@ -20,7 +20,7 @@ export type TypesWebsDrawer = {
 export const WebsDrawer: React.FC<TypesWebsDrawer> = ({
   basis,
 }: TypesWebsDrawer) => {
-  useTranslation(basis.dictionary);
+  const { t } = useTranslation(basis.dictionary);
 
   const fold = useFold();
 
@@ -41,14 +41,32 @@ export const WebsDrawer: React.FC<TypesWebsDrawer> = ({
         <ComponentsButton
           basis={{
             ...basis,
-            cl: `btn-ghost text-slate-700 text-2xl lg:text-5xl hover:bg-transparent group-hover:text-slate-600 `,
+            cl: `btn-ghost text-slate-700 text-7xl lg:text-5xl hover:bg-transparent group-hover:text-slate-600 `,
             text: `⤺`,
             click: lcWebsDrawerVisibleToggle,
           }}
         />
       </div>
 
-      <div className={`flex `}>{"dig it!"}</div>
+      <div className={`flex flex-col w-full space-y-4`}>
+        <div className={`flex flex-row w-full px-4 pt-8`}>
+          <p className={"font-montserrat font-regular text-3xl"}>
+            {`${t(`glossary:`, `Hello!`)}`}
+          </p>
+        </div>
+
+        <div className={`flex flex-col w-full px-2 pt-4 space-y-4`}>
+          <p className={"font-montserrat font-regular text-xl"}>
+            {`${t(`glossary:`, `Welcome to dig-it.earth! `)}`}
+          </p>
+          <p className={"font-montserrat font-regular text-lg text-justify"}>
+            {`${t(
+              `glossary:`,
+              `This website was created for city folks who have lawns of grass they would like to see become gardens. The site is simple and privacy focused by design. We do not collect information on users of the site or use third party services for the map. `
+            )}`}
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

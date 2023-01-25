@@ -99,7 +99,7 @@ export const WebsFocusSearchResults: React.FC<TypesWebsFocusSearchResults> = ({
           <div
             key={key}
             onClick={() => lcaWebsFocusSearchResults(key)}
-            className={`flex flex-row w-full justify-between pl-6 pr-4 py-2 opacity-90 hover:bg-secondary text-slate-700 hover:text-accent-focus rounded-xl cursor-pointer`}
+            className={`flex flex-row w-full justify-between pl-6 pr-4 py-2 opacity-90 hover:bg-secondary-focus/30 text-slate-700 hover:text-primary-focus rounded-xl cursor-pointer`}
           >
             <p className={`font-sans font-medium text-base `}>{value}</p>
           </div>

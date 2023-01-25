@@ -1,0 +1,11 @@
+mutation DigItGraph0001($figure: DigItGraphFigures0001!) {
+  DigItGraph0001(figure: $figure) {
+    pass
+    message
+    timestamp
+    hash
+    data {
+      notes
+    }
+  }
+}

@@ -29,11 +29,11 @@ export const WebsFocusSearchButton: React.FC<TypesWebsFocusSearchButton> = ({
   }, []);
 
   return (
-    <div className={`flex flex-row basis-1/7 max-lg:pt-3`}>
+    <div className={`flex flex-row basis-2/7 max-lg:pt-3`}>
       <ComponentsButton
         basis={{
           ...basis,
-          cl: `rounded-full w-full`,
+          cl: ` rounded-full w-full`,
           text: `${t(`glossary:search`, `search`)}`,
           click: lcWebsFocusSearchButtonClick,
         }}

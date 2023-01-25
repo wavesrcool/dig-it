@@ -1,0 +1,17 @@
+fragment DigItFragment0000Dig on Dig {
+  key
+  created
+  updated
+  picture
+  pictureDate
+  description
+  neighborhood
+  value
+  money
+  email {
+    ...DigItFragment0000Email
+  }
+  place {
+    ...DigItFragment0000Place
+  }
+}

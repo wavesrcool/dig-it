@@ -5,11 +5,13 @@ import {
   CreateDateColumn,
   Entity,
   Generated,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { Dig } from "../dig/Dig";
+import { Geo } from "../geo/Geo";
 import { ModelsRecords } from "../_records/ModelsRecords";
 
 /**
@@ -45,13 +47,21 @@ export class Place extends BaseEntity {
   // model fields
   //
 
-  @Field(() => String, { nullable: true })
-  @Column({ type: `varchar`, nullable: true, default: null })
-  title!: string | null;
+  @Field(() => String)
+  @Column({ type: `varchar` })
+  line!: string;
 
   @Field(() => String)
-  @Column({ type: `char`, length: 9 })
-  geohash!: string;
+  @Column({ type: `varchar` })
+  city!: string;
+
+  @Field(() => String)
+  @Column({ type: `varchar` })
+  region!: string;
+
+  @Field(() => String)
+  @Column({ type: `varchar` })
+  country!: string;
 
   //
   //
@@ -74,4 +84,14 @@ export class Place extends BaseEntity {
   @Field(() => Dig)
   @OneToOne(() => Dig, (dig) => dig.place)
   dig!: Dig;
+
+  @Field(() => Int, { nullable: true })
+  @Column({ type: "int8", nullable: true })
+  geoId!: number | null;
+
+  @Field(() => Geo)
+  @ManyToOne(() => Geo, (geo) => geo.places, {
+    onDelete: "CASCADE",
+  })
+  geo!: Geo;
 }

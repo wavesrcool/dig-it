@@ -32,33 +32,72 @@ export const WebsTop: React.FC<TypesWebsTop> = ({ basis }: TypesWebsTop) => {
   }, [fold]);
 
   return (
-    <div className={`flex flex-row w-full h-20`}>
-      <div className={`flex flex-row flex-1 items-center px-4 justify-between`}>
+    <div
+      className={`flex max-lg:flex-col max-lg:space-y-2 max-lg:mb-4 flex-row w-full h-20 max-md:px-0 px-[20%] max-lg:justify-start justify-between`}
+    >
+      <div className={`flex flex-row max-lg:w-full max-lg:justify-center p-1`}>
         <div
-          className={`group flex flex-row space-x-4 items-center cursor-pointer `}
+          className={`flex flex-row  space-x-4 cursor-pointer  `}
           onClick={lcWebsTopDrawerToggle}
         >
           <div
-            className={`flex h-16 w-16 group-hover:scale-110 group-hover:opacity-80 `}
+            className={`flex h-16 w-auto group-hover:scale-110 group-hover:opacity-90 opacity-75`}
           >
-            <img
-              className={"mask mask-squircle"}
-              src={`images/logo-96.png`}
-              alt={`dig-it-logo`}
-            />
+            <img src={`/display/svg/shovel.svg`} alt={`dig-it-logo`} />
           </div>
-
-          <p className={"font-amberry text-4xl"}>
-            {`${t(`common:title`, `dig it!`)}`.toLowerCase()}
-          </p>
+          <div className={`flex flex-row items-center`}>
+            <p className={"font-amberry text-4xl text-neutral"}>
+              {`${t(`common:title`, `dig it!`)}`.toLowerCase()}
+            </p>
+          </div>
         </div>
-
-        <div className={`flex h-full items-center`}>
-          <p className={"font-amberry text-4xl"}>
-            {`${t(`common:`, `where lawns become gardens!`)}`}
-          </p>
-        </div>
+      </div>
+      <div
+        className={`max-md:hidden flex flex-row max-lg:w-full max-lg:justify-center items-center space-x-4`}
+      >
+        <p className={"font-amberry font-medium text-2xl text-neutral"}>
+          {`${t(`glossary.`, `How it works`)}`}
+        </p>
+        <p className={"font-amberry font-medium text-2xl  text-neutral"}>
+          {`${t(`glossary.`, `Dashboard`)}`}
+        </p>
       </div>
     </div>
   );
 };
+
+/*
+   
+    <ComponentsButton
+          basis={{
+            ...basis,
+            cl: `btn-outline rounded-full`,
+            text: `How it works`,
+            click: () => null,
+          }}
+        />
+   <div
+      className={`flex flex-row w-full max-md:h-auto h-20 items-center px-4 justify-between`}
+    >
+      <div
+        className={`flex flex-row flex-1 max-md:flex-col max-md:space-y-4 cursor-pointer  `}
+      >
+        <div
+          className={`group flex flex-row h-full items-center `}
+          onClick={lcWebsTopDrawerToggle}
+        >
+         
+        </div>
+
+        <div className={`flex flex-row items-center pl-8`}>
+       
+        </div>
+      </div>
+
+      <div className={`flex flex-row h-full flex-1 justify-end items-center`}>
+   
+      </div>
+    </div>
+
+
+*/

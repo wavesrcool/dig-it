@@ -1,0 +1,9 @@
+fragment DigItFragment0000Geo on Geo {
+  key
+  created
+  updated
+  gh2
+  gh9
+  lat
+  lng
+}

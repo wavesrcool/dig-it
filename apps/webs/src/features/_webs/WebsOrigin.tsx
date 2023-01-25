@@ -1,13 +1,12 @@
+import { WebsBulletin } from "@webs-features/_webs/bulletin/WebsBulletin";
 import { WebsDrawer } from "@webs-features/_webs/drawer/WebsDrawer";
 import { WebsFocus } from "@webs-features/_webs/focus/WebsFocus";
 import { WebsFooter } from "@webs-features/_webs/footer/WebsFooter";
 import { WebsMap } from "@webs-features/_webs/map/WebsMap";
-import { WebsModal } from "@webs-features/_webs/modal/WebsModal";
+import { WebsPost } from "@webs-features/_webs/post/WebsPost";
 import { WebsTop } from "@webs-features/_webs/top/WebsTop";
-import { useMap } from "@webs-hooks/use-map";
-import { useFold, useShape } from "@webs-shapes/hooks";
+import { useShape } from "@webs-shapes/hooks";
 import { ofWebsDrawerShape } from "@webs-shapes/webs/drawer/WebsDrawerShape";
-import { writeWebsMapShapeCenter } from "@webs-shapes/webs/map/WebsMapShape";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
 import { useTranslation } from "next-i18next";
 import Head from "next/head";
@@ -39,43 +38,35 @@ export const WebsOrigin: React.FC<TypesWebsOrigin> = ({
   const { t } = useTranslation(basis.dictionary);
 
   const WebsDrawerShape = useShape(ofWebsDrawerShape);
-  const localtitle = `Home`; // @ todo derive from paths
-
-  const fold = useFold();
-  const { 0: mb } = useMap();
-
-  React.useEffect(() => {
-    //
-    // @notes:
-    if (mb) {
-      fold(writeWebsMapShapeCenter(mb.center));
-    }
-
-    // end
-    return;
-  }, [fold, mb]);
 
   return (
     <>
       <Head>
-        <title>{`${t(`common:title`, `Dig It!`)} ${
-          localtitle ? `| ${localtitle}` : ``
-        }`}</title>
+        <title>{`${t(`common:title`, `Dig It!`)} | ${`${t(
+          `glossary:find_farmers_to_dig_up_your_lawn`,
+          `Find farmers to dig up your lawn`
+        )}`}!`}</title>
       </Head>
 
       <div
-        className={`flex flex-col w-full bg-base-100 h-auto pt-4 pb-8 lg:py-2 space-y-8 px-[8%]`}
+        className={`flex flex-col w-full bg-base-100 h-auto pt-4 pb-8 lg:py-2 max-lg:space-y-2 space-y-8 `}
       >
         <WebsTop basis={{ ...basis }} />
 
-        <div className={`flex flex-col w-full space-y-4`}>
+        <div className={`flex flex-col w-full space-y-4 max-md:px-4 px-[20%]`}>
           <WebsFocus basis={{ ...basis }} />
+        </div>
+
+        <div className={`flex flex-col w-full max-md:px-4 md:px-[20%]`}>
           <WebsMap basis={{ ...basis }} />
         </div>
 
-        <WebsFooter basis={{ ...basis }} />
+        <div className={`flex flex-col w-full max-md:px-4 px-[20%]`}>
+          <WebsBulletin basis={{ ...basis }} />
+          <WebsFooter basis={{ ...basis }} />
+        </div>
       </div>
-      <WebsModal basis={{ ...basis }} />
+      <WebsPost basis={{ ...basis }} />
       {WebsDrawerShape.visible ? <WebsDrawer basis={{ ...basis }} /> : null}
     </>
   );

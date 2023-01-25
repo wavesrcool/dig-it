@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TypesWebsShape } from "@webs-shapes/store";
 
+export type TypesShapesWebsMapShapeZoomStep = "inc" | "dec";
+
 export type TypesShapesWebsMapShapeThread = "root";
 
 export type TypesShapesWebsMapShapeValue = {
@@ -12,7 +14,13 @@ export type TypesShapesWebsMapShapeValue = {
   //
 
   zoom: number;
+
+  home: [number, number];
+  showHome: boolean;
+  atHome: boolean;
+
   center: [number, number];
+  showCenter: boolean;
 };
 
 export type TypesShapesWebsMapShape = {
@@ -28,8 +36,13 @@ const initialState: TypesShapesWebsMapShape = {
     // shape initial WebsMapShape
     //
 
-    zoom: 18,
+    zoom: 12,
+    home: [0, 0],
+    showHome: true,
+    atHome: true,
+
     center: [0, 0],
+    showCenter: false,
   },
 };
 
@@ -79,9 +92,47 @@ export const WebsMapShapeSlice = createSlice({
     //
 
     writeWebsMapShapeZoom: (state, action: PayloadAction<number>) => {
+      const zoom = Math.floor(action.payload);
+
       state.value = {
         ...state.value,
-        zoom: action.payload,
+        zoom,
+      };
+    },
+
+    writeWebsMapShapeZoomStep: (
+      state,
+      action: PayloadAction<TypesShapesWebsMapShapeZoomStep>
+    ) => {
+      let delta = 1;
+      if (action.payload === "dec") {
+        delta = -1;
+      }
+      const zoom = Math.floor(state.value.zoom + delta);
+      state.value = {
+        ...state.value,
+        zoom,
+      };
+    },
+
+    writeWebsMapShapeHome: (state, action: PayloadAction<[number, number]>) => {
+      state.value = {
+        ...state.value,
+        home: action.payload,
+      };
+    },
+
+    writeWebsMapShapeShowHome: (state, action: PayloadAction<boolean>) => {
+      state.value = {
+        ...state.value,
+        showHome: action.payload,
+      };
+    },
+
+    writeWebsMapShapeAtHome: (state, action: PayloadAction<boolean>) => {
+      state.value = {
+        ...state.value,
+        atHome: action.payload,
       };
     },
 
@@ -92,6 +143,13 @@ export const WebsMapShapeSlice = createSlice({
       state.value = {
         ...state.value,
         center: action.payload,
+      };
+    },
+
+    writeWebsMapShapeShowCenter: (state, action: PayloadAction<boolean>) => {
+      state.value = {
+        ...state.value,
+        showCenter: action.payload,
       };
     },
   },
@@ -107,8 +165,14 @@ export const {
   // shape library WebsMapShape
   //
 
+  writeWebsMapShapeHome,
+  writeWebsMapShapeAtHome,
+  writeWebsMapShapeShowHome,
+
   writeWebsMapShapeCenter,
+  writeWebsMapShapeShowCenter,
   writeWebsMapShapeZoom,
+  writeWebsMapShapeZoomStep,
 } = WebsMapShapeSlice.actions;
 
 export const ofWebsMapShape = (

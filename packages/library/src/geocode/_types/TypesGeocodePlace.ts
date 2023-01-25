@@ -8,9 +8,9 @@
  */
 export type TypesGeocodePlace = {
   key: string;
-  value: string;
-  town: string;
-  lands: string;
-  boundary: string;
+  line: string;
+  city: string;
+  region: string;
+  country: string;
   center: [number, number];
 };

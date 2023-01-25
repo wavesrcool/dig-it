@@ -45,7 +45,11 @@
     "build-dev": "yarn lint && yarn c",
     "prepack": "yarn build",
     "test": "yarn jest",
-    "update": "rm -rf node_modules && yarn"
+    "update": "rm -rf node_modules && yarn",
+    "db:connection": "yarn typeorm-ts-node-commonjs -d ./src/_database/connection/index.ts",
+    "db:drop": "yarn db:connection schema:drop",
+    "db:migration:gen": "yarn db:connection migration:generate ./src/_database/migrations/Models --timestamp",
+    "db:migration:run": "yarn db:connection migration:run"
   },
   "devDependencies": {
     "@dig-it/dev": "^0.1.7",

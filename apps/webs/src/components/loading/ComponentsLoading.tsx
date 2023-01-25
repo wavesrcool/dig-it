@@ -28,7 +28,7 @@ export const ComponentsLoading: React.FC<TypesComponentsLoading> = ({
       }`}
     >
       <svg
-        className={`animate-spin h-8 w-8 text-slate-200`}
+        className={`animate-spin h-8 w-8 text-red-200`}
         xmlns={"http://www.w3.org/2000/svg"}
         fill={"white"}
         viewBox={"0 0 24 24"}

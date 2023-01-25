@@ -10,6 +10,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { Email } from "../email/Email";
 import { Place } from "../place/Place";
 import { ModelsRecords } from "../_records/ModelsRecords";
 
@@ -46,6 +47,10 @@ export class Dig extends BaseEntity {
   // model fields
   //
 
+  @Field(() => Boolean)
+  @Column({ type: `boolean`, default: false })
+  active!: boolean;
+
   @Field(() => String, { nullable: true })
   @Column({ type: "varchar", nullable: true })
   pictureDate!: string | null;
@@ -56,7 +61,19 @@ export class Dig extends BaseEntity {
 
   @Field(() => String)
   @Column({ type: `varchar` })
-  wave!: string;
+  description!: string;
+
+  @Field(() => String)
+  @Column({ type: `varchar` })
+  neighborhood!: string;
+
+  @Field(() => String)
+  @Column({ type: `varchar` })
+  value!: string;
+
+  @Field(() => String)
+  @Column({ type: `varchar` })
+  money!: string;
 
   //
   //
@@ -80,4 +97,13 @@ export class Dig extends BaseEntity {
   @OneToOne(() => Place, (place) => place.dig)
   @JoinColumn()
   place!: Place;
+
+  @Field(() => Int, { nullable: true })
+  @Column({ type: "int8", nullable: true })
+  emailId!: number | null;
+
+  @Field(() => Email)
+  @OneToOne(() => Email, (email) => email.dig)
+  @JoinColumn()
+  email!: Email;
 }

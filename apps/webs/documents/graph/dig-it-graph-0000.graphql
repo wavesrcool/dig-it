@@ -1,0 +1,14 @@
+query DigItGraph0000($figure: DigItGraphFigures0000!) {
+  DigItGraph0000(figure: $figure) {
+    pass
+    message
+    timestamp
+    hash
+    data {
+      notes
+      results {
+        ...DigItFragment0000Dig
+      }
+    }
+  }
+}

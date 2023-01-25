@@ -3,8 +3,14 @@ import { WebsOrigin } from "@webs-features/_webs/WebsOrigin";
 import { useLocale } from "@webs-hooks/use-locale";
 import { useMap } from "@webs-hooks/use-map";
 import { useDigItGraph0000Query } from "@webs-library/graph/hooks";
-import { useShape } from "@webs-shapes/hooks";
-import { ofRootShape } from "@webs-shapes/root/RootShape";
+import { useFold, useShape } from "@webs-shapes/hooks";
+import { ofRootShape, writeRootShapeDigs } from "@webs-shapes/root/RootShape";
+import {
+  writeWebsMapShapeAtHome,
+  writeWebsMapShapeCenter,
+  writeWebsMapShapeHome,
+  writeWebsMapShapeShowHome,
+} from "@webs-shapes/webs/map/WebsMapShape";
 import type { GetStaticProps, GetStaticPropsContext, NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
@@ -28,10 +34,11 @@ const {
 const WebsPagesIndex: NextPage = () => {
   const [mounted, setMounted] = React.useState<boolean>(false);
 
+  const fold = useFold();
   const { 0: mb } = useMap();
   const locale = useLocale();
 
-  const { data: dgraph0000 } = useDigItGraph0000Query({
+  const { data: g0000d } = useDigItGraph0000Query({
     variables: { figure: { locale } },
   });
 
@@ -43,9 +50,42 @@ const WebsPagesIndex: NextPage = () => {
     return;
   }, []);
 
+  React.useEffect(() => {
+    //
+    // @notes:
+    if (mb) {
+      fold(writeWebsMapShapeHome(mb.center));
+      fold(writeWebsMapShapeCenter(mb.center));
+      fold(writeWebsMapShapeAtHome(true));
+      fold(writeWebsMapShapeShowHome(true));
+    }
+
+    // end
+    return;
+  }, [fold, mb]);
+
+  React.useEffect(() => {
+    //
+    // @notes:
+    if (
+      g0000d?.DigItGraph0000.pass &&
+      g0000d?.DigItGraph0000?.data?.results?.length
+    ) {
+      fold(writeRootShapeDigs(g0000d.DigItGraph0000.data.results));
+    }
+
+    // end
+    return;
+  }, [
+    fold,
+    g0000d?.DigItGraph0000.data,
+    g0000d?.DigItGraph0000.data?.results,
+    g0000d?.DigItGraph0000.pass,
+  ]);
+
   const RootShape = useShape(ofRootShape);
 
-  return mounted && dgraph0000 && dgraph0000.DigItGraph0000.pass && mb ? (
+  return mounted && g0000d && g0000d.DigItGraph0000.pass && mb ? (
     <WebsOrigin basis={{ key: RootShape.basiskey, dictionary }} />
   ) : (
     <div

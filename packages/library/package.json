@@ -46,11 +46,15 @@
     "update": "rm -rf node_modules && yarn"
   },
   "devDependencies": {
-    "@dig-it/dev": "^0.1.7"
+    "@dig-it/dev": "^0.1.7",
+    "@types/ngeohash": "^0.6.4"
   },
   "dependencies": {
     "@dig-it/env": "^0.1.6",
-    "axios": "^1.2.2"
+    "@fractalsoftware/random-avatar-generator": "^1.0.11",
+    "axios": "^1.2.2",
+    "jshashes": "^1.0.8",
+    "ngeohash": "^0.6.3"
   },
   "gitHead": "48b7d4cc28f61e877e52b817375f4562debf3013"
 }

@@ -17,7 +17,7 @@ const argenv = getArgv().toLowerCase();
 const main = () => {
   let msg = `[ci-env-example]`;
 
-  if (!["graph", "models", "tables"].includes(argenv)) {
+  if (!["api", "models", "tables"].includes(argenv)) {
     msg += ` - specified unknown environment`;
     throw new Error(msg);
   }
@@ -25,7 +25,7 @@ const main = () => {
   let ws = ``;
   ws += `# dig-it environment\n`;
 
-  if (argenv === "graph") {
+  if (argenv === "api") {
     ws += `
 GRAPH_PORT=
 GRAPH_CORS_ORIGIN=
@@ -35,6 +35,7 @@ GRAPH_COOKIE_IV=
 GRAPH_TOK_IV=
 GRAPH_HASH_IV=
 GRAPH_ENC_IV=
+GRAPH_MAIL_KEY=
 `;
   }
 

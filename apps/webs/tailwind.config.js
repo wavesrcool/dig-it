@@ -62,6 +62,9 @@ module.exports = {
         mono: [...dt.fontFamily.mono],
         amberry: ["Ambery Garden"],
         lupines: ["Lupines"],
+        sofia: ["Sofia Pro"],
+        dongle: ["Dongle"],
+        montserrat: ["Montserrat"],
       },
       screens: {
         "3xl": "1920px",

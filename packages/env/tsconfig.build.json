@@ -15,7 +15,7 @@
       "path": "../dev/tsconfig.build.json"
     },
     {
-      "path": "../graph/tsconfig.build.json"
+      "path": "../api/tsconfig.build.json"
     },
     {
       "path": "../models/tsconfig.build.json"

@@ -3,6 +3,42 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: "Dongle";
+  src: url("/fonts/Dongle-Light.woff2") format("woff2"),
+    url("/fonts/Dongle-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Dongle";
+  src: url("/fonts/Dongle-Bold.woff2") format("woff2"),
+    url("/fonts/Dongle-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Dongle";
+  src: url("/fonts/Dongle-Regular.woff2") format("woff2"),
+    url("/fonts/Dongle-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("/fonts/SofiaProLight.woff2") format("woff2"),
+    url("/fonts/SofiaProLight.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Ambery Garden";
   src: url("/fonts/AmberyGarden-Regular.woff2") format("woff2"),
     url("/fonts/AmberyGarden-Regular.woff") format("woff");
@@ -15,6 +51,24 @@
   font-family: "Lupines";
   src: url("/fonts/Lupines.woff2") format("woff2"),
     url("/fonts/Lupines.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Bold.woff2") format("woff2"),
+    url("/fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Regular.woff2") format("woff2"),
+    url("/fonts/Montserrat-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

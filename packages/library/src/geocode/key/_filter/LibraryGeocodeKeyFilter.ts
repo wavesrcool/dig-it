@@ -24,10 +24,10 @@ export const LibraryGeocodeKeyFilter = (
 
   const { lat, lng } = position;
 
-  let value = ``;
-  let town = ``;
-  let lands = ``;
-  let boundary = ``;
+  let line = ``;
+  let city = ``;
+  let region = ``;
+  let country = ``;
 
   const { countryCode: countryCode0, state: state0 } = address;
 
@@ -39,9 +39,9 @@ export const LibraryGeocodeKeyFilter = (
   }
 
   // eslint-disable-next-line prefer-const
-  boundary = countryCode;
+  country = countryCode;
   // eslint-disable-next-line prefer-const
-  lands = state;
+  region = state;
 
   if (resultType.toLowerCase().includes("house")) {
     const { houseNumber: houseNumber0, street: street0 } = address;
@@ -52,45 +52,45 @@ export const LibraryGeocodeKeyFilter = (
       return undefined;
     }
 
-    value += `${houseNumber} ${street}`;
+    line += `${houseNumber} ${street}`;
   } else if (resultType.toLowerCase().includes("street")) {
     const { street: street0 } = address;
     const street = LibraryAttestStrings(street0);
     if (!street) {
       return undefined;
     }
-    value += `${street}`;
+    line += `${street}`;
   } else if (resultType.toLowerCase().includes("locality")) {
     const { localityType: localityType0 } = geores;
     const localityType = LibraryAttestStrings(localityType0);
     if (localityType && localityType === "city") {
-      value += localityType;
+      line += localityType;
     }
   }
 
   const { city: city0 } = address;
-  const city = LibraryAttestStrings(city0);
-  if (!city) {
+  const city1 = LibraryAttestStrings(city0);
+  if (!city1) {
     const { county: county0 } = address;
     const county = LibraryAttestStrings(county0);
     if (!county) {
       return undefined;
     }
-    town += `${county}`;
+    city += `${county}`;
   }
 
-  town += `${city}`;
+  city += `${city1}`;
 
-  if (!value) {
+  if (!line) {
     return undefined;
   }
 
   const place: TypesGeocodePlace = {
     key,
-    value,
-    town,
-    lands,
-    boundary,
+    line,
+    city,
+    region,
+    country,
     center: [Number(lat), Number(lng)],
   };
 

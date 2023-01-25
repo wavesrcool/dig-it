@@ -1,3 +1,5 @@
+import { LibraryMessagesGraphBasis } from "../_basis/LibraryMessagesGraphBasis";
+
 /**
  * * Dig It Documentation
  *
@@ -6,4 +8,4 @@
  * @notes [ ]
  *
  */
-export type LibraryMessagesGraph0000 = "complete" | "error";
+export type LibraryMessagesGraph0000 = LibraryMessagesGraphBasis;

@@ -1,0 +1,6 @@
+fragment DigItFragment0000Email on Email {
+  key
+  created
+  updated
+  address
+}

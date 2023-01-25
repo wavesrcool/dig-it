@@ -1,13 +1,15 @@
 import { ComponentsMapPoint } from "@webs-components/map/point/ComponentsMapPoint";
 import { useMap } from "@webs-hooks/use-map";
 import { useWindow } from "@webs-hooks/use-window";
+import { Dig } from "@webs-library/graph/hooks";
 import { useFold, useShape } from "@webs-shapes/hooks";
+import { ofRootShape } from "@webs-shapes/root/RootShape";
 import {
   ofWebsMapShape,
   writeWebsMapShapeCenter,
+  writeWebsMapShapeShowCenter,
   writeWebsMapShapeZoom,
 } from "@webs-shapes/webs/map/WebsMapShape";
-import { ofWebsSearchShape } from "@webs-shapes/webs/search/WebsSearchShape";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
 import { useTranslation } from "next-i18next";
 import { Map, Overlay } from "pigeon-maps";
@@ -38,14 +40,18 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
   const { 1: winh } = useWindow();
   const { 0: mb } = useMap();
 
-  const WebsSearchShape = useShape(ofWebsSearchShape);
   const WebsMapShape = useShape(ofWebsMapShape);
+  const RootShape = useShape(ofRootShape);
+
+  console.log(JSON.stringify(WebsMapShape, null, 4), `WebsMapShape`);
 
   const lcComponentsMapTouch = React.useCallback(
     (center: [number, number]) => {
       //
       // @notes:
+
       fold(writeWebsMapShapeCenter(center));
+      fold(writeWebsMapShapeShowCenter(true));
 
       // end
       return;
@@ -57,8 +63,10 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
     (center: [number, number], zoom: number) => {
       //
       // @notes:
-      fold(writeWebsMapShapeZoom(~~zoom));
+
+      fold(writeWebsMapShapeZoom(zoom));
       fold(writeWebsMapShapeCenter(center));
+      fold(writeWebsMapShapeShowCenter(false));
 
       // end
       return;
@@ -72,7 +80,7 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
         attribution={
           <p
             className={
-              "text-xs md:text-sm font-mono font-semibold text-slate-900/80"
+              "text-xs text-center justify-center font-sofia tracking-widest font-semibold text-slate-900/90"
             }
           >
             {`© dig-it.earth & OpenStreetMap ${`${t(
@@ -88,11 +96,7 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
         metaWheelZoom
         metaWheelZoomWarning={""}
         zoomSnap={false}
-        center={
-          WebsSearchShape.searchedPlace
-            ? WebsSearchShape.searchedPlace.center
-            : WebsMapShape.center
-        }
+        center={WebsMapShape.center}
         zoom={WebsMapShape.zoom}
         onBoundsChanged={({ center, zoom }) => {
           lcComponentsMapBoundsChange(center, zoom);
@@ -101,9 +105,23 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
           lcComponentsMapTouch(latLng);
         }}
       >
-        <Overlay anchor={WebsMapShape.center} offset={[10.5, 15]}>
-          <ComponentsMapPoint basis={{ ...basis }} />
-        </Overlay>
+        {WebsMapShape.showHome ? (
+          <Overlay anchor={WebsMapShape.home} offset={[10.5, 15]}>
+            <ComponentsMapPoint basis={{ ...basis }} />
+          </Overlay>
+        ) : null}
+
+        {(RootShape.digs as Dig[])?.map((dig) => {
+          const anc: [number, number] = [
+            Number(dig.place.geo.lat),
+            Number(dig.place.geo.lng),
+          ];
+          return (
+            <Overlay key={dig.key} anchor={anc} offset={[10.5, 15]}>
+              <ComponentsMapPoint basis={{ ...basis }} />
+            </Overlay>
+          );
+        })}
       </Map>
     </>
   ) : null;

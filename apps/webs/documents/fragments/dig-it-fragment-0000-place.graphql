@@ -1,0 +1,12 @@
+fragment DigItFragment0000Place on Place {
+  key
+  created
+  updated
+  line
+  city
+  region
+  country
+  geo {
+    ...DigItFragment0000Geo
+  }
+}
