@@ -12,7 +12,7 @@ export type EnvApiType = {
   GRAPH_REDIS_PORT: string;
   GRAPH_COOKIE_NAME: string;
   GRAPH_COOKIE_IV: string;
-  GRAPH_TOK_IV: string;
+  GRAPH_JWT_IV: string;
   GRAPH_HASH_IV: string;
   GRAPH_ENC_IV: string;
   GRAPH_MAIL_KEY: string;

@@ -21,9 +21,9 @@ if (!GRAPH_CORS_ORIGIN) {
   throw new Error(msg);
 }
 
-const { GRAPH_TOK_IV } = process.env;
-if (!GRAPH_TOK_IV) {
-  msg = `process.env.GRAPH_TOK_IV`;
+const { GRAPH_JWT_IV } = process.env;
+if (!GRAPH_JWT_IV) {
+  msg = `process.env.GRAPH_JWT_IV`;
   throw new Error(msg);
 }
 
@@ -75,7 +75,7 @@ export const envapi: EnvApiType = {
   GRAPH_PORT,
   GRAPH_CORS_ORIGIN,
   GRAPH_REDIS_PORT,
-  GRAPH_TOK_IV,
+  GRAPH_JWT_IV,
   GRAPH_HASH_IV,
   GRAPH_ENC_IV,
   GRAPH_COOKIE_NAME,

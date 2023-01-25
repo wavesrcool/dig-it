@@ -3,18 +3,21 @@ import formData from "form-data";
 import Mailgun from "mailgun.js";
 import Client from "mailgun.js/client";
 import { MailgunMessageData } from "mailgun.js/interfaces/Messages";
+import { envapi } from "../../_env";
 import { htmlconfirmemail } from "./_templates/confirm-email";
+
+const { GRAPH_MAIL_KEY } = envapi;
 
 export type TypesClassesApiEmailSendMessage = "email-re";
 
 export class ClassesApiEmail {
   private mailc: Client;
 
-  constructor(key: string, eu?: boolean) {
+  constructor(eu?: boolean) {
     const mg = new Mailgun(formData);
     const client = mg.client({
       username: "api",
-      key,
+      key: GRAPH_MAIL_KEY,
       url: `https://api${eu ? `.eu` : ``}.mailgun.net`,
     });
 

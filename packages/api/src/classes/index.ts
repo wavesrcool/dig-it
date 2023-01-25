@@ -1,17 +1,18 @@
-import { envapi } from "../_env";
 import { ClassesApiEmail } from "./email";
+import { ClassesApiJwt } from "./jwt";
 import { ClassesApiGraphHandler } from "./_handler";
-
-const { GRAPH_MAIL_KEY } = envapi;
 
 class ClassesApi {
   private graphhandler: ClassesApiGraphHandler;
 
   private graphemails: ClassesApiEmail;
 
+  private graphjwt: ClassesApiJwt;
+
   constructor() {
     this.graphhandler = new ClassesApiGraphHandler();
-    this.graphemails = new ClassesApiEmail(GRAPH_MAIL_KEY);
+    this.graphemails = new ClassesApiEmail();
+    this.graphjwt = new ClassesApiJwt();
   }
 
   public get handler(): ClassesApiGraphHandler {
@@ -20,6 +21,10 @@ class ClassesApi {
 
   public get emails(): ClassesApiEmail {
     return this.graphemails;
+  }
+
+  public get jwt(): ClassesApiJwt {
+    return this.graphjwt;
   }
 }
 

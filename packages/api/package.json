@@ -78,7 +78,7 @@
     "graphql-request": "^5.1.0",
     "helmet": "^6.0.0",
     "ioredis": "^5.2.4",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mailgun.js": "^8.0.6",
     "n-digit-token": "^2.1.1",
     "pg": "8.8.0",
