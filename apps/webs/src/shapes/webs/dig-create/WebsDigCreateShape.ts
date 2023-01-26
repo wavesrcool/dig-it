@@ -2,9 +2,9 @@ import { TypesGeocodeMatch } from "@dig-it/library/lib/geocode/_types/TypesGeoco
 import { TypesGeocodePlace } from "@dig-it/library/lib/geocode/_types/TypesGeocodePlace";
 import { LibraryRegExpEmail } from "@dig-it/library/lib/regexp/email/LibraryRegExpEmail";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LibraryFunctionsShapesBundlesCyclicLetters } from "@wavesrcool/library/lib/functions/shapes/bundles/cyclic/letters/LibraryFunctionsShapesBundlesCyclicLetters";
-import { LibraryReferenceShapesBundlesCyclicBasis } from "@wavesrcool/library/lib/reference/shapes/bundles/cyclic/LibraryReferenceShapesBundlesCyclicBasis";
-import { LibraryTypesShapesBundlesCyclic } from "@wavesrcool/library/lib/types/shapes/bundles/cyclic/LibraryTypesShapesBundlesCyclic";
+import { LibraryShapesBundlesLetters } from "@wavesrcool/library/lib/shapes/bundles/letters/LibraryShapesBundlesLetters";
+import { ReferenceShapesBundlesBasis } from "@wavesrcool/library/lib/shapes/bundles/_ref";
+import { TypesShapesBundles } from "@wavesrcool/library/lib/shapes/bundles/_types//";
 import { TypesWebsShape } from "@webs-shapes/store";
 
 export type TypesShapesWebsDigCreateShapeView =
@@ -36,19 +36,19 @@ export type TypesShapesWebsDigCreateShapeValue = {
   view: TypesShapesWebsDigCreateShapeView;
 
   loadingCity: boolean;
-  cityBundle: LibraryTypesShapesBundlesCyclic;
+  bundlesCity: TypesShapesBundles;
   cityResults: TypesGeocodeMatch[] | undefined;
   cityPlace: TypesGeocodePlace | undefined;
 
-  amountBundle: LibraryTypesShapesBundlesCyclic;
+  bundlesAmount: TypesShapesBundles;
   amountType: TypesShapesWebsDigCreateShapeAmountType;
 
-  nbBundle: LibraryTypesShapesBundlesCyclic;
-  descBundle: LibraryTypesShapesBundlesCyclic;
+  bundlesNeighb: TypesShapesBundles;
+  bundlesDesc: TypesShapesBundles;
 
-  passcodeBundle: LibraryTypesShapesBundlesCyclic;
+  bundlesPasscode: TypesShapesBundles;
 
-  contactBundle: LibraryTypesShapesBundlesCyclic;
+  bundlesContact: TypesShapesBundles;
 };
 
 export type TypesShapesWebsDigCreateShape = {
@@ -69,17 +69,17 @@ const initialState: TypesShapesWebsDigCreateShape = {
     view: "create",
 
     loadingCity: false,
-    cityBundle: LibraryReferenceShapesBundlesCyclicBasis,
+    bundlesCity: ReferenceShapesBundlesBasis,
     cityResults: undefined,
     cityPlace: undefined,
 
-    amountBundle: LibraryReferenceShapesBundlesCyclicBasis,
+    bundlesAmount: ReferenceShapesBundlesBasis,
     amountType: "btc",
 
-    nbBundle: LibraryReferenceShapesBundlesCyclicBasis,
-    descBundle: LibraryReferenceShapesBundlesCyclicBasis,
-    passcodeBundle: LibraryReferenceShapesBundlesCyclicBasis,
-    contactBundle: LibraryReferenceShapesBundlesCyclicBasis,
+    bundlesNeighb: ReferenceShapesBundlesBasis,
+    bundlesDesc: ReferenceShapesBundlesBasis,
+    bundlesPasscode: ReferenceShapesBundlesBasis,
+    bundlesContact: ReferenceShapesBundlesBasis,
   },
 };
 
@@ -170,15 +170,15 @@ export const WebsDigCreateShapeSlice = createSlice({
       action: PayloadAction<string>
     ) => {
       const f = {
-        bundle: state.value.cityBundle,
+        bundle: state.value.bundlesCity,
         letters: action.payload,
         pass: action.payload.length > 3,
       };
-      const cityBundle = LibraryFunctionsShapesBundlesCyclicLetters(f);
+      const bundlesCity = LibraryShapesBundlesLetters(f);
       state.value = {
         ...state.value,
         inverse: false,
-        cityBundle,
+        bundlesCity,
       };
     },
 
@@ -209,15 +209,15 @@ export const WebsDigCreateShapeSlice = createSlice({
       const filteredValue = action.payload.replace(/[^\d.]/g, ``);
 
       const f = {
-        bundle: state.value.amountBundle,
+        bundle: state.value.bundlesAmount,
         letters: filteredValue,
         pass: filteredValue.length >= 1,
       };
-      const amountBundle = LibraryFunctionsShapesBundlesCyclicLetters(f);
+      const bundlesAmount = LibraryShapesBundlesLetters(f);
       state.value = {
         ...state.value,
         inverse: false,
-        amountBundle,
+        bundlesAmount,
       };
     },
 
@@ -233,15 +233,15 @@ export const WebsDigCreateShapeSlice = createSlice({
 
     writeWebsDigCreateShapeNbBundle: (state, action: PayloadAction<string>) => {
       const f = {
-        bundle: state.value.cityBundle,
+        bundle: state.value.bundlesCity,
         letters: action.payload,
         pass: action.payload.length > 3,
       };
-      const nbBundle = LibraryFunctionsShapesBundlesCyclicLetters(f);
+      const bundlesNeighb = LibraryShapesBundlesLetters(f);
       state.value = {
         ...state.value,
         inverse: false,
-        nbBundle,
+        bundlesNeighb,
       };
     },
 
@@ -250,15 +250,15 @@ export const WebsDigCreateShapeSlice = createSlice({
       action: PayloadAction<string>
     ) => {
       const f = {
-        bundle: state.value.cityBundle,
+        bundle: state.value.bundlesCity,
         letters: action.payload,
         pass: action.payload.length > 3,
       };
-      const descBundle = LibraryFunctionsShapesBundlesCyclicLetters(f);
+      const bundlesDesc = LibraryShapesBundlesLetters(f);
       state.value = {
         ...state.value,
         inverse: false,
-        descBundle,
+        bundlesDesc,
       };
     },
 
@@ -268,15 +268,15 @@ export const WebsDigCreateShapeSlice = createSlice({
     ) => {
       const pass = LibraryRegExpEmail.test(action.payload);
       const f = {
-        bundle: state.value.cityBundle,
+        bundle: state.value.bundlesCity,
         letters: action.payload,
         pass,
       };
-      const contactBundle = LibraryFunctionsShapesBundlesCyclicLetters(f);
+      const bundlesContact = LibraryShapesBundlesLetters(f);
       state.value = {
         ...state.value,
         inverse: false,
-        contactBundle,
+        bundlesContact,
       };
     },
 
@@ -287,15 +287,15 @@ export const WebsDigCreateShapeSlice = createSlice({
       const filteredValue = action.payload.replace(/[^\d.]/g, ``);
 
       const f = {
-        bundle: state.value.passcodeBundle,
+        bundle: state.value.bundlesPasscode,
         letters: filteredValue,
         pass: filteredValue.length === 6,
       };
-      const passcodeBundle = LibraryFunctionsShapesBundlesCyclicLetters(f);
+      const bundlesPasscode = LibraryShapesBundlesLetters(f);
       state.value = {
         ...state.value,
         inverse: false,
-        passcodeBundle,
+        bundlesPasscode,
       };
     },
   },

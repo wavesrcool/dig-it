@@ -3363,7 +3363,31 @@
     "@typescript-eslint/types" "5.48.0"
     eslint-visitor-keys "^3.3.0"
 
-"@wavesrcool/dev@^0.1.5", "@wavesrcool/dev@latest":
+"@wavesrcool/dev@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@wavesrcool/dev/-/dev-0.1.6.tgz#3b7d10722bce048e1160facd15ba76dc2bcb92fd"
+  integrity sha512-5jXYgHOZFpWr2b7Q04Z/vVe5fS2Mifh4EHD7B7vga7iVHExwr+Iv80bjo/2I03Y/frT+Ay4PUg/cxsk3DcZcqA==
+  dependencies:
+    "@types/glob" "^8.0.0"
+    "@types/yargs" "^17.0.12"
+    "@typescript-eslint/eslint-plugin" "^5.36.1"
+    "@typescript-eslint/parser" "^5.36.1"
+    eslint "^8.23.0"
+    eslint-config-airbnb "^19.0.4"
+    eslint-config-prettier "^8.5.0"
+    eslint-plugin-import "^2.26.0"
+    eslint-plugin-jsx-a11y "^6.6.1"
+    eslint-plugin-prettier "^4.2.1"
+    eslint-plugin-react "^7.30.1"
+    eslint-plugin-react-hooks "^4.6.0"
+    eslint-plugin-unused-imports "^2.0.0"
+    glob "^8.0.3"
+    husky "^8.0.1"
+    lint-staged "^13.0.3"
+    prettier "^2.7.1"
+    yargs "^17.5.1"
+
+"@wavesrcool/dev@latest":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@wavesrcool/dev/-/dev-0.1.5.tgz#3bf82b170dd2f6fd0758ea9f46b9b8c69ae044ad"
   integrity sha512-gP2wvSfEYZKltvrIlHmyBmjXktAiJ4zANNui72nC4ccUtnJeeYUZmdQDPXroAcocRykdyXo5uzm74gV+Ff3/mA==
@@ -3387,12 +3411,12 @@
     prettier "^2.7.1"
     yargs "^17.5.1"
 
-"@wavesrcool/library@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@wavesrcool/library/-/library-0.1.5.tgz#eea92c0c26fa152c4146d5d60e253b1105f0e932"
-  integrity sha512-iewNKEH5nqbx4DBaLeTSwH/NxpA37zLvUKcKi4TXP4W4KWWQ0CNAk4RE3q8Wx/bAs8iWX3GtX3BNLa0BW/m4Jg==
+"@wavesrcool/library@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@wavesrcool/library/-/library-0.1.7.tgz#2943473e03ed56fdb08898e4c545762ebd8560b8"
+  integrity sha512-E3a9rKA2bzERNqhDx7SUrXKeXbAKvxREPzIuao77tbYq1Bwta4aFfPwlUl2uQBIghUmojvr55CjOsoob/i2Tug==
   dependencies:
-    "@wavesrcool/dev" "^0.1.5"
+    "@wavesrcool/dev" "^0.1.6"
 
 "@whatwg-node/fetch@0.5.4", "@whatwg-node/fetch@^0.5.0":
   version "0.5.4"

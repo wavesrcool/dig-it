@@ -55,7 +55,7 @@ export const WebsPostCreateCity: React.FC<TypesWebsPostCreateCity> = ({
 
       fold(writeWebsDigCreateShapeCityBundle(value));
 
-      if (WebsDigCreateShape.entracte || !WebsDigCreateShape.cityBundle.pass) {
+      if (WebsDigCreateShape.entracte || !WebsDigCreateShape.bundlesCity.pass) {
         return;
       }
 
@@ -114,7 +114,7 @@ export const WebsPostCreateCity: React.FC<TypesWebsPostCreateCity> = ({
       return;
     },
     [
-      WebsDigCreateShape.cityBundle.pass,
+      WebsDigCreateShape.bundlesCity.pass,
       WebsDigCreateShape.cityPlace,
       WebsDigCreateShape.entracte,
       fold,
@@ -138,7 +138,7 @@ export const WebsPostCreateCity: React.FC<TypesWebsPostCreateCity> = ({
             placeholder: ww < 450 ? `` : `Search to find your city`,
             value: WebsDigCreateShape.cityPlace
               ? `${WebsDigCreateShape.cityPlace.city}, ${WebsDigCreateShape.cityPlace.region}`
-              : WebsDigCreateShape.cityBundle.letters,
+              : WebsDigCreateShape.bundlesCity.letters,
             change: lcaWebsPostCreateCityOnChange,
           }}
         />

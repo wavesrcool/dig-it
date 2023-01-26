@@ -9,7 +9,7 @@ import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
 import { useTranslation } from "next-i18next";
 import * as React from "react";
 
-export type TypesWebsPostCreateNeighborhood = {
+export type TypesWebsLogInOpenEmail = {
   basis: TypesWebsBasis;
 };
 
@@ -21,15 +21,15 @@ export type TypesWebsPostCreateNeighborhood = {
  * @notes [ ]
  *
  */
-export const WebsPostCreateNeighborhood: React.FC<
-  TypesWebsPostCreateNeighborhood
-> = ({ basis }: TypesWebsPostCreateNeighborhood) => {
+export const WebsLogInOpenEmail: React.FC<TypesWebsLogInOpenEmail> = ({
+  basis,
+}: TypesWebsLogInOpenEmail) => {
   const { t } = useTranslation(basis.dictionary);
 
   const fold = useFold();
 
   const WebsDigCreateShape = useShape(ofWebsDigCreateShape);
-  const lcWebsPostCreateNeighborhoodCycle = React.useCallback(
+  const lcWebsLogInOpenEmailCycle = React.useCallback(
     (value: string) => {
       //
       // @notes:
@@ -58,7 +58,7 @@ export const WebsPostCreateNeighborhood: React.FC<
             disabled: WebsDigCreateShape.disabled,
             placeholder: ww < 450 ? `` : `Specify the area of your city`,
             value: WebsDigCreateShape.bundlesNeighb.letters,
-            change: lcWebsPostCreateNeighborhoodCycle,
+            change: lcWebsLogInOpenEmailCycle,
           }}
         />
       </div>

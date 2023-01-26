@@ -71,7 +71,7 @@ export const WebsPostCreatePaymentAmount: React.FC<
           ...basis,
           cl: `w-full rounded-full bg-base-200 font-semibold max-lg:pl-8 pl-12 text-neutral/80`,
           placeholder: ``,
-          value: WebsDigCreateShape.amountBundle.letters,
+          value: WebsDigCreateShape.bundlesAmount.letters,
           change: lcWebsPostCreatePaymentAmountOnChange,
         }}
       />

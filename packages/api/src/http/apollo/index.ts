@@ -6,6 +6,8 @@ import { ClassesApi } from "../../classes";
 import { DigItGraph0000 } from "../../resolvers/0000/dig-it-graph-0000-resolver";
 import { DigItGraph0001 } from "../../resolvers/0001/dig-it-graph-0001-resolver";
 import { DigItGraph0002 } from "../../resolvers/0002/dig-it-graph-0002-resolver";
+import { DigItGraph0003 } from "../../resolvers/0003/dig-it-graph-0003-resolver";
+import { DigItGraph0004 } from "../../resolvers/0004/dig-it-graph-0004-resolver";
 import { TypesApiHttpApollo } from "./types";
 
 const classes = new ClassesApi();
@@ -24,7 +26,13 @@ export const ApiHttpApollo = async (
 ): Promise<ApolloServer> => {
   const apollo = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [DigItGraph0000, DigItGraph0001, DigItGraph0002],
+      resolvers: [
+        DigItGraph0000,
+        DigItGraph0001,
+        DigItGraph0002,
+        DigItGraph0003,
+        DigItGraph0004,
+      ],
       scalarsMap: [],
       validate: false,
     }),

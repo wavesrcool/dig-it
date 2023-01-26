@@ -62,7 +62,7 @@ export const WebsPostConfirm: React.FC<TypesWebsPostConfirm> = ({
         //
         // start
 
-        if (!WebsDigCreateShape.passcodeBundle.pass) {
+        if (!WebsDigCreateShape.bundlesPasscode.pass) {
           fold(
             writeWebsDigCreateShapeInverseTrue(
               `Please enter a 6 digit pass code`
@@ -75,8 +75,8 @@ export const WebsPostConfirm: React.FC<TypesWebsPostConfirm> = ({
           variables: {
             figure: {
               locale,
-              email: WebsDigCreateShape.contactBundle.letters,
-              passcode: WebsDigCreateShape.passcodeBundle.letters,
+              email: WebsDigCreateShape.bundlesContact.letters,
+              passcode: WebsDigCreateShape.bundlesPasscode.letters,
             },
           },
         });
@@ -106,10 +106,10 @@ export const WebsPostConfirm: React.FC<TypesWebsPostConfirm> = ({
     // end
     return;
   }, [
-    WebsDigCreateShape.contactBundle.letters,
+    WebsDigCreateShape.bundlesContact.letters,
     WebsDigCreateShape.entracte,
-    WebsDigCreateShape.passcodeBundle.letters,
-    WebsDigCreateShape.passcodeBundle.pass,
+    WebsDigCreateShape.bundlesPasscode.letters,
+    WebsDigCreateShape.bundlesPasscode.pass,
     fold,
     g0002,
     locale,

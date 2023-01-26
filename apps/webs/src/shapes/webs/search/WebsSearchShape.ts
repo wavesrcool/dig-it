@@ -1,10 +1,10 @@
 import { TypesGeocodeMatch } from "@dig-it/library/lib/geocode/_types/TypesGeocodeMatch";
 import { TypesGeocodePlace } from "@dig-it/library/lib/geocode/_types/TypesGeocodePlace";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LibraryFunctionsShapesBundlesCyclicLetters } from "@wavesrcool/library/lib/functions/shapes/bundles/cyclic/letters/LibraryFunctionsShapesBundlesCyclicLetters";
-import { TypesFiguresLibraryFunctionsShapesBundlesCyclicLetters } from "@wavesrcool/library/lib/functions/shapes/bundles/cyclic/letters/TypesFiguresLibraryFunctionsShapesBundlesCyclicLetters";
-import { LibraryReferenceShapesBundlesCyclicBasis } from "@wavesrcool/library/lib/reference/shapes/bundles/cyclic/LibraryReferenceShapesBundlesCyclicBasis";
-import { LibraryTypesShapesBundlesCyclic } from "@wavesrcool/library/lib/types/shapes/bundles/cyclic/LibraryTypesShapesBundlesCyclic";
+import { FiguresLibraryShapesBundlesLetters } from "@wavesrcool/library/lib/shapes/bundles/letters/FiguresLibraryShapesBundlesLetters";
+import { LibraryShapesBundlesLetters } from "@wavesrcool/library/lib/shapes/bundles/letters/LibraryShapesBundlesLetters";
+import { ReferenceShapesBundlesBasis } from "@wavesrcool/library/lib/shapes/bundles/_ref";
+import { TypesShapesBundles } from "@wavesrcool/library/lib/shapes/bundles/_types/";
 import { TypesWebsShape } from "@webs-shapes/store";
 
 export type TypesShapesWebsSearchShapeThread = "root";
@@ -21,7 +21,7 @@ export type TypesShapesWebsSearchShapeValue = {
   results: TypesGeocodeMatch[] | undefined;
 
   searchedPlace: TypesGeocodePlace | undefined;
-  searchedBundle: LibraryTypesShapesBundlesCyclic;
+  searchedBundle: TypesShapesBundles;
 };
 
 export type TypesShapesWebsSearchShape = {
@@ -40,7 +40,7 @@ const initialState: TypesShapesWebsSearchShape = {
     disabled: false,
     results: undefined,
     searchedPlace: undefined,
-    searchedBundle: LibraryReferenceShapesBundlesCyclicBasis,
+    searchedBundle: ReferenceShapesBundlesBasis,
   },
 };
 
@@ -110,12 +110,12 @@ export const WebsSearchShapeSlice = createSlice({
       state,
       action: PayloadAction<string>
     ) => {
-      const f: TypesFiguresLibraryFunctionsShapesBundlesCyclicLetters = {
+      const f: FiguresLibraryShapesBundlesLetters = {
         bundle: state.value.searchedBundle,
         letters: action.payload,
         pass: action.payload.length > 3,
       };
-      const searchedBundle = LibraryFunctionsShapesBundlesCyclicLetters(f);
+      const searchedBundle = LibraryShapesBundlesLetters(f);
       state.value = {
         ...state.value,
         searchedBundle,

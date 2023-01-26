@@ -65,7 +65,7 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
         return;
       }
 
-      if (!WebsDigCreateShape.amountBundle.pass) {
+      if (!WebsDigCreateShape.bundlesAmount.pass) {
         fold(
           writeWebsDigCreateShapeInverseTrue(
             `Please enter an amount you are willing to pay`
@@ -74,7 +74,7 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
         return;
       }
 
-      if (!WebsDigCreateShape.nbBundle.pass) {
+      if (!WebsDigCreateShape.bundlesNeighb.pass) {
         fold(
           writeWebsDigCreateShapeInverseTrue(
             `Please enter the neighborhood you are located in`
@@ -83,8 +83,8 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
         return;
       }
 
-      if (!WebsDigCreateShape.contactBundle.pass) {
-        if (WebsDigCreateShape.contactBundle.letters) {
+      if (!WebsDigCreateShape.bundlesContact.pass) {
+        if (WebsDigCreateShape.bundlesContact.letters) {
           fold(
             writeWebsDigCreateShapeInverseTrue(
               `Please enter a valid email address`
@@ -116,11 +116,11 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
             figure: {
               locale,
               dig: {
-                email: WebsDigCreateShape.contactBundle.letters,
-                description: WebsDigCreateShape.descBundle.letters,
-                value: WebsDigCreateShape.amountBundle.letters,
+                email: WebsDigCreateShape.bundlesContact.letters,
+                description: WebsDigCreateShape.bundlesDesc.letters,
+                value: WebsDigCreateShape.bundlesAmount.letters,
                 money: WebsDigCreateShape.amountType,
-                neighborhood: WebsDigCreateShape.nbBundle.letters,
+                neighborhood: WebsDigCreateShape.bundlesNeighb.letters,
                 line: WebsDigCreateShape.cityPlace.line,
                 city: WebsDigCreateShape.cityPlace.city,
                 region: WebsDigCreateShape.cityPlace.region,
@@ -157,16 +157,16 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
     // end
     return;
   }, [
-    WebsDigCreateShape.amountBundle.letters,
-    WebsDigCreateShape.amountBundle.pass,
+    WebsDigCreateShape.bundlesAmount.letters,
+    WebsDigCreateShape.bundlesAmount.pass,
     WebsDigCreateShape.amountType,
     WebsDigCreateShape.cityPlace,
-    WebsDigCreateShape.contactBundle.letters,
-    WebsDigCreateShape.contactBundle.pass,
-    WebsDigCreateShape.descBundle.letters,
+    WebsDigCreateShape.bundlesContact.letters,
+    WebsDigCreateShape.bundlesContact.pass,
+    WebsDigCreateShape.bundlesDesc.letters,
     WebsDigCreateShape.entracte,
-    WebsDigCreateShape.nbBundle.letters,
-    WebsDigCreateShape.nbBundle.pass,
+    WebsDigCreateShape.bundlesNeighb.letters,
+    WebsDigCreateShape.bundlesNeighb.pass,
     fold,
     g0001,
     locale,

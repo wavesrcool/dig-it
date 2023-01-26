@@ -1,4 +1,5 @@
 import { ClassesApiEmail } from "./email";
+import { ClassesApiEncrypt } from "./encrypt";
 import { ClassesApiJwt } from "./jwt";
 import { ClassesApiGraphHandler } from "./_handler";
 
@@ -9,10 +10,13 @@ export class ClassesApi {
 
   private graphjwt: ClassesApiJwt;
 
+  private graphencryption: ClassesApiEncrypt;
+
   constructor() {
     this.graphhandler = new ClassesApiGraphHandler();
     this.graphemails = new ClassesApiEmail();
     this.graphjwt = new ClassesApiJwt();
+    this.graphencryption = new ClassesApiEncrypt();
   }
 
   public get handler(): ClassesApiGraphHandler {
@@ -25,5 +29,9 @@ export class ClassesApi {
 
   public get jwt(): ClassesApiJwt {
     return this.graphjwt;
+  }
+
+  public get encryption(): ClassesApiEncrypt {
+    return this.graphencryption;
   }
 }

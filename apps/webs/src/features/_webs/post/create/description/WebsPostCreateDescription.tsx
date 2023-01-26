@@ -57,7 +57,7 @@ export const WebsPostCreateDescription: React.FC<
             disabled: WebsDigCreateShape.disabled,
             placeholder:
               ww < 450 ? `` : `Say a few words about what you want to do`,
-            value: WebsDigCreateShape.descBundle.letters,
+            value: WebsDigCreateShape.bundlesDesc.letters,
             change: lcWebsPostCreateDescriptionCycle,
           }}
         />

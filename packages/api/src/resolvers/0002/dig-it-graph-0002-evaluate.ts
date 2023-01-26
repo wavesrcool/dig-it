@@ -70,15 +70,14 @@ export const DigItGraphEvaluate0002 = async (
       .where("dig.key = :key", { key: dig.key })
       .execute();
 
-    let token = ``;
-    const tokensign = await ctx.classes.jwt.sign(dig.key);
+    const encryptedkey = ctx.classes.encryption.encode(reademail.key);
+    const tokensign = await ctx.classes.jwt.sign(encryptedkey);
 
     if (typeof tokensign === "string") {
       throw new Error("token");
     }
 
     const { jwt } = tokensign;
-    token = jwt;
 
     //
     //
@@ -86,7 +85,7 @@ export const DigItGraphEvaluate0002 = async (
     //
     const data: DigItGraphData0002 = {
       notes: [`0002`],
-      token,
+      token: jwt,
     };
 
     const timestamp = Date.now();

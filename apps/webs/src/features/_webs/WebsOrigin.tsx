@@ -2,6 +2,7 @@ import { WebsBulletin } from "@webs-features/_webs/bulletin/WebsBulletin";
 import { WebsDrawer } from "@webs-features/_webs/drawer/WebsDrawer";
 import { WebsFocus } from "@webs-features/_webs/focus/WebsFocus";
 import { WebsFooter } from "@webs-features/_webs/footer/WebsFooter";
+import { WebsLogIn } from "@webs-features/_webs/log-in/WebsLogIn";
 import { WebsMap } from "@webs-features/_webs/map/WebsMap";
 import { WebsPost } from "@webs-features/_webs/post/WebsPost";
 import { WebsTop } from "@webs-features/_webs/top/WebsTop";
@@ -66,6 +67,7 @@ export const WebsOrigin: React.FC<TypesWebsOrigin> = ({
           <WebsFooter basis={{ ...basis }} />
         </div>
       </div>
+      <WebsLogIn basis={{ ...basis }} />
       <WebsPost basis={{ ...basis }} />
       {WebsDrawerShape.visible ? <WebsDrawer basis={{ ...basis }} /> : null}
     </>

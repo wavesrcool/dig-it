@@ -59,6 +59,17 @@ export type DigItGraphData0002 = {
   token?: Maybe<Scalars["String"]>;
 };
 
+export type DigItGraphData0003 = {
+  __typename?: "DigItGraphData0003";
+  notes?: Maybe<Array<Scalars["String"]>>;
+};
+
+export type DigItGraphData0004 = {
+  __typename?: "DigItGraphData0004";
+  notes?: Maybe<Array<Scalars["String"]>>;
+  token?: Maybe<Scalars["String"]>;
+};
+
 export type DigItGraphFigures0000 = {
   locale: Scalars["String"];
 };
@@ -72,6 +83,16 @@ export type DigItGraphFigures0002 = {
   email: Scalars["String"];
   locale: Scalars["String"];
   passcode: Scalars["String"];
+};
+
+export type DigItGraphFigures0003 = {
+  locale: Scalars["String"];
+  token: Scalars["String"];
+};
+
+export type DigItGraphFigures0004 = {
+  email: Scalars["String"];
+  locale: Scalars["String"];
 };
 
 export type DigItGraphResolve0000 = {
@@ -95,6 +116,24 @@ export type DigItGraphResolve0001 = {
 export type DigItGraphResolve0002 = {
   __typename?: "DigItGraphResolve0002";
   data?: Maybe<DigItGraphData0002>;
+  hash: Scalars["String"];
+  message?: Maybe<Scalars["String"]>;
+  pass: Scalars["Boolean"];
+  timestamp: Scalars["Float"];
+};
+
+export type DigItGraphResolve0003 = {
+  __typename?: "DigItGraphResolve0003";
+  data?: Maybe<DigItGraphData0003>;
+  hash: Scalars["String"];
+  message?: Maybe<Scalars["String"]>;
+  pass: Scalars["Boolean"];
+  timestamp: Scalars["Float"];
+};
+
+export type DigItGraphResolve0004 = {
+  __typename?: "DigItGraphResolve0004";
+  data?: Maybe<DigItGraphData0004>;
   hash: Scalars["String"];
   message?: Maybe<Scalars["String"]>;
   pass: Scalars["Boolean"];
@@ -159,6 +198,8 @@ export type Mutation = {
   __typename?: "Mutation";
   DigItGraph0001: DigItGraphResolve0001;
   DigItGraph0002: DigItGraphResolve0002;
+  DigItGraph0003: DigItGraphResolve0003;
+  DigItGraph0004: DigItGraphResolve0004;
 };
 
 export type MutationDigItGraph0001Args = {
@@ -167,6 +208,14 @@ export type MutationDigItGraph0001Args = {
 
 export type MutationDigItGraph0002Args = {
   figure: DigItGraphFigures0002;
+};
+
+export type MutationDigItGraph0003Args = {
+  figure: DigItGraphFigures0003;
+};
+
+export type MutationDigItGraph0004Args = {
+  figure: DigItGraphFigures0004;
 };
 
 export type Place = {
@@ -368,6 +417,44 @@ export type DigItGraph0002Mutation = {
       __typename?: "DigItGraphData0002";
       notes?: Array<string> | null;
       token?: string | null;
+    } | null;
+  };
+};
+
+export type DigItGraph0003MutationVariables = Exact<{
+  figure: DigItGraphFigures0003;
+}>;
+
+export type DigItGraph0003Mutation = {
+  __typename?: "Mutation";
+  DigItGraph0003: {
+    __typename?: "DigItGraphResolve0003";
+    pass: boolean;
+    message?: string | null;
+    timestamp: number;
+    hash: string;
+    data?: {
+      __typename?: "DigItGraphData0003";
+      notes?: Array<string> | null;
+    } | null;
+  };
+};
+
+export type DigItGraph0004MutationVariables = Exact<{
+  figure: DigItGraphFigures0004;
+}>;
+
+export type DigItGraph0004Mutation = {
+  __typename?: "Mutation";
+  DigItGraph0004: {
+    __typename?: "DigItGraphResolve0004";
+    pass: boolean;
+    message?: string | null;
+    timestamp: number;
+    hash: string;
+    data?: {
+      __typename?: "DigItGraphData0004";
+      notes?: Array<string> | null;
     } | null;
   };
 };
@@ -607,4 +694,116 @@ export type DigItGraph0002MutationResult =
 export type DigItGraph0002MutationOptions = Apollo.BaseMutationOptions<
   DigItGraph0002Mutation,
   DigItGraph0002MutationVariables
+>;
+export const DigItGraph0003Document = gql`
+  mutation DigItGraph0003($figure: DigItGraphFigures0003!) {
+    DigItGraph0003(figure: $figure) {
+      pass
+      message
+      timestamp
+      hash
+      data {
+        notes
+      }
+    }
+  }
+`;
+export type DigItGraph0003MutationFn = Apollo.MutationFunction<
+  DigItGraph0003Mutation,
+  DigItGraph0003MutationVariables
+>;
+
+/**
+ * __useDigItGraph0003Mutation__
+ *
+ * To run a mutation, you first call `useDigItGraph0003Mutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDigItGraph0003Mutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [digItGraph0003Mutation, { data, loading, error }] = useDigItGraph0003Mutation({
+ *   variables: {
+ *      figure: // value for 'figure'
+ *   },
+ * });
+ */
+export function useDigItGraph0003Mutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DigItGraph0003Mutation,
+    DigItGraph0003MutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DigItGraph0003Mutation,
+    DigItGraph0003MutationVariables
+  >(DigItGraph0003Document, options);
+}
+export type DigItGraph0003MutationHookResult = ReturnType<
+  typeof useDigItGraph0003Mutation
+>;
+export type DigItGraph0003MutationResult =
+  Apollo.MutationResult<DigItGraph0003Mutation>;
+export type DigItGraph0003MutationOptions = Apollo.BaseMutationOptions<
+  DigItGraph0003Mutation,
+  DigItGraph0003MutationVariables
+>;
+export const DigItGraph0004Document = gql`
+  mutation DigItGraph0004($figure: DigItGraphFigures0004!) {
+    DigItGraph0004(figure: $figure) {
+      pass
+      message
+      timestamp
+      hash
+      data {
+        notes
+      }
+    }
+  }
+`;
+export type DigItGraph0004MutationFn = Apollo.MutationFunction<
+  DigItGraph0004Mutation,
+  DigItGraph0004MutationVariables
+>;
+
+/**
+ * __useDigItGraph0004Mutation__
+ *
+ * To run a mutation, you first call `useDigItGraph0004Mutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDigItGraph0004Mutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [digItGraph0004Mutation, { data, loading, error }] = useDigItGraph0004Mutation({
+ *   variables: {
+ *      figure: // value for 'figure'
+ *   },
+ * });
+ */
+export function useDigItGraph0004Mutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DigItGraph0004Mutation,
+    DigItGraph0004MutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DigItGraph0004Mutation,
+    DigItGraph0004MutationVariables
+  >(DigItGraph0004Document, options);
+}
+export type DigItGraph0004MutationHookResult = ReturnType<
+  typeof useDigItGraph0004Mutation
+>;
+export type DigItGraph0004MutationResult =
+  Apollo.MutationResult<DigItGraph0004Mutation>;
+export type DigItGraph0004MutationOptions = Apollo.BaseMutationOptions<
+  DigItGraph0004Mutation,
+  DigItGraph0004MutationVariables
 >;

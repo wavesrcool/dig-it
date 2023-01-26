@@ -57,7 +57,7 @@ export const WebsPostConfirmPasscode: React.FC<
             cl: `w-full rounded-full bg-base-200 font-semibold max-lg:pl-4 pl-8 text-neutral/80`,
             disabled: WebsDigCreateShape.disabled,
             placeholder: ww < 450 ? `` : `123456`,
-            value: WebsDigCreateShape.passcodeBundle.letters,
+            value: WebsDigCreateShape.bundlesPasscode.letters,
             change: lcWebsPostConfirmPasscodeCycle,
           }}
         />

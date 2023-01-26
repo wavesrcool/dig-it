@@ -42,7 +42,7 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "0.5.8",
     "@types/lodash.orderby": "^4.6.6",
-    "@wavesrcool/library": "^0.1.5",
+    "@wavesrcool/library": "^0.1.7",
     "apollo-upload-client": "^17.0.0",
     "autoprefixer": "^10.4.0",
     "axios": "^1.1.3",

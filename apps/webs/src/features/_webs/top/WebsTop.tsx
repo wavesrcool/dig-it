@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+import { ComponentsButton } from "@webs-components/button/ComponentsButton";
 import { useFold, useShape } from "@webs-shapes/hooks";
 import { ofRootShape } from "@webs-shapes/root/RootShape";
 import { writeWebsDrawerShapeVisibleToggle } from "@webs-shapes/webs/drawer/WebsDrawerShape";
+import { writeWebsLogInShapeVisible } from "@webs-shapes/webs/log-in/WebsLogInShape";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
 import { useTranslation } from "next-i18next";
 import * as React from "react";
@@ -23,12 +25,21 @@ export const WebsTop: React.FC<TypesWebsTop> = ({ basis }: TypesWebsTop) => {
 
   const fold = useFold();
   const RootShape = useShape(ofRootShape);
-  console.log(JSON.stringify(RootShape, null, 4), `RootShape`);
 
   const lcWebsTopDrawerToggle = React.useCallback(() => {
     //
     // @notes:
     fold(writeWebsDrawerShapeVisibleToggle());
+
+    // end
+    return;
+  }, [fold]);
+
+  const lcWebsTopTouchViewLogIn = React.useCallback(() => {
+    //
+    // @notes:
+
+    fold(writeWebsLogInShapeVisible(true));
 
     // end
     return;
@@ -56,16 +67,16 @@ export const WebsTop: React.FC<TypesWebsTop> = ({ basis }: TypesWebsTop) => {
         </div>
       </div>
       <div
-        className={`max-md:hidden flex flex-row max-lg:w-full max-lg:justify-center items-center space-x-4`}
+        className={`max-md:hidden flex flex-row max-lg:w-full max-lg:justify-center items-center space-x-4 max-lg:pl-0 pl-20 flex-1`}
       >
-        <p
-          className={
-            "font-dongle font-medium text-2xl text-neutral cursor-pointer hover:text-primary"
-          }
-        >
-          {`${t(`glossary.`, `How it works`)}`}
-        </p>
-
+        <ComponentsButton
+          basis={{
+            ...basis,
+            cl: ` btn-outline rounded-full flex-1`,
+            text: `${t(`glossary.`, `How it works`)}`,
+            click: lcWebsTopTouchViewLogIn,
+          }}
+        />
         {RootShape.token ? (
           <p
             className={
@@ -75,13 +86,14 @@ export const WebsTop: React.FC<TypesWebsTop> = ({ basis }: TypesWebsTop) => {
             {`${t(`glossary.`, `Your account`)}`}
           </p>
         ) : (
-          <p
-            className={
-              "font-dongle font-medium text-2xl  text-neutral cursor-pointer hover:text-primary"
-            }
-          >
-            {`${t(`glossary.`, `Create an account`)}`}
-          </p>
+          <ComponentsButton
+            basis={{
+              ...basis,
+              cl: ` rounded-full flex-1`,
+              text: `${t(`glossary.`, `Log in`)}`,
+              click: lcWebsTopTouchViewLogIn,
+            }}
+          />
         )}
       </div>
     </div>

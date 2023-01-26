@@ -4,6 +4,7 @@ import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import RootShape from "@webs-shapes/root/RootShape";
 import WebsDigCreateShape from "@webs-shapes/webs/dig-create/WebsDigCreateShape";
 import WebsDrawerShape from "@webs-shapes/webs/drawer/WebsDrawerShape";
+import WebsLogInShape from "@webs-shapes/webs/log-in/WebsLogInShape";
 import WebsMapShape from "@webs-shapes/webs/map/WebsMapShape";
 import WebsSearchShape from "@webs-shapes/webs/search/WebsSearchShape";
 
@@ -15,6 +16,7 @@ export function makeStore() {
       WebsDrawerShape,
       WebsSearchShape,
       WebsDigCreateShape,
+      WebsLogInShape,
       WebsMapShape,
     },
   });

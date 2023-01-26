@@ -57,7 +57,7 @@ export const WebsPostCreateContact: React.FC<TypesWebsPostCreateContact> = ({
             cl: `w-full rounded-full bg-base-200 font-semibold max-lg:pl-4 pl-8 text-neutral/80`,
             disabled: WebsDigCreateShape.disabled,
             placeholder: ww < 450 ? `` : `Enter your email address`,
-            value: WebsDigCreateShape.contactBundle.letters,
+            value: WebsDigCreateShape.bundlesContact.letters,
             change: lcWebsPostCreateContactCycle,
           }}
         />
