@@ -1,12 +1,11 @@
 import { LibraryGeohashEncode } from "@dig-it/library/lib/geohash/LibraryGeohashEncode";
-import { LibraryHashStrings } from "@dig-it/library/lib/hash/strings/LibraryHashStrings";
 import { LibraryMessagesGraph0001 } from "@dig-it/library/lib/messages/graph/0001";
 import { LibraryPictureCreate } from "@dig-it/library/lib/picture/LibraryPictureCreate";
 import { Dig } from "@dig-it/models/lib/dig/Dig";
 import { Email } from "@dig-it/models/lib/email/Email";
 import { Geo } from "@dig-it/models/lib/geo/Geo";
 import { Place } from "@dig-it/models/lib/place/Place";
-import { gen } from "n-digit-token";
+import { TypesClassesEmailTemplatesSend } from "../../classes/email/_templates/send/types";
 import { TypesApiHttpApollo } from "../../http/apollo/types";
 import { DigItGraphData0001 } from "./dig-it-graph-0001-data";
 import { DigItGraphFigures0001 } from "./dig-it-graph-0001-figure";
@@ -108,7 +107,7 @@ export const DigItGraphEvaluate0001 = async (
     const datenow = new Date().toISOString();
     const picture = LibraryPictureCreate();
     const gh9 = LibraryGeohashEncode(Number(lat), Number(lng), 9);
-    const PASSCODE = gen(6);
+    const PASS_CODE = ctx.classes.auth.passcode();
 
     const respdig = await ctx.connection
       .createQueryBuilder()
@@ -135,7 +134,7 @@ export const DigItGraphEvaluate0001 = async (
       .into(Email)
       .values({
         address: email,
-        passcode: LibraryHashStrings(PASSCODE),
+        passcode: ctx.classes.auth.hash(PASS_CODE),
       })
       .execute();
 
@@ -218,7 +217,14 @@ export const DigItGraphEvaluate0001 = async (
       .of(PK_PLACE)
       .set(PK_GEO);
 
-    const sendemail = await ctx.classes.emails.send(email, PASSCODE);
+    const f: TypesClassesEmailTemplatesSend = {
+      subject: `${PASS_CODE} Email confirmation pass code`,
+      content: {
+        heading: `Have fun gardening`,
+        line: `Here's the code to confirm your email`,
+      },
+    };
+    const sendemail = await ctx.classes.emails.send(email, PASS_CODE, f);
 
     if (typeof sendemail === "string") {
       throw new Error("send email!");
@@ -238,7 +244,7 @@ export const DigItGraphEvaluate0001 = async (
       pass: true,
       message,
       timestamp,
-      hash: LibraryHashStrings(`${timestamp}#${message}`),
+      hash: ctx.classes.auth.hash(`${timestamp}#${message}`),
       data,
     };
   } catch (DigItGraphEvaluate0001Error) {

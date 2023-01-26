@@ -41,8 +41,6 @@ export const getServerSideProps: GetServerSideProps = async ({
       return { redirect: { destination: "/", permanent: false }, props: {} };
     }
 
-    console.log(token, `token`);
-
     const { data: tGraph0003d } =
       await apolloclient.mutate<DigItGraph0003Mutation>({
         mutation: DigItGraph0003Document,
@@ -54,14 +52,18 @@ export const getServerSideProps: GetServerSideProps = async ({
         },
       });
 
-    if (tGraph0003d) {
+    if (
+      tGraph0003d?.DigItGraph0003.pass &&
+      tGraph0003d.DigItGraph0003.data?.email
+    ) {
       return {
-        redirect: { destination: `/account/${token}`, permanent: false },
+        redirect: {
+          destination: `/account/${tGraph0003d.DigItGraph0003.data?.email}?auth=${token}`,
+          permanent: false,
+        },
         props: {},
       };
     }
-
-    console.log(JSON.stringify(tGraph0003d, null, 4), `tGraph0003d`);
 
     return {
       props: {

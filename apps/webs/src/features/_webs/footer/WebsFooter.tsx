@@ -28,7 +28,7 @@ export const WebsFooter: React.FC<TypesWebsFooter> = ({
         >
           <p
             className={
-              "font-lupines text-lg font-bold text-slate-700 max-lg:text-justify max-lg:px-[18%] max-lg:leading-[48px]"
+              "font-sans text-lg font-bold text-slate-700 max-lg:text-justify max-lg:px-[18%] max-lg:leading-[48px]"
             }
           >
             {[

@@ -29,15 +29,14 @@ export const DigItGraphEvaluate0003 = async (
     // evaluate 0003
     //
 
-    const { token } = figure;
-
-    const validtoken = await ctx.classes.jwt.verify(token);
-    if (typeof validtoken === "string") {
-      message = "token-verify";
+    const SESSION_KEY = ctx.req.session.key;
+    console.log(SESSION_KEY, `token`);
+    if (typeof SESSION_KEY !== "string") {
+      message = "session-key";
       return handler.error<LibraryMessagesGraph0003>(message);
     }
 
-    const { key } = validtoken;
+    const key = ctx.classes.encryption.decode(SESSION_KEY);
 
     const reademail = await ctx.connection
       .createQueryBuilder(Email, "email")
@@ -50,7 +49,7 @@ export const DigItGraphEvaluate0003 = async (
     console.log(JSON.stringify(reademail, null, 4), `reademail`);
 
     if (!reademail || !reademail.dig) {
-      message = "token-key";
+      message = "read-key";
       return handler.error<LibraryMessagesGraph0003>(message);
     }
 
@@ -59,7 +58,8 @@ export const DigItGraphEvaluate0003 = async (
     // data 0003
     //
     const data: DigItGraphData0003 = {
-      notes: [`0003`],
+      notes: [`0003`, figure.locale],
+      email: reademail.address,
     };
 
     const timestamp = Date.now();

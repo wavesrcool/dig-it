@@ -32,7 +32,7 @@ export const DigItGraphEvaluate0002 = async (
 
     const { email, passcode: passcode0 } = figure;
 
-    const PASSCODE_1 = LibraryHashStrings(passcode0);
+    const PASS_CODE_1 = ctx.classes.auth.hash(passcode0);
 
     const reademail = await ctx.connection
       .createQueryBuilder(Email, "email")
@@ -47,14 +47,12 @@ export const DigItGraphEvaluate0002 = async (
       return handler.error<LibraryMessagesGraph0002>(message);
     }
 
-    const { dig } = reademail;
-
-    const { passcode: PASSCODE_0 } = reademail;
-
-    if (!(PASSCODE_1 === PASSCODE_0)) {
+    if (!(PASS_CODE_1 === reademail.passcode)) {
       message = "passcode";
       return handler.error<LibraryMessagesGraph0002>(message);
     }
+
+    const { dig } = reademail;
 
     await ctx.connection
       .createQueryBuilder()
@@ -71,13 +69,9 @@ export const DigItGraphEvaluate0002 = async (
       .execute();
 
     const encryptedkey = ctx.classes.encryption.encode(reademail.key);
-    const tokensign = await ctx.classes.jwt.sign(encryptedkey);
 
-    if (typeof tokensign === "string") {
-      throw new Error("token");
-    }
-
-    const { jwt } = tokensign;
+    // eslint-disable-next-line no-param-reassign
+    ctx.req.session.key = encryptedkey;
 
     //
     //
@@ -85,7 +79,6 @@ export const DigItGraphEvaluate0002 = async (
     //
     const data: DigItGraphData0002 = {
       notes: [`0002`],
-      token: jwt,
     };
 
     const timestamp = Date.now();

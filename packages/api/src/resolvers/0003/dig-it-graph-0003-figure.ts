@@ -12,7 +12,4 @@ import { Field, InputType } from "type-graphql";
 export class DigItGraphFigures0003 {
   @Field(() => String)
   locale!: string;
-
-  @Field(() => String)
-  token!: string;
 }

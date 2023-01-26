@@ -59,7 +59,7 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
       if (!WebsDigCreateShape.cityPlace) {
         fold(
           writeWebsDigCreateShapeInverseTrue(
-            `Please enter the city where you live`
+            `glossary:please_enter_the_city_where_you_live`
           )
         );
         return;
@@ -68,7 +68,7 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
       if (!WebsDigCreateShape.bundlesAmount.pass) {
         fold(
           writeWebsDigCreateShapeInverseTrue(
-            `Please enter an amount you are willing to pay`
+            `glossary:please_enter_an_amount_you_are_willing_to_offer`
           )
         );
         return;
@@ -77,7 +77,7 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
       if (!WebsDigCreateShape.bundlesNeighb.pass) {
         fold(
           writeWebsDigCreateShapeInverseTrue(
-            `Please enter the neighborhood you are located in`
+            `glossary:please_enter_the_neighborhood_you_are_located_in`
           )
         );
         return;
@@ -87,13 +87,13 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
         if (WebsDigCreateShape.bundlesContact.letters) {
           fold(
             writeWebsDigCreateShapeInverseTrue(
-              `Please enter a valid email address`
+              `glossary:please_enter_a_valid_email_address`
             )
           );
         } else {
           fold(
             writeWebsDigCreateShapeInverseTrue(
-              `Please enter an email address where you can be contacted`
+              `glossary:please_enter_an_email_address_where_you_can_be_contacted`
             )
           );
         }
@@ -174,13 +174,40 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
 
   return (
     <div className={`flex flex-col w-full`}>
-      <div className={`flex flex-col w-full max-lg:px-1 px-4 pt-4`}>
-        <p className={"font-dongle font-medium text-2xl"}>
-          {`Start your journey from lawn watcher to urban gardener! Use the form below to let your community know you want to turn your lawn into a food garden.`}
+      <div className={`flex flex-row w-full justify-center py-4 `}>
+        <svg
+          xmlns={"http://www.w3.org/2000/svg"}
+          fill={"none"}
+          viewBox={"0 0 24 24"}
+          strokeWidth={1.5}
+          stroke={"currentColor"}
+          className={"w-6 h-6"}
+        >
+          <path
+            strokeLinecap={"round"}
+            strokeLinejoin={"round"}
+            d={
+              "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
+            }
+          />
+        </svg>
+      </div>
+
+      <div className={`flex flex-row w-full pt-2 pb-4 px-6`}>
+        <p className={"font-dongle font-medium text-3xl text-justify"}>
+          {`${t(
+            `glossary:start_your_journey_from_lawn_watcher_to_urban_gardener`,
+            `start_your_journey_from_lawn_watcher_to_urban_gardener`
+          )}! ${t(
+            `glossary:use_the_form_below_to_let_your_community_know_you_want_to_turn_your_lawn_into_a_food_garden`,
+            `use_the_form_below_to_let_your_community_know_you_want_to_turn_your_lawn_into_a_food_garden`
+          )}.`}
         </p>
       </div>
 
-      <div className={`flex flex-col w-full py-3 max-lg:px-0 px-4 space-y-2`}>
+      <div
+        className={`flex flex-col w-full py-3 max-lg:px-0 px-4 space-y-2 max-lg:px-4`}
+      >
         <WebsPostCreateCity basis={{ ...basis }} />
         <WebsPostCreatePayment basis={{ ...basis }} />
         <WebsPostCreateNeighborhood basis={{ ...basis }} />
@@ -188,44 +215,67 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
         <WebsPostCreateContact basis={{ ...basis }} />
       </div>
 
-      {WebsDigCreateShape.inverse ? (
-        <div className={`flex flex-row w-full items-center space-x-2 px-6`}>
-          <svg
-            xmlns={"http://www.w3.org/2000/svg"}
-            fill={"none"}
-            viewBox={"0 0 24 24"}
-            strokeWidth={1.5}
-            stroke={"currentColor"}
-            className={"w-5 h-5 text-error"}
-          >
-            <path
-              strokeLinecap={"round"}
-              strokeLinejoin={"round"}
-              d={
-                "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
-              }
-            />
-          </svg>
+      <div className={`flex flex-row w-full py-2 px-8`}>
+        <p className={"font-dongle font-medium text-xl text-justify"}>
+          {`${t(
+            `glossary:`,
+            `We will use your email to send a one time pass code and will notify you when you receive replies to your post`
+          )}.`}
+        </p>
+      </div>
 
-          <p className={"font-dongle font-medium text-2xl text-error pt-1"}>
-            {WebsDigCreateShape.thread
-              ? `${WebsDigCreateShape.thread}.`
-              : `There was an error with the submission`}
-          </p>
+      {WebsDigCreateShape.inverse ? (
+        <div className={`flex flex-row w-full px-6 pt-2`}>
+          <div className={`flex items-center space-x-2`}>
+            <div className={`flex `}>
+              <svg
+                xmlns={"http://www.w3.org/2000/svg"}
+                fill={"none"}
+                viewBox={"0 0 24 24"}
+                strokeWidth={1.5}
+                stroke={"currentColor"}
+                className={"w-5 h-5 text-error"}
+              >
+                <path
+                  strokeLinecap={"round"}
+                  strokeLinejoin={"round"}
+                  d={
+                    "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+                  }
+                />
+              </svg>
+            </div>
+
+            <div className={`flex pt-1`}>
+              <p className={"font-dongle font-medium text-3xl text-error "}>
+                {WebsDigCreateShape.thread
+                  ? `${t(
+                      `${WebsDigCreateShape.thread}`,
+                      `${WebsDigCreateShape.thread}`
+                    )}.`
+                  : `${t(
+                      `glossary:there_was_an_error_with_the_request`,
+                      `there_was_an_error_with_the_request`
+                    )}`}
+              </p>
+            </div>
+          </div>
         </div>
       ) : null}
 
-      <div className={`flex flex-row w-full justify-end px-4 pt-4`}>
+      <div className={`flex flex-row w-full justify-center px-4 pt-8`}>
         <ComponentsButton
           basis={{
             ...basis,
-            cl: `rounded-full ${WebsDigCreateShape.entracte ? `loading` : ``} ${
+            cl: `rounded-full btn-primary w-full ${
+              WebsDigCreateShape.entracte ? `loading` : ``
+            } ${
               WebsDigCreateShape.inverse
                 ? `btn-error cursor-not-allowed opacity-40`
                 : ``
             }`,
 
-            text: `${t("glossary:", "Submit")}`,
+            text: `${t(`glossary:create`, `create`)}`,
             click: lcaWebsPostCreateSubmit,
           }}
         />

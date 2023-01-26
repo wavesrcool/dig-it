@@ -43,14 +43,13 @@ export const WebsPostCreatePaymentAmount: React.FC<
 
   return (
     <div className={`flex flex-row w-full `}>
-      <div className={`flex flex-row items-center h-full w-10 -mr-10 pl-2`}>
+      <div className={`flex flex-row items-center h-full w-10 -mr-10 pl-4`}>
         {WebsDigCreateShape.amountType === "btc" ? (
           <svg
             xmlns={"http://www.w3.org/2000/svg"}
             viewBox={"0 0 24 24"}
             fill={"currentColor"}
-            data-v-4fa90e7f={""}
-            className={`scale-[70%] text-slate-700 opacity-50 `}
+            className={`scale-[80%] text-slate-700 opacity-50 `}
           >
             <path
               fillRule={"evenodd"}
@@ -61,16 +60,17 @@ export const WebsPostCreatePaymentAmount: React.FC<
             />
           </svg>
         ) : (
-          <p
-            className={"font-mono font-bold text-lg text-neutral pl-4"}
-          >{`$`}</p>
+          <p className={"font-mono font-bold text-lg text-neutral pl-2"}>
+            {`$`}
+          </p>
         )}
       </div>
       <ComponentsInput
         basis={{
           ...basis,
-          cl: `w-full rounded-full bg-base-200 font-semibold max-lg:pl-8 pl-12 text-neutral/80`,
-          placeholder: ``,
+          cl: `w-full rounded-full bg-base-200/50 font-semibold max-lg:pl-8 pl-12 text-neutral/80`,
+          placeholder:
+            WebsDigCreateShape.amountType === "btc" ? `100,000` : `20`,
           value: WebsDigCreateShape.bundlesAmount.letters,
           change: lcWebsPostCreatePaymentAmountOnChange,
         }}

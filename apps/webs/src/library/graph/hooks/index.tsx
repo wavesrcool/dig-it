@@ -56,18 +56,29 @@ export type DigItGraphData0001 = {
 export type DigItGraphData0002 = {
   __typename?: "DigItGraphData0002";
   notes?: Maybe<Array<Scalars["String"]>>;
-  token?: Maybe<Scalars["String"]>;
 };
 
 export type DigItGraphData0003 = {
   __typename?: "DigItGraphData0003";
+  email?: Maybe<Scalars["String"]>;
   notes?: Maybe<Array<Scalars["String"]>>;
 };
 
-export type DigItGraphData0004 = {
-  __typename?: "DigItGraphData0004";
+export type DigItGraphDataLogInConfirm = {
+  __typename?: "DigItGraphDataLogInConfirm";
   notes?: Maybe<Array<Scalars["String"]>>;
   token?: Maybe<Scalars["String"]>;
+};
+
+export type DigItGraphDataLogInOpen = {
+  __typename?: "DigItGraphDataLogInOpen";
+  notes?: Maybe<Array<Scalars["String"]>>;
+};
+
+export type DigItGraphDataSessionRead = {
+  __typename?: "DigItGraphDataSessionRead";
+  email?: Maybe<Scalars["String"]>;
+  notes?: Maybe<Array<Scalars["String"]>>;
 };
 
 export type DigItGraphFigures0000 = {
@@ -87,11 +98,20 @@ export type DigItGraphFigures0002 = {
 
 export type DigItGraphFigures0003 = {
   locale: Scalars["String"];
-  token: Scalars["String"];
 };
 
-export type DigItGraphFigures0004 = {
+export type DigItGraphFiguresLogInConfirm = {
   email: Scalars["String"];
+  locale: Scalars["String"];
+  passcode: Scalars["String"];
+};
+
+export type DigItGraphFiguresLogInOpen = {
+  email: Scalars["String"];
+  locale: Scalars["String"];
+};
+
+export type DigItGraphFiguresSessionRead = {
   locale: Scalars["String"];
 };
 
@@ -131,9 +151,27 @@ export type DigItGraphResolve0003 = {
   timestamp: Scalars["Float"];
 };
 
-export type DigItGraphResolve0004 = {
-  __typename?: "DigItGraphResolve0004";
-  data?: Maybe<DigItGraphData0004>;
+export type DigItGraphResolveLogInConfirm = {
+  __typename?: "DigItGraphResolveLogInConfirm";
+  data?: Maybe<DigItGraphDataLogInConfirm>;
+  hash: Scalars["String"];
+  message?: Maybe<Scalars["String"]>;
+  pass: Scalars["Boolean"];
+  timestamp: Scalars["Float"];
+};
+
+export type DigItGraphResolveLogInOpen = {
+  __typename?: "DigItGraphResolveLogInOpen";
+  data?: Maybe<DigItGraphDataLogInOpen>;
+  hash: Scalars["String"];
+  message?: Maybe<Scalars["String"]>;
+  pass: Scalars["Boolean"];
+  timestamp: Scalars["Float"];
+};
+
+export type DigItGraphResolveSessionRead = {
+  __typename?: "DigItGraphResolveSessionRead";
+  data?: Maybe<DigItGraphDataSessionRead>;
   hash: Scalars["String"];
   message?: Maybe<Scalars["String"]>;
   pass: Scalars["Boolean"];
@@ -199,7 +237,8 @@ export type Mutation = {
   DigItGraph0001: DigItGraphResolve0001;
   DigItGraph0002: DigItGraphResolve0002;
   DigItGraph0003: DigItGraphResolve0003;
-  DigItGraph0004: DigItGraphResolve0004;
+  DigItGraphLogInConfirm: DigItGraphResolveLogInConfirm;
+  DigItGraphLogInOpen: DigItGraphResolveLogInOpen;
 };
 
 export type MutationDigItGraph0001Args = {
@@ -214,8 +253,12 @@ export type MutationDigItGraph0003Args = {
   figure: DigItGraphFigures0003;
 };
 
-export type MutationDigItGraph0004Args = {
-  figure: DigItGraphFigures0004;
+export type MutationDigItGraphLogInConfirmArgs = {
+  figure: DigItGraphFiguresLogInConfirm;
+};
+
+export type MutationDigItGraphLogInOpenArgs = {
+  figure: DigItGraphFiguresLogInOpen;
 };
 
 export type Place = {
@@ -238,10 +281,15 @@ export type Place = {
 export type Query = {
   __typename?: "Query";
   DigItGraph0000: DigItGraphResolve0000;
+  DigItGraphSessionRead: DigItGraphResolveSessionRead;
 };
 
 export type QueryDigItGraph0000Args = {
   figure: DigItGraphFigures0000;
+};
+
+export type QueryDigItGraphSessionReadArgs = {
+  figure: DigItGraphFiguresSessionRead;
 };
 
 export type DigItFragment0000DigFragment = {
@@ -416,7 +464,6 @@ export type DigItGraph0002Mutation = {
     data?: {
       __typename?: "DigItGraphData0002";
       notes?: Array<string> | null;
-      token?: string | null;
     } | null;
   };
 };
@@ -436,25 +483,66 @@ export type DigItGraph0003Mutation = {
     data?: {
       __typename?: "DigItGraphData0003";
       notes?: Array<string> | null;
+      email?: string | null;
     } | null;
   };
 };
 
-export type DigItGraph0004MutationVariables = Exact<{
-  figure: DigItGraphFigures0004;
+export type DigItGraphLogInConfirmMutationVariables = Exact<{
+  figure: DigItGraphFiguresLogInConfirm;
 }>;
 
-export type DigItGraph0004Mutation = {
+export type DigItGraphLogInConfirmMutation = {
   __typename?: "Mutation";
-  DigItGraph0004: {
-    __typename?: "DigItGraphResolve0004";
+  DigItGraphLogInConfirm: {
+    __typename?: "DigItGraphResolveLogInConfirm";
     pass: boolean;
     message?: string | null;
     timestamp: number;
     hash: string;
     data?: {
-      __typename?: "DigItGraphData0004";
+      __typename?: "DigItGraphDataLogInConfirm";
       notes?: Array<string> | null;
+      token?: string | null;
+    } | null;
+  };
+};
+
+export type DigItGraphLogInOpenMutationVariables = Exact<{
+  figure: DigItGraphFiguresLogInOpen;
+}>;
+
+export type DigItGraphLogInOpenMutation = {
+  __typename?: "Mutation";
+  DigItGraphLogInOpen: {
+    __typename?: "DigItGraphResolveLogInOpen";
+    pass: boolean;
+    message?: string | null;
+    timestamp: number;
+    hash: string;
+    data?: {
+      __typename?: "DigItGraphDataLogInOpen";
+      notes?: Array<string> | null;
+    } | null;
+  };
+};
+
+export type DigItGraphSessionReadQueryVariables = Exact<{
+  figure: DigItGraphFiguresSessionRead;
+}>;
+
+export type DigItGraphSessionReadQuery = {
+  __typename?: "Query";
+  DigItGraphSessionRead: {
+    __typename?: "DigItGraphResolveSessionRead";
+    pass: boolean;
+    message?: string | null;
+    timestamp: number;
+    hash: string;
+    data?: {
+      __typename?: "DigItGraphDataSessionRead";
+      notes?: Array<string> | null;
+      email?: string | null;
     } | null;
   };
 };
@@ -647,7 +735,6 @@ export const DigItGraph0002Document = gql`
       hash
       data {
         notes
-        token
       }
     }
   }
@@ -704,6 +791,7 @@ export const DigItGraph0003Document = gql`
       hash
       data {
         notes
+        email
       }
     }
   }
@@ -751,9 +839,66 @@ export type DigItGraph0003MutationOptions = Apollo.BaseMutationOptions<
   DigItGraph0003Mutation,
   DigItGraph0003MutationVariables
 >;
-export const DigItGraph0004Document = gql`
-  mutation DigItGraph0004($figure: DigItGraphFigures0004!) {
-    DigItGraph0004(figure: $figure) {
+export const DigItGraphLogInConfirmDocument = gql`
+  mutation DigItGraphLogInConfirm($figure: DigItGraphFiguresLogInConfirm!) {
+    DigItGraphLogInConfirm(figure: $figure) {
+      pass
+      message
+      timestamp
+      hash
+      data {
+        notes
+        token
+      }
+    }
+  }
+`;
+export type DigItGraphLogInConfirmMutationFn = Apollo.MutationFunction<
+  DigItGraphLogInConfirmMutation,
+  DigItGraphLogInConfirmMutationVariables
+>;
+
+/**
+ * __useDigItGraphLogInConfirmMutation__
+ *
+ * To run a mutation, you first call `useDigItGraphLogInConfirmMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDigItGraphLogInConfirmMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [digItGraphLogInConfirmMutation, { data, loading, error }] = useDigItGraphLogInConfirmMutation({
+ *   variables: {
+ *      figure: // value for 'figure'
+ *   },
+ * });
+ */
+export function useDigItGraphLogInConfirmMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DigItGraphLogInConfirmMutation,
+    DigItGraphLogInConfirmMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DigItGraphLogInConfirmMutation,
+    DigItGraphLogInConfirmMutationVariables
+  >(DigItGraphLogInConfirmDocument, options);
+}
+export type DigItGraphLogInConfirmMutationHookResult = ReturnType<
+  typeof useDigItGraphLogInConfirmMutation
+>;
+export type DigItGraphLogInConfirmMutationResult =
+  Apollo.MutationResult<DigItGraphLogInConfirmMutation>;
+export type DigItGraphLogInConfirmMutationOptions = Apollo.BaseMutationOptions<
+  DigItGraphLogInConfirmMutation,
+  DigItGraphLogInConfirmMutationVariables
+>;
+export const DigItGraphLogInOpenDocument = gql`
+  mutation DigItGraphLogInOpen($figure: DigItGraphFiguresLogInOpen!) {
+    DigItGraphLogInOpen(figure: $figure) {
       pass
       message
       timestamp
@@ -764,46 +909,111 @@ export const DigItGraph0004Document = gql`
     }
   }
 `;
-export type DigItGraph0004MutationFn = Apollo.MutationFunction<
-  DigItGraph0004Mutation,
-  DigItGraph0004MutationVariables
+export type DigItGraphLogInOpenMutationFn = Apollo.MutationFunction<
+  DigItGraphLogInOpenMutation,
+  DigItGraphLogInOpenMutationVariables
 >;
 
 /**
- * __useDigItGraph0004Mutation__
+ * __useDigItGraphLogInOpenMutation__
  *
- * To run a mutation, you first call `useDigItGraph0004Mutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDigItGraph0004Mutation` returns a tuple that includes:
+ * To run a mutation, you first call `useDigItGraphLogInOpenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDigItGraphLogInOpenMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [digItGraph0004Mutation, { data, loading, error }] = useDigItGraph0004Mutation({
+ * const [digItGraphLogInOpenMutation, { data, loading, error }] = useDigItGraphLogInOpenMutation({
  *   variables: {
  *      figure: // value for 'figure'
  *   },
  * });
  */
-export function useDigItGraph0004Mutation(
+export function useDigItGraphLogInOpenMutation(
   baseOptions?: Apollo.MutationHookOptions<
-    DigItGraph0004Mutation,
-    DigItGraph0004MutationVariables
+    DigItGraphLogInOpenMutation,
+    DigItGraphLogInOpenMutationVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<
-    DigItGraph0004Mutation,
-    DigItGraph0004MutationVariables
-  >(DigItGraph0004Document, options);
+    DigItGraphLogInOpenMutation,
+    DigItGraphLogInOpenMutationVariables
+  >(DigItGraphLogInOpenDocument, options);
 }
-export type DigItGraph0004MutationHookResult = ReturnType<
-  typeof useDigItGraph0004Mutation
+export type DigItGraphLogInOpenMutationHookResult = ReturnType<
+  typeof useDigItGraphLogInOpenMutation
 >;
-export type DigItGraph0004MutationResult =
-  Apollo.MutationResult<DigItGraph0004Mutation>;
-export type DigItGraph0004MutationOptions = Apollo.BaseMutationOptions<
-  DigItGraph0004Mutation,
-  DigItGraph0004MutationVariables
+export type DigItGraphLogInOpenMutationResult =
+  Apollo.MutationResult<DigItGraphLogInOpenMutation>;
+export type DigItGraphLogInOpenMutationOptions = Apollo.BaseMutationOptions<
+  DigItGraphLogInOpenMutation,
+  DigItGraphLogInOpenMutationVariables
+>;
+export const DigItGraphSessionReadDocument = gql`
+  query DigItGraphSessionRead($figure: DigItGraphFiguresSessionRead!) {
+    DigItGraphSessionRead(figure: $figure) {
+      pass
+      message
+      timestamp
+      hash
+      data {
+        notes
+        email
+      }
+    }
+  }
+`;
+
+/**
+ * __useDigItGraphSessionReadQuery__
+ *
+ * To run a query within a React component, call `useDigItGraphSessionReadQuery` and pass it any options that fit your needs.
+ * When your component renders, `useDigItGraphSessionReadQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useDigItGraphSessionReadQuery({
+ *   variables: {
+ *      figure: // value for 'figure'
+ *   },
+ * });
+ */
+export function useDigItGraphSessionReadQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    DigItGraphSessionReadQuery,
+    DigItGraphSessionReadQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    DigItGraphSessionReadQuery,
+    DigItGraphSessionReadQueryVariables
+  >(DigItGraphSessionReadDocument, options);
+}
+export function useDigItGraphSessionReadLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    DigItGraphSessionReadQuery,
+    DigItGraphSessionReadQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    DigItGraphSessionReadQuery,
+    DigItGraphSessionReadQueryVariables
+  >(DigItGraphSessionReadDocument, options);
+}
+export type DigItGraphSessionReadQueryHookResult = ReturnType<
+  typeof useDigItGraphSessionReadQuery
+>;
+export type DigItGraphSessionReadLazyQueryHookResult = ReturnType<
+  typeof useDigItGraphSessionReadLazyQuery
+>;
+export type DigItGraphSessionReadQueryResult = Apollo.QueryResult<
+  DigItGraphSessionReadQuery,
+  DigItGraphSessionReadQueryVariables
 >;

@@ -23,7 +23,7 @@ export const ComponentsButton: React.FC<TypesComponentsButton> = ({
   basis,
 }: TypesComponentsButton) => {
   return (
-    <button className={`btn ${basis.cl || ``}`} onClick={basis.click}>
+    <button className={`btn  ${basis.cl || ``}`} onClick={basis.click}>
       {basis.text}
     </button>
   );

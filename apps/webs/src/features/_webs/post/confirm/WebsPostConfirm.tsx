@@ -4,9 +4,7 @@ import { WebsPostConfirmPasscode } from "@webs-features/_webs/post/confirm/passc
 import { useLocale } from "@webs-hooks/use-locale";
 import { useDigItGraph0002Mutation } from "@webs-library/graph/hooks";
 import { useFold, useShape } from "@webs-shapes/hooks";
-import { writeRootShapeToken } from "@webs-shapes/root/RootShape";
 import {
-  initWebsDigCreateShape,
   ofWebsDigCreateShape,
   writeWebsDigCreateShapeEntracteFalse,
   writeWebsDigCreateShapeInverseTrue,
@@ -65,7 +63,7 @@ export const WebsPostConfirm: React.FC<TypesWebsPostConfirm> = ({
         if (!WebsDigCreateShape.bundlesPasscode.pass) {
           fold(
             writeWebsDigCreateShapeInverseTrue(
-              `Please enter a 6 digit pass code`
+              `glossary:please_enter_a_6_digit_pass_code`
             )
           );
           return;
@@ -81,10 +79,8 @@ export const WebsPostConfirm: React.FC<TypesWebsPostConfirm> = ({
           },
         });
 
-        if (g0002d?.DigItGraph0002.pass && g0002d.DigItGraph0002.data?.token) {
-          fold(writeRootShapeToken(g0002d.DigItGraph0002.data?.token));
+        if (g0002d?.DigItGraph0002.pass) {
           fold(writeWebsDigCreateShapeView("complete"));
-          fold(initWebsDigCreateShape());
         }
 
         //
@@ -117,13 +113,16 @@ export const WebsPostConfirm: React.FC<TypesWebsPostConfirm> = ({
 
   return (
     <div className={`flex flex-col w-full`}>
-      <div className={`flex flex-col w-full max-lg:px-1 px-4 pt-4`}>
-        <p className={"font-dongle font-medium text-2xl"}>
-          {`Great! We sent a pass code to the email address you provided. Please confirm your email to finalize the posting.`}
+      <div className={`flex flex-row w-full pt-2 px-6`}>
+        <p className={"font-dongle font-medium text-3xl text-justify"}>
+          {`${t(
+            `glossary:please_confirm_your_email_to_finalize_the_posting`,
+            `please_confirm_your_email_to_finalize_the_posting`
+          )}.`}
         </p>
       </div>
 
-      <div className={`flex flex-col w-full py-3 max-lg:px-0 px-4 space-y-2`}>
+      <div className={`flex flex-col w-full pb-4 max-lg:px-0 px-4 space-y-2`}>
         <WebsPostConfirmPasscode basis={{ ...basis }} />
       </div>
 
@@ -149,22 +148,27 @@ export const WebsPostConfirm: React.FC<TypesWebsPostConfirm> = ({
           <p className={"font-dongle font-medium text-2xl text-error pt-1"}>
             {WebsDigCreateShape.thread
               ? `${WebsDigCreateShape.thread}.`
-              : `There was an error with the submission`}
+              : `${t(
+                  `glossary:there_was_an_error_with_the_request`,
+                  `there_was_an_error_with_the_request`
+                )}`}
           </p>
         </div>
       ) : null}
 
-      <div className={`flex flex-row w-full justify-end px-4 pt-4`}>
+      <div className={`flex flex-row w-full justify-center px-4 pt-6`}>
         <ComponentsButton
           basis={{
             ...basis,
-            cl: `rounded-full ${WebsDigCreateShape.entracte ? `loading` : ``} ${
+            cl: `rounded-full btn-primary w-full ${
+              WebsDigCreateShape.entracte ? `loading` : ``
+            } ${
               WebsDigCreateShape.inverse
                 ? `btn-error cursor-not-allowed opacity-40`
                 : ``
             }`,
 
-            text: `${t("glossary:", "Submit")}`,
+            text: `${t(`glossary:submit`, `submit`)}`,
             click: lcaWebsPostConfirmSubmit,
           }}
         />

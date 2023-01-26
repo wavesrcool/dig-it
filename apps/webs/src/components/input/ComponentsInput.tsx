@@ -31,7 +31,9 @@ export const ComponentsInput: React.FC<TypesComponentsInput> = ({
       value={basis.value}
       disabled={basis.disabled || false}
       placeholder={basis.placeholder ? ` ${basis.placeholder}` : ``}
-      className={`input ${basis.cl || ``}`}
+      className={`input font-sans placeholder:font-sans focus:outline-0 focus:ring-6 focus:ring-offset-0 ring-blue-400/50 ${
+        basis.cl || ``
+      }`}
       onChange={({ target: { value } }) => basis.change(value)}
     />
   );

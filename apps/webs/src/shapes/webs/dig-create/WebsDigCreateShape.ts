@@ -15,12 +15,12 @@ export type TypesShapesWebsDigCreateShapeView =
 export type TypesShapesWebsDigCreateShapeAmountType = "fiat" | "btc";
 
 export type TypesShapesWebsDigCreateShapeThread =
-  | `Please enter a 6 digit pass code`
-  | `Please enter a valid email address`
-  | `Please enter an email address where you can be contacted`
-  | `Please enter the neighborhood you are located in`
-  | "Please enter an amount you are willing to pay"
-  | "Please enter the city where you live"
+  | `glossary:please_enter_a_6_digit_pass_code`
+  | `glossary:please_enter_a_valid_email_address`
+  | `glossary:please_enter_an_email_address_where_you_can_be_contacted`
+  | `glossary:please_enter_the_neighborhood_you_are_located_in`
+  | `glossary:please_enter_an_amount_you_are_willing_to_offer`
+  | `glossary:please_enter_the_city_where_you_live`
   | "root";
 
 export type TypesShapesWebsDigCreateShapeValue = {
@@ -89,6 +89,18 @@ export const WebsDigCreateShapeSlice = createSlice({
   reducers: {
     initWebsDigCreateShape: (state) => {
       state.value = initialState.value;
+    },
+
+    initBundlesWebsDigCreateShape: (state) => {
+      state.value = {
+        ...state.value,
+        bundlesCity: ReferenceShapesBundlesBasis,
+        bundlesAmount: ReferenceShapesBundlesBasis,
+        bundlesNeighb: ReferenceShapesBundlesBasis,
+        bundlesDesc: ReferenceShapesBundlesBasis,
+        bundlesPasscode: ReferenceShapesBundlesBasis,
+        bundlesContact: ReferenceShapesBundlesBasis,
+      };
     },
 
     writeWebsDigCreateShapeEntracteTrue: (state) => {
@@ -303,6 +315,7 @@ export const WebsDigCreateShapeSlice = createSlice({
 
 export const {
   initWebsDigCreateShape,
+  initBundlesWebsDigCreateShape,
   writeWebsDigCreateShapeEntracteTrue,
   writeWebsDigCreateShapeEntracteFalse,
   writeWebsDigCreateShapeInverseTrue,

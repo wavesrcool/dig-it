@@ -30,7 +30,9 @@ export const ComponentsInputLines: React.FC<TypesComponentsInputLines> = ({
       value={basis.value}
       disabled={basis.disabled || false}
       placeholder={basis.placeholder ? ` ${basis.placeholder}` : ``}
-      className={`textarea ${basis.cl || ``}`}
+      className={`textarea placeholder:text-base placeholder:font-sans focus:outline-0 focus:ring-6 focus:ring-offset-0 ring-blue-400/50  ${
+        basis.cl || ``
+      }`}
       onChange={({ target: { value } }) => basis.change(value)}
     />
   );

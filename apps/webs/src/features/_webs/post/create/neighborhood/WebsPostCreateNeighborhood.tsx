@@ -47,16 +47,25 @@ export const WebsPostCreateNeighborhood: React.FC<
     <div className={`flex flex-col w-full space-y-2 pt-6 max-lg:px-1`}>
       <div className={`flex flex-row w-full`}>
         <p className={"font-dongle font-bold text-3xl opacity-80 px-4"}>
-          {`${t(`glossary.city`, `What neighborhood are you in?`)}`}
+          {`${t(
+            `glossary:what_neighborhood_are_you_in_q`,
+            `what_neighborhood_are_you_in_q`
+          )}`}
         </p>
       </div>
       <div className={`flex flex-row w-full`}>
         <ComponentsInput
           basis={{
             ...basis,
-            cl: `w-full rounded-full bg-base-200 font-semibold max-lg:pl-4 pl-8 text-neutral/80`,
+            cl: `w-full rounded-full bg-base-200/50 font-semibold max-lg:pl-4 pl-8 text-neutral/80`,
             disabled: WebsDigCreateShape.disabled,
-            placeholder: ww < 450 ? `` : `Specify the area of your city`,
+            placeholder:
+              ww < 450
+                ? ``
+                : `${t(
+                    `glossary:specify_the_area_of_your_city`,
+                    `specify_the_area_of_your_city`
+                  )}`,
             value: WebsDigCreateShape.bundlesNeighb.letters,
             change: lcWebsPostCreateNeighborhoodCycle,
           }}

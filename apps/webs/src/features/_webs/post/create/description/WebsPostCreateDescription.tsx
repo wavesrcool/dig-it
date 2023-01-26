@@ -46,17 +46,25 @@ export const WebsPostCreateDescription: React.FC<
     <div className={`flex flex-col w-full space-y-2 pt-6 max-lg:px-1`}>
       <div className={`flex flex-row w-full`}>
         <p className={"font-dongle font-bold text-3xl opacity-80 px-4"}>
-          {`${t(`glossary.city`, `Describe your dig (optional)`)}`}
+          {`${t(`glossary:describe_your_dig`, `describe_your_dig`)} (${t(
+            `glossary:optional`,
+            `optional`
+          ).toLowerCase()})`}
         </p>
       </div>
       <div className={`flex flex-row w-full`}>
         <ComponentsInputLines
           basis={{
             ...basis,
-            cl: `w-full rounded-full bg-base-200 font-semibold max-lg:pl-4 pl-8 text-neutral/80`,
+            cl: `w-full rounded-full bg-base-200/50 font-semibold max-lg:pl-4 pl-8 text-neutral/80`,
             disabled: WebsDigCreateShape.disabled,
             placeholder:
-              ww < 450 ? `` : `Say a few words about what you want to do`,
+              ww < 450
+                ? ``
+                : `${t(
+                    `glossary:say_a_few_words_about_what_you_want_to_do`,
+                    `say_a_few_words_about_what_you_want_to_do`
+                  )}`,
             value: WebsDigCreateShape.bundlesDesc.letters,
             change: lcWebsPostCreateDescriptionCycle,
           }}

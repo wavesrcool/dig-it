@@ -7,7 +7,10 @@ import { DigItGraph0000 } from "../../resolvers/0000/dig-it-graph-0000-resolver"
 import { DigItGraph0001 } from "../../resolvers/0001/dig-it-graph-0001-resolver";
 import { DigItGraph0002 } from "../../resolvers/0002/dig-it-graph-0002-resolver";
 import { DigItGraph0003 } from "../../resolvers/0003/dig-it-graph-0003-resolver";
-import { DigItGraph0004 } from "../../resolvers/0004/dig-it-graph-0004-resolver";
+import { DigItGraphLogInConfirm } from "../../resolvers/log-in/confirm/dig-it-graph-log-in-confirm-resolver";
+import { DigItGraphLogInOpen } from "../../resolvers/log-in/open/dig-it-graph-log-in-open-resolver";
+import { DigItGraphSessionRead } from "../../resolvers/session/read/dig-it-graph-session-read-resolver";
+
 import { TypesApiHttpApollo } from "./types";
 
 const classes = new ClassesApi();
@@ -31,15 +34,18 @@ export const ApiHttpApollo = async (
         DigItGraph0001,
         DigItGraph0002,
         DigItGraph0003,
-        DigItGraph0004,
+        DigItGraphLogInOpen,
+        DigItGraphLogInConfirm,
+        DigItGraphSessionRead,
       ],
       scalarsMap: [],
       validate: false,
     }),
     cache: "bounded",
-    context: async (ctx): Promise<TypesApiHttpApollo> => {
+    context: async ({ req, res }): Promise<TypesApiHttpApollo> => {
       const context: TypesApiHttpApollo = {
-        ...ctx,
+        req,
+        res,
         redis,
         connection: conn,
         classes,

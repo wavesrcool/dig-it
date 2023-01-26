@@ -9,6 +9,6 @@ import { LibraryMessagesGraphBasis } from "../_basis/LibraryMessagesGraphBasis";
  *
  */
 export type LibraryMessagesGraph0003 =
-  | "token-key"
-  | "token-verify"
+  | "read-key"
+  | "session-key"
   | LibraryMessagesGraphBasis;

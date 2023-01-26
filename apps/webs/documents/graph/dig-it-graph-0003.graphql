@@ -6,6 +6,7 @@ mutation DigItGraph0003($figure: DigItGraphFigures0003!) {
     hash
     data {
       notes
+      email
     }
   }
 }

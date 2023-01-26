@@ -2,9 +2,16 @@ import { ComponentsLoading } from "@webs-components/loading/ComponentsLoading";
 import { WebsOrigin } from "@webs-features/_webs/WebsOrigin";
 import { useLocale } from "@webs-hooks/use-locale";
 import { useMap } from "@webs-hooks/use-map";
-import { useDigItGraph0000Query } from "@webs-library/graph/hooks";
+import {
+  useDigItGraph0000Query,
+  useDigItGraphSessionReadQuery,
+} from "@webs-library/graph/hooks";
 import { useFold, useShape } from "@webs-shapes/hooks";
-import { ofRootShape, writeRootShapeDigs } from "@webs-shapes/root/RootShape";
+import {
+  ofRootShape,
+  writeRootShapeDigs,
+  writeRootShapeEmail,
+} from "@webs-shapes/root/RootShape";
 import {
   writeWebsMapShapeAtHome,
   writeWebsMapShapeCenter,
@@ -39,6 +46,10 @@ const WebsPagesIndex: NextPage = () => {
   const locale = useLocale();
 
   const { data: g0000d } = useDigItGraph0000Query({
+    variables: { figure: { locale } },
+  });
+
+  const { data: gSessionReadd } = useDigItGraphSessionReadQuery({
     variables: { figure: { locale } },
   });
 
@@ -81,6 +92,24 @@ const WebsPagesIndex: NextPage = () => {
     g0000d?.DigItGraph0000.data,
     g0000d?.DigItGraph0000.data?.results,
     g0000d?.DigItGraph0000.pass,
+  ]);
+
+  React.useEffect(() => {
+    //
+    // @notes:
+    if (
+      gSessionReadd?.DigItGraphSessionRead.pass &&
+      gSessionReadd?.DigItGraphSessionRead?.data?.email
+    ) {
+      fold(writeRootShapeEmail(gSessionReadd.DigItGraphSessionRead.data.email));
+    }
+
+    // end
+    return;
+  }, [
+    fold,
+    gSessionReadd?.DigItGraphSessionRead.data,
+    gSessionReadd?.DigItGraphSessionRead.pass,
   ]);
 
   const RootShape = useShape(ofRootShape);

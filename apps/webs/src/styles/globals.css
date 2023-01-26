@@ -2,74 +2,175 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Dongle";
-  src: url("/fonts/Dongle-Light.woff2") format("woff2"),
-    url("/fonts/Dongle-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
+@layer base {
+  @font-face {
+    font-family: "Segoe UI";
+    src: url("/fonts/SegoeUI-Italic.woff2") format("woff2"),
+      url("/fonts/SegoeUI-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: "Dongle";
-  src: url("/fonts/Dongle-Bold.woff2") format("woff2"),
-    url("/fonts/Dongle-Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
+  @font-face {
+    font-family: "Segoe UI";
+    src: url("/fonts/SegoeUI-BoldItalic.woff2") format("woff2"),
+      url("/fonts/SegoeUI-BoldItalic.woff") format("woff");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: "Dongle";
-  src: url("/fonts/Dongle-Regular.woff2") format("woff2"),
-    url("/fonts/Dongle-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+  @font-face {
+    font-family: "Segoe UI";
+    src: url("/fonts/SegoeUI-Bold.woff2") format("woff2"),
+      url("/fonts/SegoeUI-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: "Sofia Pro";
-  src: url("/fonts/SofiaProLight.woff2") format("woff2"),
-    url("/fonts/SofiaProLight.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
+  @font-face {
+    font-family: "Segoe UI";
+    src: url("/fonts/SegoeUI-Light.woff2") format("woff2"),
+      url("/fonts/SegoeUI-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: "Ambery Garden";
-  src: url("/fonts/AmberyGarden-Regular.woff2") format("woff2"),
-    url("/fonts/AmberyGarden-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+  @font-face {
+    font-family: "Segoe UI";
+    src: url("/fonts/SegoeUI.woff2") format("woff2"),
+      url("/fonts/SegoeUI.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: "Lupines";
-  src: url("/fonts/Lupines.woff2") format("woff2"),
-    url("/fonts/Lupines.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+  @font-face {
+    font-family: "Segoe UI";
+    src: url("/fonts/SegoeUI-SemiBold.woff2") format("woff2"),
+      url("/fonts/SegoeUI-SemiBold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: "Montserrat";
-  src: url("/fonts/Montserrat-Bold.woff2") format("woff2"),
-    url("/fonts/Montserrat-Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
+  @font-face {
+    font-family: "Lust";
+    src: url("/fonts/Lust-Italic.woff2") format("woff2"),
+      url("/fonts/Lust-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: "Montserrat";
-  src: url("/fonts/Montserrat-Regular.woff2") format("woff2"),
-    url("/fonts/Montserrat-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+  @font-face {
+    font-family: "Lust";
+    src: url("/fonts/Lust-Regular.woff2") format("woff2"),
+      url("/fonts/Lust-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Lust Didone";
+    src: url("/fonts/Lust-Didone.woff2") format("woff2"),
+      url("/fonts/Lust-Didone.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Lust Display";
+    src: url("/fonts/LustDisplay-Italic.woff2") format("woff2"),
+      url("/fonts/LustDisplay-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Lust Display Didone";
+    src: url("/fonts/LustDisplay-Didone.woff2") format("woff2"),
+      url("/fonts/LustDisplay-Didone.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Lust Display";
+    src: url("/fonts/LustDisplay-Regular.woff2") format("woff2"),
+      url("/fonts/LustDisplay-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Dongle";
+    src: url("/fonts/Dongle-Light.woff2") format("woff2"),
+      url("/fonts/Dongle-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Dongle";
+    src: url("/fonts/Dongle-Bold.woff2") format("woff2"),
+      url("/fonts/Dongle-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Dongle";
+    src: url("/fonts/Dongle-Regular.woff2") format("woff2"),
+      url("/fonts/Dongle-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Sofia Pro";
+    src: url("/fonts/SofiaProLight.woff2") format("woff2"),
+      url("/fonts/SofiaProLight.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Lupines";
+    src: url("/fonts/Lupines.woff2") format("woff2"),
+      url("/fonts/Lupines.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/Montserrat-Bold.woff2") format("woff2"),
+      url("/fonts/Montserrat-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/Montserrat-Regular.woff2") format("woff2"),
+      url("/fonts/Montserrat-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 }

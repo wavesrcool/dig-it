@@ -25,14 +25,17 @@ export const WebsPostCreatePayment: React.FC<TypesWebsPostCreatePayment> = ({
     <div className={`flex flex-col w-full space-y-2 max-lg:px-1`}>
       <div className={`flex flex-row w-full`}>
         <p className={"font-dongle font-bold text-3xl opacity-80 px-4"}>
-          {`${t(`glossary:`, `How much would you like to offer?`)}`}
+          {`${t(
+            `glossary:how_much_would_you_like_to_offer_q`,
+            `how_much_would_you_like_to_offer_q`
+          )}`}
         </p>
       </div>
 
       <div
         className={`flex max-lg:flex-col max-lg:space-y-3 max-lg:space-x-0  flex-row w-full space-x-2 items-center`}
       >
-        <div className={`flex flex-row max-lg:flex-1 basis-4/7`}>
+        <div className={`flex flex-row max-lg:w-full basis-4/7`}>
           <WebsPostCreatePaymentAmount basis={{ ...basis }} />
         </div>
         <div className={`flex flex-row max-lg:w-full basis-3/7 `}>

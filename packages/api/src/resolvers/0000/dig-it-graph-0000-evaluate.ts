@@ -40,8 +40,6 @@ export const DigItGraphEvaluate0000 = async (
       // .where(`geo.gh2 = :gh2`, { gh2 })
       .getMany();
 
-    console.log(JSON.stringify(result, null, 4), `result`);
-
     if (result && result.length) {
       list = result;
     }

@@ -1,0 +1,11 @@
+mutation DigItGraphLogInOpen($figure: DigItGraphFiguresLogInOpen!) {
+  DigItGraphLogInOpen(figure: $figure) {
+    pass
+    message
+    timestamp
+    hash
+    data {
+      notes
+    }
+  }
+}

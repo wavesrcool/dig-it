@@ -1,0 +1,12 @@
+mutation DigItGraphLogInConfirm($figure: DigItGraphFiguresLogInConfirm!) {
+  DigItGraphLogInConfirm(figure: $figure) {
+    pass
+    message
+    timestamp
+    hash
+    data {
+      notes
+      token
+    }
+  }
+}

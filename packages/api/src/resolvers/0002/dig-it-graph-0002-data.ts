@@ -12,7 +12,4 @@ import { Field, ObjectType } from "type-graphql";
 export class DigItGraphData0002 {
   @Field(() => [String], { nullable: true })
   notes?: string[] | null;
-
-  @Field(() => String, { nullable: true })
-  token?: string | null;
 }

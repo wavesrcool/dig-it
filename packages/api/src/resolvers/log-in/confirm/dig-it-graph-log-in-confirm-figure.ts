@@ -9,10 +9,13 @@ import { Field, InputType } from "type-graphql";
  *
  */
 @InputType()
-export class DigItGraphFigures0004 {
+export class DigItGraphFiguresLogInConfirm {
   @Field(() => String)
   locale!: string;
 
   @Field(() => String)
   email!: string;
+
+  @Field(() => String)
+  passcode!: string;
 }

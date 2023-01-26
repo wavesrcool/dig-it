@@ -1,3 +1,4 @@
+import { WebsPostComplete } from "@webs-features/_webs/post/complete/WebsPostComplete";
 import { WebsPostConfirm } from "@webs-features/_webs/post/confirm/WebsPostConfirm";
 import { WebsPostCreate } from "@webs-features/_webs/post/create/WebsPostCreate";
 import { useFold, useShape } from "@webs-shapes/hooks";
@@ -23,7 +24,7 @@ export type TypesWebsPost = {
  *
  */
 export const WebsPost: React.FC<TypesWebsPost> = ({ basis }: TypesWebsPost) => {
-  const { t } = useTranslation(basis.dictionary);
+  useTranslation(basis.dictionary);
 
   const fold = useFold();
   const WebsDigCreateShape = useShape(ofWebsDigCreateShape);
@@ -61,7 +62,7 @@ export const WebsPost: React.FC<TypesWebsPost> = ({ basis }: TypesWebsPost) => {
               <div className={`flex w-8`} />
               <div className={`flex flex-1 items-center justify-center`}>
                 <h3 className={"font-dongle font-bold text-3xl"}>
-                  {`${t(`glossary.create_a_dig`, `Dig it`)}!`}
+                  {`Dig it!`}
                 </h3>
               </div>
               <div
@@ -91,6 +92,10 @@ export const WebsPost: React.FC<TypesWebsPost> = ({ basis }: TypesWebsPost) => {
 
             {WebsDigCreateShape.view === "confirm" ? (
               <WebsPostConfirm basis={{ ...basis }} />
+            ) : null}
+
+            {WebsDigCreateShape.view === "complete" ? (
+              <WebsPostComplete basis={{ ...basis }} />
             ) : null}
           </div>
         </div>

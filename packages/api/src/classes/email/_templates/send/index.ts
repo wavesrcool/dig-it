@@ -1,14 +1,18 @@
+import { TypesClassesEmailTemplatesSend } from "./types";
+
 /**
  * * Dig It Documentation
  *
- * @created 01 24 2023
+ * @created 01 26 2023
  * @collection api synchronous function
  * @notes [ ]
  *
  */
-export const htmlconfirmemail = (passcode: string, to: string): string => {
-  const pc1 = passcode.slice(0, 3);
-  const pc2 = passcode.slice(3);
+export const ClassesEmailTemplatesSend = (
+  email: string,
+  passcode: string,
+  f: TypesClassesEmailTemplatesSend
+): string => {
   return `<!doctype html>
   <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <head>
@@ -189,12 +193,12 @@ export const htmlconfirmemail = (passcode: string, to: string): string => {
             
                 <tr>
                   <td
-                     align="justify" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+                     align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"
                   >
                     
         <div
-           style="font-family:Courier New;font-size:24px;font-weight:600;letter-spacing:-0.8px;line-height:1;text-align:justify;color:#4A4545;"
-        >Here's the code to confirm your email.</div>
+           style="font-family:Courier New;font-size:24px;font-weight:600;letter-spacing:-0.8px;line-height:1;text-align:center;color:#4A4545;"
+        >⚘ ${f.content.heading} ⚘</div>
       
                   </td>
                 </tr>
@@ -229,12 +233,12 @@ export const htmlconfirmemail = (passcode: string, to: string): string => {
             
                 <tr>
                   <td
-                     align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+                     align="justify" style="font-size:0px;padding:10px 25px;word-break:break-word;"
                   >
                     
         <div
-           style="font-family:Courier New;font-size:24px;font-weight:600;letter-spacing:-0.8px;line-height:1;text-align:center;color:#4A4545;"
-        >⚘ Have fun gardening ⚘</div>
+           style="font-family:Courier New;font-size:24px;font-weight:600;letter-spacing:-0.8px;line-height:1;text-align:justify;color:#4A4545;"
+        >${f.content.line}.</div>
       
                   </td>
                 </tr>
@@ -312,7 +316,7 @@ export const htmlconfirmemail = (passcode: string, to: string): string => {
                     
         <div
            style="font-family:Courier New;font-size:34px;font-weight:400;letter-spacing:10px;line-height:1;text-align:center;color:#C7FEDB;"
-        >${pc1}  ${pc2}</div>
+        >${passcode.slice(0, 3)}  ${passcode.slice(3)}</div>
       
                   </td>
                 </tr>
@@ -423,7 +427,7 @@ export const htmlconfirmemail = (passcode: string, to: string): string => {
                     
         <div
            style="font-family:Courier New;font-size:12px;font-weight:500;letter-spacing:-0.8px;line-height:1;text-align:center;color:#4A4545;"
-        >This email was sent by www.dig-it.earth to ${to}.</div>
+        >This email was sent by www.dig-it.earth to ${email}.</div>
       
                   </td>
                 </tr>

@@ -1,4 +1,4 @@
-import { LibraryMessagesGraphBasis } from "../_basis/LibraryMessagesGraphBasis";
+import { LibraryMessagesGraphBasis } from "../../_basis/LibraryMessagesGraphBasis";
 
 /**
  * * Dig It Documentation
@@ -8,7 +8,9 @@ import { LibraryMessagesGraphBasis } from "../_basis/LibraryMessagesGraphBasis";
  * @notes [ ]
  *
  */
-export type LibraryMessagesGraph0004 =
+export type LibraryMessagesGraphLogInConfirm =
+  | "passcode"
   | "email-key"
+  | "passcode-re"
   | "email-re"
   | LibraryMessagesGraphBasis;

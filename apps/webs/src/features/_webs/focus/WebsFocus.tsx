@@ -41,7 +41,7 @@ export const WebsFocus: React.FC<TypesWebsFocus> = ({
         <ComponentsButton
           basis={{
             ...basis,
-            cl: `btn-primary rounded-full`,
+            cl: `btn-primary rounded-full `, // font-sans
             text: `Post a new dig`,
             click: lcWebsFocusTouchModalCreate,
           }}

@@ -1,3 +1,4 @@
+import { LibraryRegExpEmail } from "@dig-it/library/lib/regexp/email/LibraryRegExpEmail";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LibraryShapesBundlesLetters } from "@wavesrcool/library/lib/shapes/bundles/letters/LibraryShapesBundlesLetters";
 import { ReferenceShapesBundlesBasis } from "@wavesrcool/library/lib/shapes/bundles/_ref";
@@ -6,7 +7,10 @@ import { TypesWebsShape } from "@webs-shapes/store";
 
 export type TypesShapesWebsLogInShapeView = "open" | "confirm";
 
-export type TypesShapesWebsLogInShapeThread = "root";
+export type TypesShapesWebsLogInShapeThread =
+  | "root"
+  | `glossary:to_log_in_you_must_post_or_respond_to_a_dig`
+  | `glossary:please_enter_a_valid_email_address`;
 
 export type TypesShapesWebsLogInShapeValue = {
   entracte: boolean;
@@ -19,6 +23,7 @@ export type TypesShapesWebsLogInShapeValue = {
   view: TypesShapesWebsLogInShapeView;
 
   bundlesEmail: TypesShapesBundles;
+  bundlesPassCode: TypesShapesBundles;
 };
 
 export type TypesShapesWebsLogInShape = {
@@ -37,6 +42,7 @@ const initialState: TypesShapesWebsLogInShape = {
     view: "open",
 
     bundlesEmail: ReferenceShapesBundlesBasis,
+    bundlesPassCode: ReferenceShapesBundlesBasis,
   },
 };
 
@@ -102,14 +108,31 @@ export const WebsLogInShapeSlice = createSlice({
       };
     },
 
-    writeWebsDigCreateShapePasscodeBundle: (
+    writeWebsLogInShapeBundlesPassCode: (
+      state,
+      { payload }: PayloadAction<string>
+    ) => {
+      const f = {
+        bundle: state.value.bundlesPassCode,
+        letters: payload,
+        pass: payload.length === 6,
+      };
+      const bundlesPassCode = LibraryShapesBundlesLetters(f);
+      state.value = {
+        ...state.value,
+        inverse: false,
+        bundlesPassCode,
+      };
+    },
+
+    writeWebsLogInShapeBundlesEmail: (
       state,
       { payload }: PayloadAction<string>
     ) => {
       const f = {
         bundle: state.value.bundlesEmail,
         letters: payload,
-        pass: payload.length === 6,
+        pass: LibraryRegExpEmail.test(payload),
       };
       const bundlesEmail = LibraryShapesBundlesLetters(f);
       state.value = {
@@ -132,6 +155,9 @@ export const {
   //
   writeWebsLogInShapeVisible,
   writeWebsLogInShapeView,
+
+  writeWebsLogInShapeBundlesEmail,
+  writeWebsLogInShapeBundlesPassCode,
 } = WebsLogInShapeSlice.actions;
 
 export const ofWebsLogInShape = (

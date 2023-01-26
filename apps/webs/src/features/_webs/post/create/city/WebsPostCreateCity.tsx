@@ -126,16 +126,22 @@ export const WebsPostCreateCity: React.FC<TypesWebsPostCreateCity> = ({
     <div className={`flex flex-col w-full space-y-2`}>
       <div className={`flex flex-row w-full`}>
         <p className={"font-dongle font-bold text-3xl opacity-80 px-4"}>
-          {`${t(`glossary.city`, `What city are you in?`)}`}
+          {`${t(`glossary:what_city_are_you_in_q`, `what_city_are_you_in_q`)}`}
         </p>
       </div>
       <div className={`flex flex-row w-full max-lg:px-1`}>
         <ComponentsInput
           basis={{
             ...basis,
-            cl: `w-full rounded-full bg-base-200 font-semibold max-lg:pl-4 pl-8 text-neutral/80 `,
+            cl: `w-full rounded-full bg-base-200/50 font-semibold max-lg:pl-4 pl-8 text-neutral/80 `,
             disabled: WebsDigCreateShape.disabled,
-            placeholder: ww < 450 ? `` : `Search to find your city`,
+            placeholder:
+              ww < 450
+                ? ``
+                : `${t(
+                    `glossary:search_to_find_your_city`,
+                    `search_to_find_your_city`
+                  )}`,
             value: WebsDigCreateShape.cityPlace
               ? `${WebsDigCreateShape.cityPlace.city}, ${WebsDigCreateShape.cityPlace.region}`
               : WebsDigCreateShape.bundlesCity.letters,
@@ -151,14 +157,14 @@ export const WebsPostCreateCity: React.FC<TypesWebsPostCreateCity> = ({
               basis={{ ...basis, cl: `max-lg:scale-75 scale-[80%]` }}
             />
           ) : WebsDigCreateShape.cityPlace ? (
-            <div className={`flex text-neutral/70 bg-base-200 z-20 pl-2 `}>
+            <div className={`flex text-primary bg-transparent z-20 pl-2 `}>
               <svg
                 xmlns={"http://www.w3.org/2000/svg"}
                 fill={"none"}
                 viewBox={"0 0 24 24"}
                 strokeWidth={1.5}
                 stroke={"currentColor"}
-                className={"w-4 h-4"}
+                className={"w-5 h-5"}
               >
                 <path
                   strokeLinecap={"round"}

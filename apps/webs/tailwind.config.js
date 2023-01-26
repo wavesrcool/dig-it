@@ -57,14 +57,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: [...dt.fontFamily.sans],
+        // sans: ["Segoe UI"],
+        sans: ['"Segoe UI"', ...dt.fontFamily.sans],
         serif: [...dt.fontFamily.serif],
         mono: [...dt.fontFamily.mono],
-        amberry: ["Ambery Garden"],
         lupines: ["Lupines"],
         sofia: ["Sofia Pro"],
         dongle: ["Dongle"],
         montserrat: ["Montserrat"],
+        lust: ["Lust"],
+        segoe: ["Segoe UI"],
       },
       screens: {
         "3xl": "1920px",
@@ -116,11 +118,11 @@ module.exports = {
       },
     },
   },
+  /*
   variants: {
-    extend: {
-      fontFamily: ["hover", "focus"],
-    },
+    extend: {},
   },
+  */
   corePlugins: {
     aspectRatio: false,
     fontFamily: true,

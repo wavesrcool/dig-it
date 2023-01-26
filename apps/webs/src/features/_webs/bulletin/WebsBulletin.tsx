@@ -34,7 +34,7 @@ export const WebsBulletin: React.FC<TypesWebsBulletin> = ({
               "font-montserrat font-medium text-2xl uppercase text-white"
             }
           >
-            {`${t(`glossary.`, `bulletin`)}`}
+            {`${t(`glossary:bulletin`, `bulletin`)}`}
           </p>
         </div>
       </div>

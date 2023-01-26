@@ -64,7 +64,7 @@ export const WebsLogIn: React.FC<TypesWebsLogIn> = ({
               <div className={`flex w-8`} />
               <div className={`flex flex-1 items-center justify-center`}>
                 <h3 className={"font-dongle font-bold text-3xl"}>
-                  {`${t(`glossary.create_a_dig`, `Log in`)}`}
+                  {`${t(`glossary:log_in`, `log_in`)}`}
                 </h3>
               </div>
               <div
