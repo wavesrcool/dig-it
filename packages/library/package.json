@@ -15,7 +15,7 @@
     "url": "https://github.com/wavesrcool/dig-it.git"
   },
   "type": "commonjs",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -46,11 +46,11 @@
     "update": "rm -rf node_modules && yarn"
   },
   "devDependencies": {
-    "@dig-it/dev": "^0.1.8",
+    "@dig-it/dev": "^0.1.9",
     "@types/ngeohash": "^0.6.4"
   },
   "dependencies": {
-    "@dig-it/env": "^0.1.7",
+    "@dig-it/env": "^0.1.8",
     "@fractalsoftware/random-avatar-generator": "^1.0.11",
     "axios": "^1.2.2",
     "jshashes": "^1.0.8",
