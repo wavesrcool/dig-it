@@ -39,7 +39,7 @@ export class ClassesApiEmail {
     const footer2 = `If you have any questions respond to this email to let us know`;
 
     const message: MailgunMessageData = {
-      to: `tyson@lupul.dev`, // @todo dev rm
+      to,
       from: `Dig it! <no-reply@dig-it.earth>`,
       text: `${greeting} ${figure.content.line}. ${footer1}. ${footer2}.`,
       html: ClassesEmailTemplatesSend(to, passcode, figure),
