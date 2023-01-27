@@ -13,3 +13,12 @@ The repo is split up into a number of packages -
 - [@dig-it/library](packages/library/) A collection of common functions, types, and references used across frontend and backend repo packages
 - [@dig-it/models](packages/models/) The definitions for database models and PostgreSQL connection instance
 - [@dig-it/roots](packages/roots/) A collection of JSON sources that are used across repo packages
+
+## Requests
+
+API test -
+
+```
+curl -L -X GET 'https://api.dig-it.earth'
+```
+
