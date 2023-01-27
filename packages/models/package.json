@@ -15,7 +15,7 @@
     "url": "https://github.com/wavesrcool/dig-it.git"
   },
   "type": "commonjs",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -52,12 +52,12 @@
     "db:migration:run": "yarn db:connection migration:run"
   },
   "devDependencies": {
-    "@dig-it/dev": "^0.1.7",
+    "@dig-it/dev": "^0.1.8",
     "@faker-js/faker": "^7.6.0"
   },
   "dependencies": {
-    "@dig-it/env": "^0.1.6",
-    "@dig-it/library": "^0.1.8",
+    "@dig-it/env": "^0.1.7",
+    "@dig-it/library": "^0.1.9",
     "class-validator": "0.13.2",
     "dotenv-safe": "^8.2.0",
     "reflect-metadata": "0.1.13",
