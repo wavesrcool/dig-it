@@ -19,7 +19,7 @@ import { envwebs } from "_env";
 
 const { GEOCODE_KEY } = envwebs;
 
-export type TypesWebsFocusSearchInput = {
+export type TypesWebsSearchInput = {
   basis: TypesWebsBasis;
 };
 
@@ -31,15 +31,15 @@ export type TypesWebsFocusSearchInput = {
  * @notes [ ]
  *
  */
-export const WebsFocusSearchInput: React.FC<TypesWebsFocusSearchInput> = ({
+export const WebsSearchInput: React.FC<TypesWebsSearchInput> = ({
   basis,
-}: TypesWebsFocusSearchInput) => {
+}: TypesWebsSearchInput) => {
   const { t } = useTranslation(basis.dictionary);
 
   const fold = useFold();
   const WebsSearchShape = useShape(ofWebsSearchShape);
 
-  const lcaWebsFocusSearchInput = React.useCallback(
+  const lcaWebsSearchInput = React.useCallback(
     (value: string) => {
       // @notes:
 
@@ -135,7 +135,7 @@ export const WebsFocusSearchInput: React.FC<TypesWebsFocusSearchInput> = ({
                   `Search the world for digs`
                 )}!`,
 
-          change: lcaWebsFocusSearchInput,
+          change: lcaWebsSearchInput,
         }}
       />
 

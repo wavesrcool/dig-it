@@ -70,7 +70,7 @@ export const AccountOrigin: React.FC<TypesAccountOrigin> = ({
             </svg>
 
             <p className={"font-sans font-medium italic text-lg "}>
-              {"under development!"}
+              {"still under development!"}
             </p>
           </div>
         </div>

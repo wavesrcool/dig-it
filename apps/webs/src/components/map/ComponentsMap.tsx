@@ -7,7 +7,8 @@ import { ofRootShape } from "@webs-shapes/root/RootShape";
 import {
   ofWebsMapShape,
   writeWebsMapShapeCenter,
-  writeWebsMapShapeShowCenter,
+  writeWebsMapShapeVisibleAnchor,
+  writeWebsMapShapeVisibleCenter,
   writeWebsMapShapeZoom,
 } from "@webs-shapes/webs/map/WebsMapShape";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
@@ -40,10 +41,19 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
   const { 1: winh } = useWindow();
   const { 0: mb } = useMap();
 
-  const WebsMapShape = useShape(ofWebsMapShape);
   const RootShape = useShape(ofRootShape);
+  const WebsMapShape = useShape(ofWebsMapShape);
 
-  // console.log(JSON.stringify(WebsMapShape, null, 4), `WebsMapShape`);
+  React.useEffect(() => {
+    //
+    // @notes:
+    if (WebsMapShape.center && !WebsMapShape.visibleAnchorPersist) {
+      fold(writeWebsMapShapeVisibleAnchor(false));
+    }
+
+    // end
+    return;
+  }, [WebsMapShape.center, WebsMapShape.visibleAnchorPersist, fold]);
 
   const lcComponentsMapTouch = React.useCallback(
     (center: [number, number]) => {
@@ -51,7 +61,8 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
       // @notes:
 
       fold(writeWebsMapShapeCenter(center));
-      fold(writeWebsMapShapeShowCenter(true));
+      fold(writeWebsMapShapeVisibleCenter(true));
+      fold(writeWebsMapShapeVisibleCenter(false));
 
       // end
       return;
@@ -64,15 +75,40 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
       //
       // @notes:
 
+      const eq0 = center[0] === WebsMapShape.anchor[0];
+      const eq1 = center[1] === WebsMapShape.anchor[1];
+
+      if (!WebsMapShape.center && eq0 && eq1) {
+        console.log(`bounds catch`);
+        return;
+      }
+      console.log(`bounds change`);
+
+      console.log(`${center[0]}`);
+      console.log(`${WebsMapShape.anchor[0]}`);
+      console.log(``);
+      console.log(`${center[1]}`);
+      console.log(`${WebsMapShape.anchor[1]}`);
+
+      // console.log(`ANCHOR ${WebsMapShape.anchor[0]} ${WebsMapShape.anchor[1]}`);
+
       fold(writeWebsMapShapeZoom(zoom));
       fold(writeWebsMapShapeCenter(center));
-      fold(writeWebsMapShapeShowCenter(false));
 
       // end
       return;
     },
-    [fold]
+    [WebsMapShape.anchor, WebsMapShape.center, fold]
   );
+
+  const lcComponentsMapPressCenterPoint = React.useCallback(() => {
+    //
+    // @notes:
+    console.log(`center`);
+
+    // end
+    return;
+  }, []);
 
   return mb ? (
     <>
@@ -96,7 +132,7 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
         metaWheelZoom
         metaWheelZoomWarning={""}
         zoomSnap={false}
-        center={WebsMapShape.center}
+        center={WebsMapShape.center || WebsMapShape.anchor}
         zoom={WebsMapShape.zoom}
         onBoundsChanged={({ center, zoom }) => {
           lcComponentsMapBoundsChange(center, zoom);
@@ -105,11 +141,55 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
           lcComponentsMapTouch(latLng);
         }}
       >
-        {WebsMapShape.showHome ? (
-          <Overlay anchor={WebsMapShape.home} offset={[10.5, 15]}>
-            <ComponentsMapPoint basis={{ ...basis }} />
+        {WebsMapShape.visibleAnchor ? (
+          <Overlay anchor={WebsMapShape.anchor} offset={[10.5, 15]}>
+            <ComponentsMapPoint
+              basis={{
+                ...basis,
+                title: ``,
+                content: (
+                  <div
+                    className={`flex flex-col w-full space-y-2 pl-2 text-neutral`}
+                  >
+                    <div className={`flex flex-row w-full`}>
+                      <p className={"font-mono font-medium text-md"}>
+                        {`${mb.city}, ${mb.country[0]}`}
+                      </p>
+                    </div>
+                    <div className={`flex flex-col w-full`}>
+                      <div className={`flex flex-row`}>
+                        <p className={"font-mono font-medium text-md"}>
+                          {`lat:`}
+                          <span className={"pl-2"}> {`${mb.center[0]}`}</span>
+                        </p>
+                      </div>
+                      <div className={`flex flex-row space-x-1`}>
+                        <p className={"font-mono font-medium text-md"}>
+                          {`lng:`}
+                          <span className={"pl-2"}> {`${mb.center[1]}`}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ),
+                click: lcComponentsMapPressCenterPoint,
+              }}
+            />
           </Overlay>
         ) : null}
+
+        {/* WebsSearchShape.searchedPlace ? (
+          <Overlay anchor={WebsMapShape.home} offset={[10.5, 15]}>
+            <ComponentsMapPoint
+              basis={{
+                ...basis,
+                title: WebsSearchShape.searchedPlace.line,
+                content: <div className={`flex `}>{"hello"}</div>,
+                click: lcComponentsMapPressPrimaryPoint,
+              }}
+            />
+          </Overlay>
+        ) : null */}
 
         {(RootShape.digs as Dig[])?.map((dig) => {
           const anc: [number, number] = [
@@ -118,7 +198,38 @@ export const ComponentsMap: React.FC<TypesComponentsMap> = ({
           ];
           return (
             <Overlay key={dig.key} anchor={anc} offset={[10.5, 15]}>
-              <ComponentsMapPoint basis={{ ...basis }} />
+              <ComponentsMapPoint
+                basis={{
+                  ...basis,
+                  title: ``,
+                  content: (
+                    <div
+                      className={`flex flex-col w-full space-y-2 pl-2 text-neutral`}
+                    >
+                      <div className={`flex flex-row w-full`}>
+                        <p className={"font-mono font-medium text-md"}>
+                          {`${dig.place.city}, ${dig.place.country}`}
+                        </p>
+                      </div>
+                      <div className={`flex flex-col w-full`}>
+                        <div className={`flex flex-row`}>
+                          <p className={"font-mono font-medium text-md"}>
+                            {`lat:`}
+                            <span className={"pl-2"}> {`${anc[0]}`}</span>
+                          </p>
+                        </div>
+                        <div className={`flex flex-row space-x-1`}>
+                          <p className={"font-mono font-medium text-md"}>
+                            {`lng:`}
+                            <span className={"pl-2"}> {`${anc[1]}`}</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                  click: () => null,
+                }}
+              />
             </Overlay>
           );
         })}

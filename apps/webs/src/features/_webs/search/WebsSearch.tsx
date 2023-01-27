@@ -1,12 +1,12 @@
 import { ComponentsButton } from "@webs-components/button/ComponentsButton";
-import { WebsFocusSearchInput } from "@webs-features/_webs/focus/search-input/WebsFocusSearchInput";
-import { WebsFocusSearchResults } from "@webs-features/_webs/focus/search-results/WebsFocusSearchResults";
+import { WebsSearchInput } from "@webs-features/_webs/search/input/WebsSearchInput";
+import { WebsSearchResults } from "@webs-features/_webs/search/results/WebsSearchResults";
 import { useFold } from "@webs-shapes/hooks";
 import { writeWebsDigCreateShapeVisible } from "@webs-shapes/webs/dig-create/WebsDigCreateShape";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
 import * as React from "react";
 
-export type TypesWebsFocus = {
+export type TypesWebsSearch = {
   basis: TypesWebsBasis;
 };
 
@@ -18,11 +18,11 @@ export type TypesWebsFocus = {
  * @notes [ ]
  *
  */
-export const WebsFocus: React.FC<TypesWebsFocus> = ({
+export const WebsSearch: React.FC<TypesWebsSearch> = ({
   basis,
-}: TypesWebsFocus) => {
+}: TypesWebsSearch) => {
   const fold = useFold();
-  const lcWebsFocusTouchModalCreate = React.useCallback(() => {
+  const lcWebsSearchTouchModalCreate = React.useCallback(() => {
     //
     // @notes:
     fold(writeWebsDigCreateShapeVisible(true));
@@ -36,31 +36,19 @@ export const WebsFocus: React.FC<TypesWebsFocus> = ({
       <div
         className={`flex max-lg:flex-col max-lg:space-x-0 max-lg:space-y-4 max-lg:py-2 flex-row max-lg:w-full basis-5/7 space-x-4`}
       >
-        <WebsFocusSearchInput basis={{ ...basis }} />
+        <WebsSearchInput basis={{ ...basis }} />
 
         <ComponentsButton
           basis={{
             ...basis,
-            cl: `btn-primary rounded-full `, // font-sans
+            cl: `btn-primary rounded-full `,
             text: `Post a new dig`,
-            click: lcWebsFocusTouchModalCreate,
+            click: lcWebsSearchTouchModalCreate,
           }}
         />
       </div>
 
-      <WebsFocusSearchResults basis={{ ...basis }} />
+      <WebsSearchResults basis={{ ...basis }} />
     </div>
   );
 };
-
-/*
-        <WebsFocusSearchButton basis={{ ...basis }} />
-
-
-
-        <div
-          className={`flex max-lg:w-full basis-2/7 max-lg:flex-col-reverse max-lg:space-x-0 flex-row space-x-4`}
-        >
-          <WebsFocusReadyToDig basis={{ ...basis }} />
-        </div>
-*/

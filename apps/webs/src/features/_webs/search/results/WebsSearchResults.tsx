@@ -1,6 +1,9 @@
 import { LibraryGeocodeKey } from "@dig-it/library/lib/geocode/key/LibraryGeocodeKey";
 import { useFold, useShape } from "@webs-shapes/hooks";
-import { writeWebsMapShapeZoom } from "@webs-shapes/webs/map/WebsMapShape";
+import {
+  writeWebsMapShapeCenter,
+  writeWebsMapShapeZoom,
+} from "@webs-shapes/webs/map/WebsMapShape";
 import {
   ofWebsSearchShape,
   writeWebsSearchShapeDisabled,
@@ -17,7 +20,7 @@ import { envwebs } from "_env";
 
 const { GEOCODE_KEY } = envwebs;
 
-export type TypesWebsFocusSearchResults = {
+export type TypesWebsSearchResults = {
   basis: TypesWebsBasis;
 };
 
@@ -29,15 +32,15 @@ export type TypesWebsFocusSearchResults = {
  * @notes [ ]
  *
  */
-export const WebsFocusSearchResults: React.FC<TypesWebsFocusSearchResults> = ({
+export const WebsSearchResults: React.FC<TypesWebsSearchResults> = ({
   basis,
-}: TypesWebsFocusSearchResults) => {
+}: TypesWebsSearchResults) => {
   useTranslation(basis.dictionary);
 
   const fold = useFold();
   const WebsSearchShape = useShape(ofWebsSearchShape);
 
-  const lcaWebsFocusSearchResults = React.useCallback(
+  const lcaWebsSearchResults = React.useCallback(
     async (key: string) => {
       //
       // @notes:
@@ -50,7 +53,6 @@ export const WebsFocusSearchResults: React.FC<TypesWebsFocusSearchResults> = ({
 
       // loading start
       fold(writeWebsSearchShapeEntracteTrue());
-
       fold(writeWebsSearchShapeDisabled(true));
       //
       // run
@@ -63,6 +65,7 @@ export const WebsFocusSearchResults: React.FC<TypesWebsFocusSearchResults> = ({
 
           if (typeof place !== "string") {
             fold(writeWebsSearchShapeSearchedPlace(place));
+            fold(writeWebsMapShapeCenter(place.center));
           }
 
           //
@@ -98,7 +101,7 @@ export const WebsFocusSearchResults: React.FC<TypesWebsFocusSearchResults> = ({
         return (
           <div
             key={key}
-            onClick={() => lcaWebsFocusSearchResults(key)}
+            onClick={() => lcaWebsSearchResults(key)}
             className={`flex flex-row w-full rounded-full justify-between pl-6 pr-4 py-2 opacity-90 hover:bg-secondary-focus/30 text-slate-700 hover:text-primary-focus rounded-xl cursor-pointer`}
           >
             <p className={`font-sans font-medium text-base `}>{value}</p>

@@ -12,12 +12,7 @@ import {
   writeRootShapeDigs,
   writeRootShapeEmail,
 } from "@webs-shapes/root/RootShape";
-import {
-  writeWebsMapShapeAtHome,
-  writeWebsMapShapeCenter,
-  writeWebsMapShapeHome,
-  writeWebsMapShapeShowHome,
-} from "@webs-shapes/webs/map/WebsMapShape";
+import { writeWebsMapShapeAnchor } from "@webs-shapes/webs/map/WebsMapShape";
 import type { GetStaticProps, GetStaticPropsContext, NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import * as React from "react";
@@ -65,10 +60,8 @@ const WebsPagesIndex: NextPage = () => {
     //
     // @notes:
     if (mb) {
-      fold(writeWebsMapShapeHome(mb.center));
-      fold(writeWebsMapShapeCenter(mb.center));
-      fold(writeWebsMapShapeAtHome(true));
-      fold(writeWebsMapShapeShowHome(true));
+      // fold(writeWebsMapShapeCenter(mb.center));
+      fold(writeWebsMapShapeAnchor(mb.center));
     }
 
     // end

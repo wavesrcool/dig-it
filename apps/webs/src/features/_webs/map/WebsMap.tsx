@@ -1,9 +1,11 @@
 import { ComponentsMap } from "@webs-components/map/ComponentsMap";
-import { useFold, useShape } from "@webs-shapes/hooks";
+import { useMap } from "@webs-hooks/use-map";
+import { useFold } from "@webs-shapes/hooks";
 import {
-  ofWebsMapShape,
   TypesShapesWebsMapShapeZoomStep,
+  writeWebsMapShapeAnchor,
   writeWebsMapShapeCenter,
+  writeWebsMapShapeVisibleAnchor,
   writeWebsMapShapeZoomStep,
 } from "@webs-shapes/webs/map/WebsMapShape";
 import { TypesWebsBasis } from "@webs-types/basis/TypesWebsBasis";
@@ -24,7 +26,7 @@ export type TypesWebsMap = {
 export const WebsMap: React.FC<TypesWebsMap> = ({ basis }: TypesWebsMap) => {
   const fold = useFold();
 
-  const WebsMapShape = useShape(ofWebsMapShape);
+  const { 0: mapbasis } = useMap();
 
   const lcWebsMapTouchZoomStep = React.useCallback(
     (step: TypesShapesWebsMapShapeZoomStep) => {
@@ -41,13 +43,15 @@ export const WebsMap: React.FC<TypesWebsMap> = ({ basis }: TypesWebsMap) => {
   const lcWebsMapTouchHome = React.useCallback(() => {
     //
     // @notes:
-    // fold(writeWebsMapShapeAtHome(true));
-    // fold(writeWebsMapShapeShowHome(true));
-    fold(fold(writeWebsMapShapeCenter(WebsMapShape.home)));
+    if (mapbasis) {
+      fold(writeWebsMapShapeCenter(undefined));
+      fold(writeWebsMapShapeAnchor(mapbasis.center));
+      fold(writeWebsMapShapeVisibleAnchor(true));
+    }
 
     // end
     return;
-  }, [WebsMapShape.home, fold]);
+  }, [fold, mapbasis]);
 
   return (
     <div className={`flex flex-row w-full bg-slate-100 rounded-[20px] py-4`}>

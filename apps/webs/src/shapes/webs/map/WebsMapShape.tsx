@@ -14,13 +14,12 @@ export type TypesShapesWebsMapShapeValue = {
   //
 
   zoom: number;
+  anchor: [number, number];
+  visibleAnchor: boolean;
+  visibleAnchorPersist: boolean;
 
-  home: [number, number];
-  showHome: boolean;
-  atHome: boolean;
-
-  center: [number, number];
-  showCenter: boolean;
+  center: [number, number] | undefined;
+  visibleCenter: boolean;
 };
 
 export type TypesShapesWebsMapShape = {
@@ -37,12 +36,13 @@ const initialState: TypesShapesWebsMapShape = {
     //
 
     zoom: 12,
-    home: [0, 0],
-    showHome: true,
-    atHome: true,
 
-    center: [0, 0],
-    showCenter: false,
+    anchor: [0, 0],
+    visibleAnchor: true,
+    visibleAnchorPersist: false,
+
+    center: undefined,
+    visibleCenter: false,
   },
 };
 
@@ -115,6 +115,51 @@ export const WebsMapShapeSlice = createSlice({
       };
     },
 
+    writeWebsMapShapeAnchor: (
+      state,
+      action: PayloadAction<[number, number]>
+    ) => {
+      state.value = {
+        ...state.value,
+        anchor: action.payload,
+      };
+    },
+
+    writeWebsMapShapeVisibleAnchor: (state, action: PayloadAction<boolean>) => {
+      state.value = {
+        ...state.value,
+        visibleAnchor: action.payload,
+      };
+    },
+
+    writeWebsMapShapeVisibleAnchorPersist: (
+      state,
+      action: PayloadAction<boolean>
+    ) => {
+      state.value = {
+        ...state.value,
+        visibleAnchorPersist: action.payload,
+      };
+    },
+
+    writeWebsMapShapeCenter: (
+      state,
+      action: PayloadAction<[number, number] | undefined>
+    ) => {
+      state.value = {
+        ...state.value,
+        center: action.payload,
+      };
+    },
+
+    writeWebsMapShapeVisibleCenter: (state, action: PayloadAction<boolean>) => {
+      state.value = {
+        ...state.value,
+        visibleCenter: action.payload,
+      };
+    },
+
+    /*
     writeWebsMapShapeHome: (state, action: PayloadAction<[number, number]>) => {
       state.value = {
         ...state.value,
@@ -135,23 +180,7 @@ export const WebsMapShapeSlice = createSlice({
         atHome: action.payload,
       };
     },
-
-    writeWebsMapShapeCenter: (
-      state,
-      action: PayloadAction<[number, number]>
-    ) => {
-      state.value = {
-        ...state.value,
-        center: action.payload,
-      };
-    },
-
-    writeWebsMapShapeShowCenter: (state, action: PayloadAction<boolean>) => {
-      state.value = {
-        ...state.value,
-        showCenter: action.payload,
-      };
-    },
+    */
   },
 });
 
@@ -165,12 +194,13 @@ export const {
   // shape library WebsMapShape
   //
 
-  writeWebsMapShapeHome,
-  writeWebsMapShapeAtHome,
-  writeWebsMapShapeShowHome,
+  writeWebsMapShapeAnchor,
+  writeWebsMapShapeVisibleAnchor,
+  writeWebsMapShapeVisibleAnchorPersist,
 
   writeWebsMapShapeCenter,
-  writeWebsMapShapeShowCenter,
+  writeWebsMapShapeVisibleCenter,
+
   writeWebsMapShapeZoom,
   writeWebsMapShapeZoomStep,
 } = WebsMapShapeSlice.actions;

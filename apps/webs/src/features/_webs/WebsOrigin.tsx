@@ -1,9 +1,9 @@
 import { WebsDrawer } from "@webs-features/_webs/drawer/WebsDrawer";
-import { WebsFocus } from "@webs-features/_webs/focus/WebsFocus";
 import { WebsFooter } from "@webs-features/_webs/footer/WebsFooter";
 import { WebsLogIn } from "@webs-features/_webs/log-in/WebsLogIn";
 import { WebsMap } from "@webs-features/_webs/map/WebsMap";
 import { WebsPost } from "@webs-features/_webs/post/WebsPost";
+import { WebsSearch } from "@webs-features/_webs/search/WebsSearch";
 import { WebsTop } from "@webs-features/_webs/top/WebsTop";
 import { useShape } from "@webs-shapes/hooks";
 import { ofWebsDrawerShape } from "@webs-shapes/webs/drawer/WebsDrawerShape";
@@ -54,7 +54,7 @@ export const WebsOrigin: React.FC<TypesWebsOrigin> = ({
         <WebsTop basis={{ ...basis }} />
 
         <div className={`flex flex-col w-full space-y-4 max-md:px-4 px-[20%]`}>
-          <WebsFocus basis={{ ...basis }} />
+          <WebsSearch basis={{ ...basis }} />
         </div>
 
         <div className={`flex flex-col w-full max-md:px-4 md:px-[20%]`}>
