@@ -54,17 +54,11 @@ export default WebsPagesView;
 
 export const getServerSideProps: GetServerSideProps = async ({
   params,
-  query,
   locale,
 }: GetServerSidePropsContext) => {
   try {
     const email = params?.key1;
     if (!email || typeof email !== "string") {
-      return { redirect: { destination: "/", permanent: false }, props: {} };
-    }
-
-    const token = query.auth;
-    if (!token) {
       return { redirect: { destination: "/", permanent: false }, props: {} };
     }
 
@@ -74,7 +68,6 @@ export const getServerSideProps: GetServerSideProps = async ({
         variables: {
           figure: {
             locale: locale || "en",
-            token,
           },
         },
       });
@@ -84,7 +77,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     return {
       props: {
         ...(await serverSideTranslations(locale as string, dictionary, CONFIG)),
-        token,
       },
     };
   } catch (e) {

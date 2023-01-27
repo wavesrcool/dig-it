@@ -33,6 +33,7 @@ const initialState: TypesShapesRootShape = {
     //
     // shape initial RootShape
     //
+
     basiskey: "root",
     token: undefined,
     email: undefined,
