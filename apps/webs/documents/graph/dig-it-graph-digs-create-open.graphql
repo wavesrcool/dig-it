@@ -1,0 +1,11 @@
+mutation DigItGraphDigsCreateOpen($figure: DigItGraphFiguresDigsCreateOpen!) {
+  DigItGraphDigsCreateOpen(figure: $figure) {
+    pass
+    message
+    timestamp
+    hash
+    data {
+      notes
+    }
+  }
+}

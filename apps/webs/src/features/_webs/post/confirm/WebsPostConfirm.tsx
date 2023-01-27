@@ -2,7 +2,7 @@ import { ComponentsButton } from "@webs-components/button/ComponentsButton";
 import { WebsPostConfirmPasscode } from "@webs-features/_webs/post/confirm/passcode/WebsPostConfirmPasscode";
 
 import { useLocale } from "@webs-hooks/use-locale";
-import { useDigItGraph0002Mutation } from "@webs-library/graph/hooks";
+import { useDigItGraphDigsConfirmOpenMutation } from "@webs-library/graph/hooks";
 import { useFold, useShape } from "@webs-shapes/hooks";
 import {
   ofWebsDigCreateShape,
@@ -35,7 +35,7 @@ export const WebsPostConfirm: React.FC<TypesWebsPostConfirm> = ({
   const WebsDigCreateShape = useShape(ofWebsDigCreateShape);
 
   const locale = useLocale();
-  const [g0002] = useDigItGraph0002Mutation();
+  const [g0002] = useDigItGraphDigsConfirmOpenMutation();
 
   const lcaWebsPostConfirmSubmit = React.useCallback(() => {
     //
@@ -79,7 +79,7 @@ export const WebsPostConfirm: React.FC<TypesWebsPostConfirm> = ({
           },
         });
 
-        if (g0002d?.DigItGraph0002.pass) {
+        if (g0002d?.DigItGraphDigsConfirmOpen.pass) {
           fold(writeWebsDigCreateShapeView("complete"));
         }
 

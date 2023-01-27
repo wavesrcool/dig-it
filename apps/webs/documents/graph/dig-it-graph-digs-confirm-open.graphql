@@ -1,0 +1,11 @@
+mutation DigItGraphDigsConfirmOpen($figure: DigItGraphFiguresDigsConfirmOpen!) {
+  DigItGraphDigsConfirmOpen(figure: $figure) {
+    pass
+    message
+    timestamp
+    hash
+    data {
+      notes
+    }
+  }
+}

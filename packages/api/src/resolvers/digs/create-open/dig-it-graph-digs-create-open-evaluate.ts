@@ -1,15 +1,15 @@
 import { LibraryGeohashEncode } from "@dig-it/library/lib/geohash/LibraryGeohashEncode";
-import { LibraryMessagesGraph0001 } from "@dig-it/library/lib/messages/graph/0001";
+import { LibraryMessagesGraphDigsCreateOpen } from "@dig-it/library/lib/messages/graph/digs/create-open";
 import { LibraryPictureCreate } from "@dig-it/library/lib/picture/LibraryPictureCreate";
 import { Dig } from "@dig-it/models/lib/dig/Dig";
 import { Email } from "@dig-it/models/lib/email/Email";
 import { Geo } from "@dig-it/models/lib/geo/Geo";
 import { Place } from "@dig-it/models/lib/place/Place";
-import { TypesClassesEmailTemplatesSend } from "../../classes/email/_templates/send/types";
-import { TypesApiHttpApollo } from "../../http/apollo/types";
-import { DigItGraphData0001 } from "./dig-it-graph-0001-data";
-import { DigItGraphFigures0001 } from "./dig-it-graph-0001-figure";
-import { DigItGraphResolve0001 } from "./dig-it-graph-0001-resolve";
+import { TypesClassesEmailTemplatesSend } from "../../../classes/email/_templates/send/types";
+import { TypesApiHttpApollo } from "../../../http/apollo/types";
+import { DigItGraphDataDigsCreateOpen } from "./dig-it-graph-digs-create-open-data";
+import { DigItGraphFiguresDigsCreateOpen } from "./dig-it-graph-digs-create-open-figure";
+import { DigItGraphResolveDigsCreateOpen } from "./dig-it-graph-digs-create-open-resolve";
 
 /**
  * * Dig It Documentation
@@ -19,14 +19,14 @@ import { DigItGraphResolve0001 } from "./dig-it-graph-0001-resolve";
  * @notes [ ]
  *
  */
-export const DigItGraphEvaluate0001 = async (
+export const DigItGraphEvaluateDigsCreateOpen = async (
   ctx: TypesApiHttpApollo,
-  figure: DigItGraphFigures0001
-): Promise<DigItGraphResolve0001> => {
+  figure: DigItGraphFiguresDigsCreateOpen
+): Promise<DigItGraphResolveDigsCreateOpen> => {
   const {
     classes: { handler },
   } = ctx;
-  let message: LibraryMessagesGraph0001 = `error`;
+  let message: LibraryMessagesGraphDigsCreateOpen = `error`;
 
   let PK_DIG: number | undefined;
   let PK_EMAIL: number | undefined;
@@ -36,7 +36,7 @@ export const DigItGraphEvaluate0001 = async (
   try {
     //
     //
-    // evaluate 0001
+    // evaluate DigsCreateOpen
     //
 
     const {
@@ -57,51 +57,51 @@ export const DigItGraphEvaluate0001 = async (
 
     if (!email) {
       message = "email";
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!value) {
       message = "value";
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!money) {
       message = "money";
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!neighborhood) {
       message = "neighborhood";
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!line) {
       message = "line";
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!city) {
       message = "city";
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!region) {
       message = "region";
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!country) {
       message = "country";
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!lat || Number.isNaN(lat)) {
       message = "lat";
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
     if (!lng || Number.isNaN(lng)) {
       message = "lng";
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     const datenow = new Date().toISOString();
@@ -178,19 +178,19 @@ export const DigItGraphEvaluate0001 = async (
     }
 
     if (!PK_DIG) {
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!PK_GEO) {
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!PK_PLACE) {
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     if (!PK_EMAIL) {
-      return handler.error<LibraryMessagesGraph0001>(message);
+      return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
     }
 
     await ctx.connection
@@ -232,10 +232,10 @@ export const DigItGraphEvaluate0001 = async (
 
     //
     //
-    // data 0001
+    // data DigsCreateOpen
     //
-    const data: DigItGraphData0001 = {
-      notes: [`0001`],
+    const data: DigItGraphDataDigsCreateOpen = {
+      notes: [`DigsCreateOpen`],
     };
 
     const timestamp = Date.now();
@@ -247,8 +247,8 @@ export const DigItGraphEvaluate0001 = async (
       hash: ctx.classes.auth.hash(`${timestamp}#${message}`),
       data,
     };
-  } catch (DigItGraphEvaluate0001Error) {
-    const catcherr = handler.catch(DigItGraphEvaluate0001Error);
+  } catch (DigItGraphEvaluateDigsCreateOpenError) {
+    const catcherr = handler.catch(DigItGraphEvaluateDigsCreateOpenError);
 
     if (catcherr === "23505") {
       message = `email-exists`;
@@ -290,6 +290,6 @@ export const DigItGraphEvaluate0001 = async (
         .execute();
     }
 
-    return handler.error<LibraryMessagesGraph0001>(message);
+    return handler.error<LibraryMessagesGraphDigsCreateOpen>(message);
   }
 };

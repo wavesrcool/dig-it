@@ -10,7 +10,7 @@ import { Field, InputType } from "type-graphql";
  *
  */
 @InputType()
-export class DigItGraphFigures0001 {
+export class DigItGraphFiguresDigsCreateOpen {
   @Field(() => String)
   locale!: string;
 

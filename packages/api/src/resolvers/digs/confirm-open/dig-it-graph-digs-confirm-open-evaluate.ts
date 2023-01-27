@@ -1,11 +1,11 @@
 import { LibraryHashStrings } from "@dig-it/library/lib/hash/strings/LibraryHashStrings";
-import { LibraryMessagesGraph0002 } from "@dig-it/library/lib/messages/graph/0002";
+import { LibraryMessagesGraphDigsConfirmOpen } from "@dig-it/library/lib/messages/graph/digs/confirm-open";
 import { Dig } from "@dig-it/models/lib/dig/Dig";
 import { Email } from "@dig-it/models/lib/email/Email";
-import { TypesApiHttpApollo } from "../../http/apollo/types";
-import { DigItGraphData0002 } from "./dig-it-graph-0002-data";
-import { DigItGraphFigures0002 } from "./dig-it-graph-0002-figure";
-import { DigItGraphResolve0002 } from "./dig-it-graph-0002-resolve";
+import { TypesApiHttpApollo } from "../../../http/apollo/types";
+import { DigItGraphDataDigsConfirmOpen } from "./dig-it-graph-digs-confirm-open-data";
+import { DigItGraphFiguresDigsConfirmOpen } from "./dig-it-graph-digs-confirm-open-figure";
+import { DigItGraphResolveDigsConfirmOpen } from "./dig-it-graph-digs-confirm-open-resolve";
 
 /**
  * * Dig It Documentation
@@ -15,19 +15,19 @@ import { DigItGraphResolve0002 } from "./dig-it-graph-0002-resolve";
  * @notes [ ]
  *
  */
-export const DigItGraphEvaluate0002 = async (
+export const DigItGraphEvaluateDigsConfirmOpen = async (
   ctx: TypesApiHttpApollo,
-  figure: DigItGraphFigures0002
-): Promise<DigItGraphResolve0002> => {
+  figure: DigItGraphFiguresDigsConfirmOpen
+): Promise<DigItGraphResolveDigsConfirmOpen> => {
   const {
     classes: { handler },
   } = ctx;
-  let message: LibraryMessagesGraph0002 = `error`;
+  let message: LibraryMessagesGraphDigsConfirmOpen = `error`;
 
   try {
     //
     //
-    // evaluate 0002
+    // evaluate DigsConfirmOpen
     //
 
     const { email, passcode: passcode0 } = figure;
@@ -44,12 +44,12 @@ export const DigItGraphEvaluate0002 = async (
 
     if (!reademail || !reademail.dig) {
       message = "email";
-      return handler.error<LibraryMessagesGraph0002>(message);
+      return handler.error<LibraryMessagesGraphDigsConfirmOpen>(message);
     }
 
     if (!(PASS_CODE_1 === reademail.passcode)) {
       message = "passcode";
-      return handler.error<LibraryMessagesGraph0002>(message);
+      return handler.error<LibraryMessagesGraphDigsConfirmOpen>(message);
     }
 
     const { dig } = reademail;
@@ -75,10 +75,10 @@ export const DigItGraphEvaluate0002 = async (
 
     //
     //
-    // data 0002
+    // data DigsConfirmOpen
     //
-    const data: DigItGraphData0002 = {
-      notes: [`0002`],
+    const data: DigItGraphDataDigsConfirmOpen = {
+      notes: [`DigsConfirmOpen`],
     };
 
     const timestamp = Date.now();
@@ -90,7 +90,7 @@ export const DigItGraphEvaluate0002 = async (
       hash: LibraryHashStrings(`${timestamp}#${message}`),
       data,
     };
-  } catch (DigItGraphEvaluate0002Error) {
-    return handler.error<LibraryMessagesGraph0002>(message);
+  } catch (DigItGraphEvaluateDigsConfirmOpenError) {
+    return handler.error<LibraryMessagesGraphDigsConfirmOpen>(message);
   }
 };

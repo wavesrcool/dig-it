@@ -5,7 +5,7 @@ import { WebsPostCreateDescription } from "@webs-features/_webs/post/create/desc
 import { WebsPostCreateNeighborhood } from "@webs-features/_webs/post/create/neighborhood/WebsPostCreateNeighborhood";
 import { WebsPostCreatePayment } from "@webs-features/_webs/post/create/payment/WebsPostCreatePayment";
 import { useLocale } from "@webs-hooks/use-locale";
-import { useDigItGraph0001Mutation } from "@webs-library/graph/hooks";
+import { useDigItGraphDigsCreateOpenMutation } from "@webs-library/graph/hooks";
 import { useFold, useShape } from "@webs-shapes/hooks";
 import {
   ofWebsDigCreateShape,
@@ -41,7 +41,7 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
 
   const locale = useLocale();
 
-  const [g0001] = useDigItGraph0001Mutation();
+  const [g0001] = useDigItGraphDigsCreateOpenMutation();
 
   const lcaWebsPostCreateSubmit = React.useCallback(async () => {
     //
@@ -134,7 +134,7 @@ export const WebsPostCreate: React.FC<TypesWebsPostCreate> = ({
 
         console.log(JSON.stringify(g0001d, null, 4), `resp`);
 
-        if (g0001d?.DigItGraph0001.pass) {
+        if (g0001d?.DigItGraphDigsCreateOpen.pass) {
           fold(writeWebsDigCreateShapeView("confirm"));
         }
 
