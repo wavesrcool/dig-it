@@ -35,20 +35,20 @@ export const WebsTop: React.FC<TypesWebsTop> = ({ basis }: TypesWebsTop) => {
 
   return (
     <div
-      className={`flex max-lg:flex-col max-lg:space-y-2 max-lg:mb-4 flex-row w-full h-20 max-md:px-0 px-[20%] max-lg:justify-start justify-between`}
+      className={`flex max-lg:flex-col flex-row max-lg:space-y-2 space-y-0 max-lg:mb-4 mb-0 w-full max-md:h-20 h-auto max-md:px-0 px-[20%] `}
     >
-      <div className={`flex flex-row max-lg:w-full max-lg:justify-center p-1`}>
+      <div className={`flex flex-row max-lg:w-full max-lg:justify-center p-1 `}>
         <div
-          className={`flex flex-row  space-x-4 cursor-pointer  `}
+          className={`flex flex-row items-center cursor-pointer p-2 `}
           onClick={lcWebsTopDrawerToggle}
         >
           <div
-            className={`flex h-16 w-auto group-hover:scale-110 group-hover:opacity-90 opacity-75`}
+            className={`flex h-16 w-40 group-hover:scale-110 group-hover:opacity-90 opacity-75`}
           >
             <img src={`/display/svg/shovel.svg`} alt={`dig-it-logo`} />
           </div>
-          <div className={`flex flex-row items-center`}>
-            <p className={"font-lust text-5xl text-neutral"}>
+          <div className={`flex`}>
+            <p className={"font-lust text-5xl text-neutral flex-1"}>
               {`${t(`common:title`, `dig it!`)}`.toLowerCase()}
             </p>
           </div>
