@@ -119,8 +119,8 @@ export const ClassesEmailTemplatesSend = (
                   >
                     
         <div
-           style="font-family:Courier New;font-size:32px;font-weight:800;letter-spacing:12px;line-height:1;text-align:center;color:#C7FEDB;"
-        >Dig it!</div>
+           style="font-family:Helvetica;font-size:32px;font-weight:800;letter-spacing:12px;line-height:1;text-align:center;color:#C7FEDB;"
+        >Dig-it!</div>
       
                   </td>
                 </tr>
@@ -197,7 +197,7 @@ export const ClassesEmailTemplatesSend = (
                   >
                     
         <div
-           style="font-family:Courier New;font-size:24px;font-weight:600;letter-spacing:-0.8px;line-height:1;text-align:center;color:#4A4545;"
+           style="font-family:Helvetica;font-size:24px;font-weight:500;letter-spacing:-0.8px;line-height:1;text-align:center;color:#4A4545;"
         >⚘ ${f.content.heading} ⚘</div>
       
                   </td>
@@ -233,11 +233,11 @@ export const ClassesEmailTemplatesSend = (
             
                 <tr>
                   <td
-                     align="justify" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+                     align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"
                   >
                     
         <div
-           style="font-family:Courier New;font-size:24px;font-weight:600;letter-spacing:-0.8px;line-height:1;text-align:justify;color:#4A4545;"
+           style="font-family:Helvetica;font-size:24px;font-weight:500;letter-spacing:-0.8px;line-height:1;text-align:center;color:#4A4545;"
         >${f.content.line}.</div>
       
                   </td>

@@ -1,18 +1,18 @@
-// SPDX-FileCopyrightText: © 2022 Tyson Lupul <t@radroots.io>
-
 import { configuration } from "@webs-configuration/index";
+import { AccountOrigin } from "@webs-features/account/AccountOrigin";
+import { useLocale } from "@webs-hooks/use-locale";
 import { apolloInstance } from "@webs-library/apollo/instance";
 import {
   DigItGraph0003Document,
   DigItGraph0003Mutation,
+  useDigItGraphSessionReadQuery,
 } from "@webs-library/graph/hooks";
-import { useFold } from "@webs-shapes/hooks";
-import { writeRootShapeToken } from "@webs-shapes/root/RootShape";
+import { useFold, useShape } from "@webs-shapes/hooks";
+import { ofRootShape, writeRootShapeEmail } from "@webs-shapes/root/RootShape";
 
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import * as React from "react";
 
 const {
@@ -24,28 +24,40 @@ const {
 
 const apolloclient = apolloInstance();
 
-const WebsPagesView = ({ ...props }): JSX.Element => {
+const WebsPagesView = (): JSX.Element => {
   const fold = useFold();
-  const router = useRouter();
+  const locale = useLocale();
+  const RootShape = useShape(ofRootShape);
+
+  const { data: gSessionReadd } = useDigItGraphSessionReadQuery({
+    variables: { figure: { locale } },
+  });
 
   React.useEffect(() => {
     //
     // @notes:
-
-    router.replace(`/account/${router.query.key1}`, undefined, {
-      shallow: true,
-    });
-    fold(writeRootShapeToken(String(props.token || ``)));
+    if (
+      gSessionReadd?.DigItGraphSessionRead.pass &&
+      gSessionReadd?.DigItGraphSessionRead?.data?.email
+    ) {
+      fold(writeRootShapeEmail(gSessionReadd.DigItGraphSessionRead.data.email));
+    }
 
     // end
     return;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [
+    fold,
+    gSessionReadd?.DigItGraphSessionRead.data,
+    gSessionReadd?.DigItGraphSessionRead.pass,
+  ]);
+
   return (
     <>
       <Head>
         <title>{`www.dig-it.earth`}</title>
       </Head>
+
+      <AccountOrigin basis={{ key: RootShape.basiskey, dictionary }} />
     </>
   );
 };
@@ -84,3 +96,22 @@ export const getServerSideProps: GetServerSideProps = async ({
     return { redirect: { destination: "/", permanent: false }, props: {} };
   }
 };
+
+/*
+
+  React.useEffect(() => {
+    //
+    // @notes:
+
+    router.replace(`/account/${router.query.key1}`, undefined, {
+      shallow: true,
+    });
+    fold(writeRootShapeToken(String(props.token || ``)));
+
+    // end
+    return;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
+*/

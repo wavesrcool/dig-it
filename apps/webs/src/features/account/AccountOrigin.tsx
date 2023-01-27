@@ -1,9 +1,4 @@
 import { WebsDrawer } from "@webs-features/_webs/drawer/WebsDrawer";
-import { WebsFocus } from "@webs-features/_webs/focus/WebsFocus";
-import { WebsFooter } from "@webs-features/_webs/footer/WebsFooter";
-import { WebsLogIn } from "@webs-features/_webs/log-in/WebsLogIn";
-import { WebsMap } from "@webs-features/_webs/map/WebsMap";
-import { WebsPost } from "@webs-features/_webs/post/WebsPost";
 import { WebsTop } from "@webs-features/_webs/top/WebsTop";
 import { useShape } from "@webs-shapes/hooks";
 import { ofWebsDrawerShape } from "@webs-shapes/webs/drawer/WebsDrawerShape";
@@ -20,7 +15,7 @@ import * as React from "react";
  * @notes [ ]
  *
  */
-export type TypesWebsOrigin = {
+export type TypesAccountOrigin = {
   basis: TypesWebsBasis;
 };
 
@@ -32,9 +27,9 @@ export type TypesWebsOrigin = {
  * @notes [ ]
  *
  */
-export const WebsOrigin: React.FC<TypesWebsOrigin> = ({
+export const AccountOrigin: React.FC<TypesAccountOrigin> = ({
   basis,
-}: TypesWebsOrigin) => {
+}: TypesAccountOrigin) => {
   const { t } = useTranslation(basis.dictionary);
 
   const WebsDrawerShape = useShape(ofWebsDrawerShape);
@@ -42,10 +37,10 @@ export const WebsOrigin: React.FC<TypesWebsOrigin> = ({
   return (
     <>
       <Head>
-        <title>{`${t(`common:title`, `Dig It!`)} | ${`${t(
-          `glossary:find_farmers_to_dig_up_your_lawn`,
-          `Find farmers to dig up your lawn`
-        )}`}!`}</title>
+        <title>{`${t(`common:title`, `Dig It!`)} | ${t(
+          `glossary:home`,
+          `home`
+        )}`}</title>
       </Head>
 
       <div
@@ -53,20 +48,33 @@ export const WebsOrigin: React.FC<TypesWebsOrigin> = ({
       >
         <WebsTop basis={{ ...basis }} />
 
-        <div className={`flex flex-col w-full space-y-4 max-md:px-4 px-[20%]`}>
-          <WebsFocus basis={{ ...basis }} />
-        </div>
+        <div className={`flex flex-col w-full`}>
+          <div
+            className={`flex flex-row w-full justify-center items-center space-x-2`}
+          >
+            <svg
+              xmlns={"http://www.w3.org/2000/svg"}
+              fill={"none"}
+              viewBox={"0 0 24 24"}
+              strokeWidth={1.5}
+              stroke={"currentColor"}
+              className={"w-6 h-6"}
+            >
+              <path
+                strokeLinecap={"round"}
+                strokeLinejoin={"round"}
+                d={
+                  "M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+                }
+              />
+            </svg>
 
-        <div className={`flex flex-col w-full max-md:px-4 md:px-[20%]`}>
-          <WebsMap basis={{ ...basis }} />
-        </div>
-
-        <div className={`flex flex-col w-full max-md:px-4 px-[20%]`}>
-          <WebsFooter basis={{ ...basis }} />
+            <p className={"font-sans font-medium italic text-lg "}>
+              {"under development!"}
+            </p>
+          </div>
         </div>
       </div>
-      <WebsLogIn basis={{ ...basis }} />
-      <WebsPost basis={{ ...basis }} />
       {WebsDrawerShape.visible ? <WebsDrawer basis={{ ...basis }} /> : null}
     </>
   );

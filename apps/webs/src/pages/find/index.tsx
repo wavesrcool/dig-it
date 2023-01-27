@@ -1,5 +1,3 @@
-// SPDX-FileCopyrightText: © 2022 Tyson Lupul <t@radroots.io>
-
 import { configuration } from "@webs-configuration/index";
 import { apolloInstance } from "@webs-library/apollo/instance";
 import {

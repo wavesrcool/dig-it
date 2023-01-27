@@ -28,15 +28,15 @@ export const WebsFooter: React.FC<TypesWebsFooter> = ({
         >
           <p
             className={
-              "font-sans text-lg font-bold text-slate-700 max-lg:text-justify max-lg:px-[18%] max-lg:leading-[48px]"
+              "font-sans text-xs font-light text-slate-700 max-lg:text-justify max-lg:px-[18%] max-lg:leading-[48px]"
             }
           >
             {[
               `common:title`,
-              `glossary:is_an`,
-              `glossary:open_source_project`,
+              `glossary:is_an_open_source_project_under`,
+              `glossary:active_development`,
               `glossary:please_send_any_questions_or_comments_to`,
-              `tyson@dig-it.earth`,
+              `info@dig-it.earth`,
               `!`,
             ].map((text) => {
               if (text.includes(`@`)) {
@@ -50,21 +50,21 @@ export const WebsFooter: React.FC<TypesWebsFooter> = ({
                 );
               }
 
-              if (text.includes(`open_source`)) {
+              if (text.includes(`active_development`)) {
                 return (
                   <span
                     key={text}
-                    className={`px-1 text-slate-700/80 cursor-pointer hover:underline hover:underline-offset-[3px] hover:decoration-wavy hover:decoration-[2px] hover:decoration-blue-300`}
+                    className={` text-slate-700/80 cursor-pointer hover:underline hover:underline-offset-[3px] hover:decoration-wavy hover:decoration-[2px] hover:decoration-blue-300`}
                   >
                     <Link href={`https://github.com/wavesrcool/dig-it`}>
-                      {t(text).toLowerCase()}
+                      {` ${t(text).toLowerCase()} `}
                     </Link>
                   </span>
                 );
               }
               return (
-                <span key={text} className={`px-1 `}>
-                  {t(text).toLowerCase()}
+                <span key={text} className={``}>
+                  {` ${t(text).toLowerCase()} `}
                 </span>
               );
             })}
