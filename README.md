@@ -1,6 +1,6 @@
 # Dig-it!
 
-A website for people interested in turning their lawns into food gardens.
+A website for people interested in turning their lawns into food gardens. [See the website](https://www.dig-it.earth).
 
 ## Overview
 
