@@ -6,6 +6,35 @@ query DigItGraph0000($figure: DigItGraphFigures0000!) {
     hash
     data {
       notes
+      results {
+        key
+        created
+        updated
+        picture
+        pictureDate
+        description
+        neighborhood
+        value
+        money
+        place {
+          key
+          created
+          updated
+          line
+          city
+          region
+          country
+          geo {
+            key
+            created
+            updated
+            gh2
+            gh9
+            lat
+            lng
+          }
+        }
+      }
     }
   }
 }
